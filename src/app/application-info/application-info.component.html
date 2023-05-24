@@ -1,0 +1,46 @@
+<div class="page">
+    <div class="gallery">
+      <img class="mainimg" src={{currentPhoto}}>
+      <div>
+          <img class="galleryimg" (click)="picPhoto(photoList.photo)" *ngFor="let photoList of applicationID.photoApplications" src={{photoList.photo}}>
+      </div>
+    </div>
+    <div class="description">
+      <h1>{{applicationID.name}}</h1>
+      <p>Описание:</p>
+      <p>{{applicationID.description}}</p>
+        <ol>
+          <li>
+            <div>Дата:</div>
+            <div></div>
+            <div>{{applicationID["date"] | date: 'dd.MM.yyyy'}}</div>
+          </li>
+          <li>
+            <div>Начало:</div>
+            <div></div>
+            <div>{{formattedTime}}</div>
+          </li>
+          <li>
+            <div>Город проведения:</div>
+            <div></div>
+            <div>{{applicationID.idCityNavigation.name}}</div>
+          </li>
+          <li>
+            <div>Место проведения:</div>
+            <div></div>
+            <div>{{applicationID["place"]}}</div>
+          </li>
+          <li>
+            <div>Необходимое количество участников:</div>
+            <div></div>
+            <div>{{applicationID["countUser"]}}</div>
+          </li>
+        </ol>
+        <p>Участников <span>{{partUser}}</span>  из <span>{{applicationID.countUser}}</span>:</p>
+        <progress max="{{applicationID.countUser}}" value="{{partUser}}"></progress>
+        <button formControlName="btn" (click)="partApplication()">{{participant}}</button>
+    </div>
+  </div>
+  
+  
+  

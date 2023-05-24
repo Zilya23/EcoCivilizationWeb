@@ -1,0 +1,104 @@
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .gallery {
+    width: 50%;
+    text-align: center;
+  }
+  
+  .mainimg {
+    height: 450px;
+    width: 450px;
+  }
+  
+  .galleryimg {
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .galleryimg:hover {
+    filter: brightness(50%);
+    transition: 0.2s;
+  }
+  
+  .description {
+    width: 50%;
+    text-align: left;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  ul li,
+  ol li {
+    list-style: none;
+  }
+  ol {
+    padding: 0px;
+  }
+  ol li {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 50px;
+    font-size: 20px;
+  }
+  
+  p{
+    margin: 2px;
+    font-size: 20px;
+  }
+  li div:nth-child(2) {
+    flex: 1 0;
+    border-bottom: 1px dotted #000;
+    height: 1em;
+  }
+  
+  progress[value]{
+    appearance: none;
+    width: 92%;
+    height: 20px;
+  }
+  
+  progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+  
+  button {
+    box-sizing: border-box;
+    margin-top: 10px;
+    display: block;
+    width: 92%;
+    border-width: 1px;
+    border-style: solid;
+    padding: 16px;
+    outline: 0;
+    font-family: inherit;
+    font-size: 0.95em;
+    background: rgb(157, 192, 139);
+    border-color: transparent;
+    color: rgb(64, 81, 59);
+    cursor: pointer;
+  }
+  
+  @media (max-width: 900px){
+    .page {
+      flex-direction: column;
+    }
+    .description {
+      width: 100%;
+      margin-left: 20px;
+    }
+    .gallery {
+      width: 100%;
+    }
+  
+}

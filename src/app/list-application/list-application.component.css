@@ -1,0 +1,45 @@
+img {
+    width: 450px;
+    height: 450px;
+  }
+  
+  .child {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    margin: 20px;
+  }
+  
+  .child .contentimg {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 91%;
+    padding: 20px;
+  }
+  
+  .nava {
+    text-decoration: none;
+    color: #f1f1f1;
+  }
+  
+  .main {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    
+  }
+  
+  .inline div {
+    font-size:20px;
+  }
+      
+  div.inline {font-size:0;}
+    /* .left-block {
+    } */
+  
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
