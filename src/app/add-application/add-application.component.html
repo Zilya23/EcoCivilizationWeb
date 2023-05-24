@@ -1,1 +1,75 @@
-<p>add-application works!</p>
+<div class="page">
+    <div class="login">
+        <h2 class="login-header">Добавление события</h2>
+        <form name="createApplication" [formGroup]="addForm" class="login-container" (ngSubmit)="addApplication()">
+
+            <div class="description">
+                <div class="floating-label">
+                    <p [ngClass]="{ 'has-error': isSubmitted && formControls.name.errors }"></p>
+                    <mat-form-field>
+                        <mat-label>Название</mat-label>
+                        <input matInput class="floating-label__input" formControlName="name">
+                      </mat-form-field>                      
+                </div>
+                <div *ngIf="isSubmitted && formControls.name.errors" class="help-block">
+                    <div *ngIf="formControls.name.errors.required">Заполните поле названия!</div>
+                </div>
+    
+                <div class="floating-label">
+                    <p [ngClass]="{ 'has-error': isSubmitted && formControls.description.errors }"></p>
+                    <mat-form-field>
+                        <mat-label>Описание</mat-label>
+                        <textarea matInput class="floating-label__input" formControlName="description"></textarea>
+                      </mat-form-field>
+                </div>
+                <div *ngIf="isSubmitted && formControls.description.errors" class="help-block">
+                    <div *ngIf="formControls.description.errors.required">Заполните поле описания!</div>
+                </div>
+
+                <div class="floating-label">
+                    <p [ngClass]="{ 'has-error': isSubmitted && formControls.date.errors }"></p>
+                      <mat-form-field>
+                        <mat-label>Выберите дату</mat-label>
+                        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="date">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="isSubmitted && formControls.date.errors" class="help-block">
+                    <div *ngIf="formControls.date.errors.required">Выберите дату!</div>
+                </div>
+
+                <div class="floating-label">
+                    <p [ngClass]="{ 'has-error': isSubmitted && formControls.place.errors }"></p>
+                    <mat-form-field>
+                        <mat-label>Место проведения</mat-label>
+                        <textarea matInput class="floating-label__input" formControlName="place"></textarea>
+                      </mat-form-field>
+                </div>
+                <div *ngIf="isSubmitted && formControls.place.errors" class="help-block">
+                    <div *ngIf="formControls.place.errors.required">Заполните место проведения!</div>
+                </div>
+
+                <p [ngClass]="{ 'has-error': isSubmitted && formControls.city.errors }">
+                    <ng-select required formControlName="city">
+                      <ng-option value="" disabled selected>Выберите город*</ng-option>
+                      <ng-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ng-option>
+                   </ng-select>
+                  </p>
+                  <div *ngIf="isSubmitted && formControls.city.errors" class="help-block">
+                    <div *ngIf="formControls.city.errors.required">Укажите город!</div>
+                  </div>
+
+            </div>
+            
+            <div class="gallery">
+                <img>
+            </div>
+
+            <p>
+                <button type="submit" class="btn">Сохранить</button>
+            </p>
+        </form>
+    </div>
+</div>
+

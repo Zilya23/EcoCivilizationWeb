@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "@coreui/angular": "^4.4.9",
+    "@coreui/icons-angular": "^4.4.7",
     "@ng-select/ng-select": "^10.0.4",
     "google-libphonenumber": "^3.2.32",
     "intl-input-phone": "^0.0.9",

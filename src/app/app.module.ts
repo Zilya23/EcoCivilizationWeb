@@ -9,7 +9,16 @@ import {NgxMatIntlTelInputComponent} from 'ngx-mat-intl-tel-input';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {DropdownModule, SharedModule} from '@coreui/angular';
+import { AlertModule } from '@coreui/angular';
+
 
 import { ApplicationInfoComponent } from './application-info/application-info.component';
 import { AuthorizationPageComponent } from './authorization-page/authorization-page.component';
@@ -37,8 +46,16 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     BrowserAnimationsModule,
     NgSelectModule, 
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    DropdownModule,
+    SharedModule,
+    AlertModule,
   ],
-  providers: [],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'ru-ru'},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
