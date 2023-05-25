@@ -12,7 +12,6 @@
 
 .description {
     width: 50%;
-    text-align: left;
 }
 
 .floating-label {
@@ -115,6 +114,29 @@ mat-form-field {
   border-color: transparent;
   color: rgb(64, 81, 59);
   cursor: pointer;
+}
+
+.date-time {
+  display: block;
+  width: 75%;
+  border-style: solid;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-width: 1px;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 16px;
+  background: whitesmoke;
+  border-color: rgb(64, 81, 59);
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 10px;
+}
+
+.input-number {
+  margin-left: 20px;
+  width: 15%;
 }
 
 ng-select {

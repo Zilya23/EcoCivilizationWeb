@@ -8,10 +8,13 @@ import { ConfigService } from '../config/config.service';
   templateUrl: './add-application.component.html',
   styleUrls: ['./add-application.component.css'],
 })
+
 export class AddApplicationComponent {
   addForm: FormGroup | any;
   isSubmitted  =  false;
   cities: any[] = [];
+  photos: string[] = [];
+  mainPhoto = '';
   minDate: any;
   maxDate: any;
   time? = new Date();
@@ -23,9 +26,18 @@ export class AddApplicationComponent {
         this.cities.push(city)
       })
     })
-    this.minDate = new Date;
-    this.maxDate = new Date('2023-12-31T12:00:00');
+    this.minDate = new Date();
+    this.maxDate = new Date('2023-12-31T12:00');
    }
+
+  //  handleUpload(event) {
+  //   const file = event.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload = () => {
+  //       console.log(reader.result);
+  //   };
+// }
 
    ngOnInit() {
     this.addForm  =  this.formBuilder.group({
@@ -34,6 +46,7 @@ export class AddApplicationComponent {
         date:['', Validators.required],
         place:['', Validators.required],
         city : ['', Validators.required],
+        countPart : ['', Validators.required],
     });
   }
 
@@ -46,4 +59,5 @@ export class AddApplicationComponent {
       return;
     }
    }
+   
 }
