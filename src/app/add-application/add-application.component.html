@@ -9,9 +9,9 @@
                     <mat-form-field>
                         <mat-label>Название</mat-label>
                         <input matInput class="floating-label__input" formControlName="name">
-                        </mat-form-field>                      
+                        </mat-form-field>
                 </div>
-    
+
                 <div class="floating-label">
                     <p [ngClass]="{ 'has-error': isSubmitted && formControls.description.errors }"></p>
                     <mat-form-field>
@@ -21,8 +21,8 @@
                 </div>
 
                 <p [ngClass]="{ 'has-error': isSubmitted && formControls.city.errors }">
-                    <ng-select required formControlName="city">
-                        <ng-option value="" disabled selected>Выберите город*</ng-option>
+                    <ng-select class="ng-dropdown"  required formControlName="city">
+                        <ng-option value="" disabled selected >Выберите город*</ng-option>
                         <ng-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ng-option>
                     </ng-select>
                 </p>
@@ -60,14 +60,14 @@
             <div class="gallery">
                 <!-- <input type="file" (change)="handleUpload($event)"> -->
                 <!-- <input type="file" id="file" name="file" accept=".jpg, .jpeg, .png" multiple/> -->
-                <img src={{mainPhoto}} formControlName="cover">
-                <div>
-                    <img class="galleryimg" *ngFor="let photo of photos" src={{photo}}>
+                <input type="file" (change)="onFileSelected($event)" multiple>
+                <div *ngFor="let image of photos">
+                  <img [src]="image.url" alt="Image">
                 </div>
             </div>
 
         </div>
-        
+
         <p>
             <button type="submit" class="btn">Сохранить</button>
         </p>

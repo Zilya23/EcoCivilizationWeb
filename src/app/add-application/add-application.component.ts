@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
@@ -13,7 +14,7 @@ export class AddApplicationComponent {
   addForm: FormGroup | any;
   isSubmitted  =  false;
   cities: any[] = [];
-  photos: string[] = [];
+  photos: any[] = [];
   mainPhoto = '';
   minDate: any;
   maxDate: any;
@@ -29,6 +30,21 @@ export class AddApplicationComponent {
     this.minDate = new Date();
     this.maxDate = new Date('2023-12-31T12:00');
    }
+
+
+   name = 'Angular 4';
+    url: any = '';
+    onFileSelected(event: any) {
+      const files: FileList = event.target.files;
+      for (let i = 0; i < files.length; i++) {
+        const f = files.item(i);
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.photos.push({ url: e.target.result });
+        };
+        reader.readAsDataURL(f!);
+      }
+    }
 
   //  handleUpload(event) {
   //   const file = event.target.files[0];
@@ -54,10 +70,10 @@ export class AddApplicationComponent {
 
    addApplication() {
     this.isSubmitted = true;
-    
+
     if(this.addForm.invalid){
       return;
     }
    }
-   
+
 }

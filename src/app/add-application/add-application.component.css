@@ -156,9 +156,12 @@ ng-select {
   color: rgba(0, 0, 0, 0.6);
 }
 
-.ng-dropdown-panel .ng-dropdown-panel-items {
+ng-dropdown-panel.ng-dropdown {
   background-color: white;
 }
+
+
+
 
 .login input[type="submit"]:hover {
   background: rgb(157, 192, 139);;
@@ -201,5 +204,5 @@ ng-select {
     .gallery {
       width: 100%;
     }
-  
+
 }
