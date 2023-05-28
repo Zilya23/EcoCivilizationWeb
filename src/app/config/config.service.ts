@@ -69,4 +69,40 @@ export class ConfigService {
     var head = {'token': token};
     return this.client.delete<any>(url, {headers: head});
   }
+
+  public addApplication(token: any, name: any, description: any,
+                        idCity: any, place: any, date: any, userCount: any, userId: any): Observable<any> {
+    var url = this.baseUrl + 'Applications/create';
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      name: name,
+      date: date,
+      countUser: userCount,
+      place: place,
+      description: description,
+      idCity: idCity,
+      idUser: userId
+    }, {headers: head})
+  }
+
+  public addPhoto(idApplication: any, photo: any): Observable<any> {
+    var url = this.baseUrl + 'PhotoApplications/create';
+    return this.client.post<any>(url, {photo: photo, idapplicatioon: idApplication})
+  }
+
+  public getUserCreateApplication(idUser: any, token: any): Observable<any> {
+    var url = this.baseUrl + 'Applications/UserCreateApplication';
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      id: idUser
+    }, {headers: head});
+  }
+
+  public getUserPartApplication(idUser: any, token: any): Observable<any> {
+    var url = this.baseUrl + 'ApplicationUsers/UserPartApplication';
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      id: idUser
+    }, {headers: head});
+  }
 }

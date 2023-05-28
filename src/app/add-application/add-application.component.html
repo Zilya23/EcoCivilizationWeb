@@ -50,7 +50,7 @@
                 <div class="floating-label">
                     <p [ngClass]="{ 'has-error': isSubmitted && formControls.countPart.errors }"></p>
                         <label>Выберите количество участников*</label>
-                        <input type="number" class="input-number" min="2" max="30" formControlName="countPart">
+                        <input type="number" class="input-number" min="2" max="30" formControlName="countPart" required>
                 </div>
                 <div *ngIf="isSubmitted && formControls.countPart.errors" class="help-block">
                     <div *ngIf="formControls.countPart.errors.required" style="color: red;">Выберите количество участников!</div>
@@ -58,11 +58,18 @@
             </div>
 
             <div class="gallery">
-                <!-- <input type="file" (change)="handleUpload($event)"> -->
-                <!-- <input type="file" id="file" name="file" accept=".jpg, .jpeg, .png" multiple/> -->
-                <input type="file" (change)="onFileSelected($event)" multiple>
-                <div *ngFor="let image of photos">
-                  <img [src]="image.url" alt="Image">
+                <input type="file" class="file-input" accept="image/png, image/jpeg, image/jpg"
+                    (change)="onFileSelected($event)" multiple #fileUpload>
+                <div class="file-upload">
+                {{"Загрузить изображения"}}
+                    <a class="upload-a" (click)="fileUpload.click()">
+                        <mat-icon>attach_file</mat-icon>
+                    </a>
+                </div>
+
+                <div *ngFor="let image of photos" class="gallery-place">
+                  <img [src]="image.url" class="galleryimg" alt="Image">
+                  <button class="btn-delete" (click)="deleteImg(image)">x</button>
                 </div>
             </div>
 

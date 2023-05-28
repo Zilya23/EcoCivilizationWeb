@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
 import { ConfigService } from '../config/config.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-add-application',
@@ -15,7 +16,7 @@ export class AddApplicationComponent {
   isSubmitted  =  false;
   cities: any[] = [];
   photos: any[] = [];
-  mainPhoto = '';
+  mainPhoto = null;
   minDate: any;
   maxDate: any;
   time? = new Date();
@@ -37,23 +38,21 @@ export class AddApplicationComponent {
     onFileSelected(event: any) {
       const files: FileList = event.target.files;
       for (let i = 0; i < files.length; i++) {
-        const f = files.item(i);
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.photos.push({ url: e.target.result });
-        };
-        reader.readAsDataURL(f!);
+        if(i < 5) {
+          console.log(i);
+          const f = files.item(i);
+          const reader = new FileReader();
+          reader.onload = (e: any) => {
+            this.photos.push({ url: e.target.result });
+          };
+          reader.readAsDataURL(f!);
+        }
+        else
+        {
+
+        }
       }
     }
-
-  //  handleUpload(event) {
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onload = () => {
-  //       console.log(reader.result);
-  //   };
-// }
 
    ngOnInit() {
     this.addForm  =  this.formBuilder.group({
@@ -66,6 +65,10 @@ export class AddApplicationComponent {
     });
   }
 
+  deleteImg(image: any) {
+    this.photos = this.photos.filter(obj => obj !== image);
+  }
+
   get formControls() { return this.addForm.controls; }
 
    addApplication() {
@@ -73,6 +76,44 @@ export class AddApplicationComponent {
 
     if(this.addForm.invalid){
       return;
+      
+    }
+
+    if(this.photos.length === 0) {
+      alert("Добавьте хотя бы одно фото");
+    } 
+    else if(this.photos.length > 5) {
+      alert("Максимум 5 фото!");
+    }
+    else{
+      var name = this.addForm.value.name.toString();
+      var description = this.addForm.value.description.toString();
+      var date = this.addForm.value.date;
+      var place = this.addForm.value.place.toString();
+      var idCity = this.addForm.value.city;
+      var countPart = this.addForm.value.countPart;
+
+      this.configService.addApplication(localStorage.getItem('AUTH_TOKEN'), name, description,
+                                        idCity, place, date, countPart, 
+                                        localStorage.getItem('USER_IDENTIFIER')).subscribe(response => {
+            for(let photo of this.photos){
+              this.configService.addPhoto(response.id, photo.url).subscribe(responses =>{
+                console.log(responses)
+              });
+            }
+                                          
+            alert("Успешно!")
+          }, error =>
+          {
+            if(error.status === 401){
+              alert("Для начала авторизуйтесь!")
+              this.router.navigateByUrl('/auth');
+            }
+            else{
+              alert("Ошибка! Попробуйте еще раз")
+            }
+          }
+        );
     }
    }
 

@@ -1,0 +1,19 @@
+<h1>Мои участия</h1>
+<div class="main inline">
+    <div class="left-block"></div>
+    <div class="content">
+      <div *ngFor="let application of userPartApplications" class="child">
+        <div class="img">
+          <img class="listimg" src={{application.photoApplications[0].photo}}>
+        </div>
+        <div class="contentimg">
+          <nav>
+            <a class="nava" [routerLink]="['/application/' + application.id]">{{application["name"]}}</a>
+          </nav>
+          <p class="description">{{(application["description"].length>50)? (application["description"] |slice:0:50) + '...':(application["description"])}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="right-block"></div>
+  </div>
+  

@@ -18,6 +18,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {DropdownModule, SharedModule} from '@coreui/angular';
 import { AlertModule } from '@coreui/angular';
+import { MatIconModule } from '@angular/material/icon'
 
 
 import { ApplicationInfoComponent } from './application-info/application-info.component';
@@ -25,6 +26,8 @@ import { AuthorizationPageComponent } from './authorization-page/authorization-p
 import { AddApplicationComponent } from './add-application/add-application.component';
 import { ListApplicationComponent } from './list-application/list-application.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { UserCreatedEventsComponent } from './user-created-events/user-created-events.component';
+import { UserPartEventsComponent } from './user-part-events/user-part-events.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     ListApplicationComponent,
     RegistrationPageComponent,
     AppComponent,
+    UserCreatedEventsComponent,
+    UserPartEventsComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     DropdownModule,
     SharedModule,
     AlertModule,
+    MatIconModule,
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'ru-ru'},],
   bootstrap: [AppComponent]

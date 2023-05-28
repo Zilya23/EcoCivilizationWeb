@@ -6,10 +6,63 @@
 }
 
 .gallery {
-    width: 50%;
-    text-align: center;
+  width: 50%;
+  text-align: center;
 }
 
+.gallery-place {
+  position: relative;
+}
+
+.gallery-place .btn-delete {
+  position: absolute;
+    top: 5%;
+    right: 34%;
+    transform: translate(60%, -15%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 25px;
+    width: 25px;
+}
+
+.gallery-place  .btn-delete:hover {
+  background-color: red;
+}
+
+.galleryimg {
+  height: 40%;
+  width: 40%;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-a{
+  color: rgb(237, 241, 214);
+  background: rgb(64, 81, 59);
+  border-color: black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  cursor: pointer;
+  width: 20%;
+  height: 20%;
+  padding-top:  15px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 5px;
+  margin: 10px;
+}
+.file-upload{
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
 .description {
     width: 50%;
 }

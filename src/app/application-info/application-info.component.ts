@@ -38,11 +38,16 @@ export class ApplicationInfoComponent {
         var partDate = new Date(this.applicationID.date);
         var dateNow = new Date();
         if(this.diffDates(partDate, dateNow)) {
-          this.data.partExists(this.applicationID.id, localStorage.getItem('USER_IDENTIFIER')).subscribe(exists =>
-            {this.participant = 'Отказаться';
-              this.idPart = exists.id;
-            }, error => {this.participant = 'Участвовать!'}
-          );
+          if(localStorage.getItem('USER_IDENTIFIER') == this.applicationID.idUser) {
+            this.participant = 'Редактировать';
+          }
+          else {
+            this.data.partExists(this.applicationID.id, localStorage.getItem('USER_IDENTIFIER')).subscribe(exists =>
+              {this.participant = 'Отказаться';
+                this.idPart = exists.id;
+              }, error => {this.participant = 'Участвовать!'}
+            );
+          }
         }
         else{
           this.participant = 'Событие завершено';

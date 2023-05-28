@@ -5,6 +5,8 @@ import { ApplicationInfoComponent } from './application-info/application-info.co
 import { AuthorizationPageComponent } from './authorization-page/authorization-page.component'; 
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { AddApplicationComponent } from './add-application/add-application.component';
+import { UserCreatedEventsComponent } from './user-created-events/user-created-events.component';
+import { UserPartEventsComponent } from './user-part-events/user-part-events.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/applications', pathMatch: 'full' },
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'application/:id', component: ApplicationInfoComponent},
   { path: 'registration', component: RegistrationPageComponent},
   { path: 'add', component: AddApplicationComponent},
+  { path: 'yourEvents', component: UserCreatedEventsComponent},
+  { path: 'yourPart', component: UserPartEventsComponent},
 ];
 
 @NgModule({

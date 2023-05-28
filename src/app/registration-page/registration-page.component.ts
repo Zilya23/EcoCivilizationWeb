@@ -64,8 +64,6 @@ export class RegistrationPageComponent {
     var idGender = this.authForm.value.gender;
     var repeatPassword = this.authForm.value.repeatPassword.toString();
 
-    console.log(telephone);
-
     if(password === repeatPassword) {
       this.configService.registration(name, surname, telephone, 
                     idCity, idGender, email, password).subscribe(response =>
