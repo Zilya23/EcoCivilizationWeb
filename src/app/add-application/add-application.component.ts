@@ -32,8 +32,6 @@ export class AddApplicationComponent {
     this.maxDate = new Date('2023-12-31T12:00');
    }
 
-
-   name = 'Angular 4';
     url: any = '';
     onFileSelected(event: any) {
       const files: FileList = event.target.files;

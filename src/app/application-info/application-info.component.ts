@@ -91,6 +91,9 @@ export class ApplicationInfoComponent {
         else if (this.participant === 'Событие завершено') {
           alert("Время записи истекло")
         }
+        else if (this.participant === 'Редактировать') {
+          this.router.navigateByUrl(`edit/${this.applicationID.id}`);
+        }
       }
       else {
         this.router.navigateByUrl('/auth');

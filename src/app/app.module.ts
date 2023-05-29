@@ -28,6 +28,7 @@ import { ListApplicationComponent } from './list-application/list-application.co
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { UserCreatedEventsComponent } from './user-created-events/user-created-events.component';
 import { UserPartEventsComponent } from './user-part-events/user-part-events.component';
+import { EditApplicationComponent } from './edit-application/edit-application.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { UserPartEventsComponent } from './user-part-events/user-part-events.com
     AppComponent,
     UserCreatedEventsComponent,
     UserPartEventsComponent,
+    EditApplicationComponent,
   ],
   imports: [
     BrowserModule,
