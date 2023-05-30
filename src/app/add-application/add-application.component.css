@@ -207,6 +207,12 @@ ng-select {
   background: whitesmoke;
   border-color: rgb(64, 81, 59);
   color: rgba(0, 0, 0, 0.6);
+  .ng-dropdown-panel .ng-dropdown-panel-items{
+    background: whitesmoke;
+  }
+  .ng-dropdown-panel .ng-option.ng-option-marked {
+    background: rgb(157, 192, 139);
+  }
 }
 
 ng-dropdown-panel.ng-dropdown {

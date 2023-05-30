@@ -15,11 +15,11 @@ export class EditApplicationComponent {
   isSubmitted  =  false;
   cities: any[] = [];
   photos: any[] = [];
+  deletePhotos: any[] = [];
   mainPhoto = null;
   minDate: any;
   maxDate: any;
-  time? = new Date();
-  url: any = '';
+  idCity: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private configService: ConfigService) { 
     this.id = this.route.snapshot.paramMap.get('id');
@@ -34,8 +34,13 @@ export class EditApplicationComponent {
       this.editForm.controls['place'].setValue(info.place);
       this.editForm.controls['countPart'].setValue(info.countUser);
       this.editForm.controls['city'].setValue(info.idCityNavigation.name);
+      this.idCity = info.idCityNavigation.id;
       this.photos = info.photoApplications;
+      this.deletePhotos = structuredClone(info.photoApplications);
+      
       console.log(info);
+      console.log(this.deletePhotos);
+      console.log(this.photos);
     });
 
     this.configService.getCities()
@@ -61,29 +66,86 @@ export class EditApplicationComponent {
     const files: FileList = event.target.files;
     for (let i = 0; i < files.length; i++) {
       if(i < 5) {
-        console.log(i);
         const f = files.item(i);
         const reader = new FileReader();
         reader.onload = (e: any) => {
-          this.photos.push({ url: e.target.result });
+          this.photos.push({ photo: e.target.result });
         };
         reader.readAsDataURL(f!);
       }
     }
+    console.log(this.photos);
+    console.log(this.deletePhotos);
   }
 
   deleteImg(image: any) {
     this.photos = this.photos.filter(obj => obj !== image);
+    console.log(this.photos);
+    console.log(this.deletePhotos);
   }
 
   get formControls() { return this.editForm.controls; }
+
+  deleteEvent() {
+    this.configService.deleteEvent(localStorage.getItem('AUTH_TOKEN'), this.id,).subscribe(resp =>{
+      console.log(resp);
+    });
+    alert("Событие удалено!");
+    this.router.navigateByUrl('/applications');
+  }
 
   editApplication() {
     this.isSubmitted = true;
 
     if(this.editForm.invalid){
       return;
+    }
+
+    if(this.photos.length === 0) {
+      alert("Добавьте хотя бы одно фото");
+    } 
+    else if(this.photos.length > 5) {
+      alert("Максимум 5 фото!");
+    }
+    else{
+      var name = this.editForm.value.name.toString();
+      var description = this.editForm.value.description.toString();
+      var date = this.editForm.value.date;
+      var place = this.editForm.value.place.toString();
+      var countPart = this.editForm.value.countPart;
       
+      if(isNaN(Number(this.editForm.value.city))){ }
+      else {this.idCity = this.editForm.value.city;}
+
+      this.configService.editApplication(localStorage.getItem('AUTH_TOKEN'), this.id, name, description,
+                                        this.idCity, place, date, countPart, 
+                                        localStorage.getItem('USER_IDENTIFIER')).subscribe(response => {
+            for(let del of this.deletePhotos) {
+              this.configService.deletePhoto(del.id).subscribe(resp => {
+                console.log(resp);
+              });
+            }
+
+            for(let photo of this.photos){
+              this.configService.addPhoto(response.id, photo.photo).subscribe(resp => {
+                console.log(resp);
+              });
+            }                            
+            alert("Успешно!");
+            this.router.navigateByUrl('/applications');
+          }, error =>
+          {
+            if(error.status === 401){
+              alert("Для начала авторизуйтесь!")
+              this.router.navigateByUrl('/auth');
+            }
+            else{
+              console.log(error);
+              
+              alert("Ошибка! Попробуйте еще раз")
+            }
+          }
+        );
     }
   }
 }

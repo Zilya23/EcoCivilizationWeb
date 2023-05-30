@@ -100,7 +100,8 @@ export class AddApplicationComponent {
               });
             }
                                           
-            alert("Успешно!")
+            alert("Успешно!");
+            this.router.navigateByUrl('/applications');
           }, error =>
           {
             if(error.status === 401){
@@ -113,6 +114,5 @@ export class AddApplicationComponent {
           }
         );
     }
-   }
-
+  }
 }

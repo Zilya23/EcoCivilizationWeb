@@ -11,7 +11,7 @@ export class ListApplicationComponent {
   applications:any[] = [];
 
   constructor(private router: Router, private data: ConfigService) {
-    this.data.getApplicationList()
+    this.data.getCurrentApplicationList()
     .subscribe((applications:any[])=>{
       
       applications.forEach(application =>{

@@ -81,6 +81,12 @@ body {
   background: #fff;
   border-color: rgb(64, 81, 59);
   color: rgb(64, 81, 59);
+  .ng-dropdown-panel .ng-dropdown-panel-items{
+    background: whitesmoke;
+  }
+  .ng-dropdown-panel .ng-option.ng-option-marked {
+    background: rgb(157, 192, 139);
+  }
 }
 
 .login select:required:invalid {

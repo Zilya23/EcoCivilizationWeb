@@ -6,22 +6,23 @@
             <div class="description">
                 <div class="floating-label">
                     <p [ngClass]="{ 'has-error': isSubmitted && formControls.name.errors }"></p>
-                    <mat-form-field>
-                        <mat-label>Название</mat-label>
+                    <label>Название*</label><br/>
+                    <mat-form-field style="margin-top: 10px;">
                         <input matInput class="floating-label__input" formControlName="name">
                     </mat-form-field>
                 </div>
 
                 <div class="floating-label">
                     <p [ngClass]="{ 'has-error': isSubmitted && formControls.description.errors }"></p>
-                    <mat-form-field>
-                        <mat-label>Описание</mat-label>
+                    <label>Описание*</label><br/>
+                    <mat-form-field style="margin-top: 10px;">
                         <textarea matInput class="floating-label__input" formControlName="description"></textarea>
                     </mat-form-field>
                 </div>
 
                 <p [ngClass]="{ 'has-error': isSubmitted && formControls.city.errors }">
-                    <ng-select class="ng-dropdown"  required formControlName="city">
+                    <label>Город*</label>
+                    <ng-select class="ng-dropdown" id="selectDropdown" required formControlName="city" style="margin-top: 10px; margin-bottom: 15px;">
                         <ng-option value="" disabled selected >Выберите город*</ng-option>
                         <ng-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ng-option>
                     </ng-select>
@@ -32,15 +33,15 @@
 
                 <div class="floating-label">
                     <p [ngClass]="{ 'has-error': isSubmitted && formControls.place.errors }"></p>
-                    <mat-form-field>
-                        <mat-label>Место проведения</mat-label>
+                    <label>Место проведения*</label><br/>
+                    <mat-form-field style="margin-top: 10px;">
                         <textarea matInput class="floating-label__input" formControlName="place"></textarea>
                         </mat-form-field>
                 </div>
 
                 <div class="floating-label">
                     <p [ngClass]="{ 'has-error': isSubmitted && formControls.date.errors }"></p>
-                        <label>Выберите дату и время*</label>
+                        <label>Дата и время*</label>
                         <input class="date-time" type="datetime-local" (min)="minDate" (max)="maxDate" formControlName="date">
                 </div>
                 <div *ngIf="isSubmitted && formControls.date.errors" class="help-block">
@@ -77,6 +78,7 @@
 
         <p>
             <button type="submit" class="btn">Сохранить</button>
+            <a style="text-align: center;" (click)="deleteEvent()" class="btn">Удалить</a>
         </p>
     </form>
 </div>

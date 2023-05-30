@@ -13,6 +13,11 @@ export class ConfigService {
     return this.client.get<any[]>(url)
   }
 
+  public getCurrentApplicationList() : Observable<any[]> {
+    var url = this.baseUrl + 'Applications/GetСurrentApplication';
+    return this.client.get<any[]>(url)
+  }
+
   public getApplication(id: any) : Observable<any> {
     var url = this.baseUrl + `Applications/${id}`;
     return this.client.get<any>(url)
@@ -57,7 +62,7 @@ export class ConfigService {
   }
 
   public partExists(idApplication: any, idUser: any): Observable<any> {
-    var url = this.baseUrl + 'ApplicationUsers/partExists';
+    var url = this.baseUrl + 'ApplicationUsers/PartExists';
     return this.client.post<any>(url, {
       idApplication: idApplication,
       idUser: idUser
@@ -72,7 +77,7 @@ export class ConfigService {
 
   public addApplication(token: any, name: any, description: any,
                         idCity: any, place: any, date: any, userCount: any, userId: any): Observable<any> {
-    var url = this.baseUrl + 'Applications/create';
+    var url = this.baseUrl + 'Applications/Create';
     var head = {'token': token};
     return this.client.post<any>(url, {
       name: name,
@@ -86,8 +91,13 @@ export class ConfigService {
   }
 
   public addPhoto(idApplication: any, photo: any): Observable<any> {
-    var url = this.baseUrl + 'PhotoApplications/create';
+    var url = this.baseUrl + 'PhotoApplications/Create';
     return this.client.post<any>(url, {photo: photo, idapplicatioon: idApplication})
+  }
+
+  public deletePhoto(idApplication: any): Observable<any> {
+    var url = this.baseUrl + `PhotoApplications/${idApplication}`;
+    return this.client.delete<any>(url)
   }
 
   public getUserCreateApplication(idUser: any, token: any): Observable<any> {
@@ -104,5 +114,28 @@ export class ConfigService {
     return this.client.post<any>(url, {
       id: idUser
     }, {headers: head});
+  }
+
+  public editApplication(token: any, id: any, name: any, description: any,
+      idCity: any, place: any, date: any, userCount: any, userId: any): Observable<any> {
+    var url = this.baseUrl + `Applications/${id}`;
+    var head = {'token': token};
+    return this.client.put<any>(url, {
+      id: id,
+      name: name,
+      date: date,
+      countUser: userCount,
+      place: place,
+      description: description,
+      idCity: idCity
+    }, {headers: head})
+  }
+
+  public deleteEvent(token: any, id: any): Observable<any> {
+    var url = this.baseUrl + `Applications/Delete`;
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      id: id
+    }, {headers: head})
   }
 }

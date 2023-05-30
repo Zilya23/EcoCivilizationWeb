@@ -1,8 +1,8 @@
 .page {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
 }
 
 .gallery {
@@ -16,17 +16,17 @@
 
 .gallery-place .btn-delete {
   position: absolute;
-    top: 5%;
-    right: 34%;
-    transform: translate(60%, -15%);
-    background-color: #555;
-    color: white;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    height: 25px;
-    width: 25px;
+  top: 5%;
+  right: 34%;
+  transform: translate(60%, -15%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 25px;
+  width: 25px;
 }
 
 .gallery-place  .btn-delete:hover {
@@ -59,6 +59,7 @@
   padding-bottom: 5px;
   margin: 10px;
 }
+
 .file-upload{
   margin-top: 5px;
   margin-bottom: 10px;
@@ -207,14 +208,13 @@ ng-select {
   background: whitesmoke;
   border-color: rgb(64, 81, 59);
   color: rgba(0, 0, 0, 0.6);
+  .ng-dropdown-panel .ng-dropdown-panel-items{
+    background: whitesmoke;
+  }
+  .ng-dropdown-panel .ng-option.ng-option-marked {
+    background: rgb(157, 192, 139);
+  }
 }
-
-ng-dropdown-panel.ng-dropdown {
-  background-color: white;
-}
-
-
-
 
 .login input[type="submit"]:hover {
   background: rgb(157, 192, 139);;
@@ -226,8 +226,8 @@ ng-dropdown-panel.ng-dropdown {
 
 .has-error input[type="email"],
 .has-error input[type="password"] {
-    border-color: rgb(216, 12, 12);
-    color: rgb(230, 14, 14);
+  border-color: rgb(216, 12, 12);
+  color: rgb(230, 14, 14);
 }
 
 .btn {
@@ -248,14 +248,13 @@ ng-dropdown-panel.ng-dropdown {
 }
 
 @media (max-width: 900px){
-    .page {
-      flex-direction: column;
-    }
-    .description {
-      width: 100%;
-    }
-    .gallery {
-      width: 100%;
-    }
-
+  .page {
+    flex-direction: column;
+  }
+  .description {
+    width: 100%;
+  }
+  .gallery {
+    width: 100%;
+  }
 }
