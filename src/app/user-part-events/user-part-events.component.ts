@@ -19,5 +19,7 @@ export class UserPartEventsComponent {
       this.userPartApplications.reverse();
       })
     })
+    var search_obj = document.getElementById("search");
+    search_obj!.style.display = "block";
   }
 }

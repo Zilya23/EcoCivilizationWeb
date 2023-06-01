@@ -23,6 +23,8 @@ export class EditApplicationComponent {
 
   constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private configService: ConfigService) { 
     this.id = this.route.snapshot.paramMap.get('id');
+    var search_obj = document.getElementById("search");
+    search_obj!.style.display = "none";
 
     this.configService.getApplication(this.id)
     .subscribe((info:any) => {

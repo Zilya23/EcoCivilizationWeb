@@ -19,5 +19,7 @@ export class UserCreatedEventsComponent {
       this.userApplications.reverse();
       })
     })
+    var search_obj = document.getElementById("search");
+    search_obj!.style.display = "block";
   }
 }

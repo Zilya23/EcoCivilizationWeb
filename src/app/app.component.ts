@@ -11,7 +11,21 @@ import { Router } from  '@angular/router';
 export class AppComponent {
   title = 'EcoCivilization';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    document.addEventListener('DOMContentLoaded', () => {
+      var obj = document.getElementById("account");
+      var auth_obj = document.getElementById("authoriz");
+
+      if(localStorage.getItem('AUTH_TOKEN') == null) {
+        obj!.style.display = "none";
+        auth_obj!.style.display = "block";
+      }
+      else {
+        obj!.style.display = "block";
+        auth_obj!.style.display = "none";
+      }
+    });
+  }
 
   exit() {
     localStorage.removeItem('AUTH_TOKEN');

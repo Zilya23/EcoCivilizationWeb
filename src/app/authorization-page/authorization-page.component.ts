@@ -12,7 +12,25 @@ export class AuthorizationPageComponent {
   authForm: FormGroup | any;
   isSubmitted  =  false;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) {
+    var obj = document.getElementById("account");
+    var auth_obj = document.getElementById("authoriz");
+    var menu_obj = document.getElementById("menu");
+    var search_obj = document.getElementById("search");
+    var search_obj = document.getElementById("search");
+    search_obj!.style.display = "none";
+
+    if(localStorage.getItem('AUTH_TOKEN') == null) {
+      obj!.style.display = "none";
+      auth_obj!.style.display = "block";
+    }
+    else {
+      obj!.style.display = "block";
+      auth_obj!.style.display = "none";
+    }
+    menu_obj!.style.display = "none";
+    search_obj!.style.display = "block";
+   }
 
   ngOnInit() {
     this.authForm  =  this.formBuilder.group({

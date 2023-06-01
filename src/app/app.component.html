@@ -1,13 +1,18 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <div class="header">
+  <div class="name">
     <p>ЭкоЦивилизация</p>
-    <div class="rightspace">
-      <div class="search">
-        <input type="text" name="search" placeholder="Поиск..">
-      </div>
-      <div class="dropdown">
-        <img class="btn" src="assets/img/account.png"/>
+  </div>
+
+  <div class="rightspace">
+    <div id="search" class="search">
+      <input type="text" class="search-box" name="search" placeholder="Поиск..">
+    </div>
+
+    <div class="dropdown">
+      <div id="account" style="display: none;">
+        <a>
+          <mat-icon>home</mat-icon>
+        </a>
         <div class="dropdown-content">
           <a [routerLink]="['/add']">Добавить</a>
           <a [routerLink]="['/yourEvents']">Мои события</a>
@@ -16,10 +21,17 @@
           <a (click)="exit()">Выйти</a>
         </div>
       </div>
+      <div id="authoriz" style="display: none;">
+        <a [routerLink]="['/auth']" class="icon">
+          <mat-icon>account_circle</mat-icon>
+        </a>
+      </div>
     </div>
+
+  </div>
 </div>
 
-<div>
+<div id="menu" style="display: none;">
   <ul class="menu-main">
     <li><a href="">Главная</a></li>
     <li><a [routerLink]="['/add']">Добавить</a></li>

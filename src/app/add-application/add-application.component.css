@@ -1,8 +1,8 @@
 .page {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
 }
 
 .gallery {
@@ -64,7 +64,7 @@
   margin-bottom: 10px;
 }
 .description {
-    width: 50%;
+  width: 50%;
 }
 
 .floating-label {
@@ -254,14 +254,14 @@ ng-dropdown-panel.ng-dropdown {
 }
 
 @media (max-width: 900px){
-    .page {
-      flex-direction: column;
-    }
-    .description {
-      width: 100%;
-    }
-    .gallery {
-      width: 100%;
-    }
+  .page {
+    flex-direction: column;
+  }
+  .description {
+    width: 100%;
+  }
+  .gallery {
+    width: 100%;
+  }
 
 }

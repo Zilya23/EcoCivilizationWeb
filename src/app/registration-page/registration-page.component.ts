@@ -31,7 +31,11 @@ export class RegistrationPageComponent {
         cities.forEach(city =>{
         this.cities.push(city)
       })
-    })
+    });
+    var menu_obj = document.getElementById("menu");
+    var search_obj = document.getElementById("search");
+    search_obj!.style.display = "none";
+    menu_obj!.style.display = "none";
    }
 
   ngOnInit() {
