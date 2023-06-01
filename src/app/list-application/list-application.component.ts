@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ConfigService } from '../config/config.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-list-application',
@@ -9,14 +10,13 @@ import { ConfigService } from '../config/config.service';
 })
 export class ListApplicationComponent {
   applications:any[] = [];
+  obj1: any;
 
-  constructor(private router: Router, private data: ConfigService) {
+  constructor(private router: Router, private data: ConfigService, public appComponent: AppComponent) {
     this.data.getCurrentApplicationList()
     .subscribe((applications:any[])=>{
-      
       applications.forEach(application =>{
       this.applications.push(application)
-
       this.applications.reverse();
       })
     });
@@ -31,9 +31,14 @@ export class ListApplicationComponent {
       obj!.style.display = "block";
       auth_obj!.style.display = "none";
     }
-
     var menu_obj = document.getElementById("menu");
-
     menu_obj!.style.display = "block";
   }
+
+  // getSearchApplication() {
+  //   let search = this.appComponent.searchBoxText;
+  //   this.applications =  this.applications.filter(x => x.name.contains(search));
+
+  //   this.appComponent.searchText();
+  // }
 }

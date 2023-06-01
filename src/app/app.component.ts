@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { ConfigService } from './config/config.service';
 import { Router } from  '@angular/router';
+import { ListApplicationComponent } from './list-application/list-application.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ ConfigService],
+  providers: [ConfigService],
 })
 export class AppComponent {
   title = 'EcoCivilization';
+  searchBoxText = '';
 
   constructor(private router: Router) {
     document.addEventListener('DOMContentLoaded', () => {
@@ -31,5 +33,9 @@ export class AppComponent {
     localStorage.removeItem('AUTH_TOKEN');
     localStorage.removeItem('USER_IDENTIFIER');
     this.router.navigateByUrl('/auth');
+  }
+
+  searchText() {
+    this.searchBoxText = (<HTMLInputElement>document.getElementById("searchBox")).value;
   }
 }
