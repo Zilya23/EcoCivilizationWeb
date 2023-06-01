@@ -23,6 +23,7 @@ export class RegistrationPageComponent {
 		phone: new FormControl(undefined, [Validators.required])
 	});
   selectedSimpleItem = '';
+  unamePattern = (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/);
 
   constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) {
     this.configService.getCities()
@@ -38,8 +39,9 @@ export class RegistrationPageComponent {
         name:['', Validators.required],
         surname:['', Validators.required],
         telephone:['', Validators.required],
-        email: ['', Validators.required],
-        password: ['', Validators.required],
+        email: ['', Validators.required, Validators.email],
+        password: ['', Validators.required, Validators.pattern(
+          /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/),],
         repeatPassword: ['', Validators.required],
         gender : ['', Validators.required],
         city : ['', Validators.required],
@@ -66,21 +68,20 @@ export class RegistrationPageComponent {
 
     if(password === repeatPassword) {
       this.configService.registration(name, surname, telephone, 
-                    idCity, idGender, email, password).subscribe(response =>
-            {
-            alert("Успешно!");
-            this.router.navigateByUrl('/auth');
-            }, error => {
-            if(error.status === 404)
-            {
+                    idCity, idGender, email, password).subscribe(response => {
+        alert("Успешно!");
+        this.router.navigateByUrl('/auth');
+        }, error => {
+          if(error.status === 404)
+          {
             this.authForm.controls['email'].setErrors({'incorrect' : true});
             this.authForm.controls['telephone'].setErrors({'incorrect' : true});
-            }
-            else{
-              alert("Ошибка! Попробуйте еще раз")
-            }
-            }
-            );
+          }
+          else{
+            alert("Ошибка! Попробуйте еще раз")
+          }
+        }
+      );
     }
     this.authForm.controls['repeatPassword'].setErrors({'incorrect' : true});
   }

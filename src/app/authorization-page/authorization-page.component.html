@@ -10,6 +10,9 @@
       </div>
       <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
         <input name="passwordInput" type="password" placeholder="Пароль" formControlName="password">
+        <!-- <button (click)="x.type=x.type=='password'?'text':'password'" class="eye_button">
+          <mat-icon>visibility</mat-icon>
+        </button> -->
       </p>
       <div *ngIf="authForm.get('password')?.errors?.incorrect">Неверный логин и/или пароль</div>
       <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
