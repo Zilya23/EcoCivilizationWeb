@@ -37,5 +37,6 @@ export class AppComponent {
 
   searchText() {
     this.searchBoxText = (<HTMLInputElement>document.getElementById("searchBox")).value;
+    //console.log(this.searchBoxText);
   }
 }

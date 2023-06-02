@@ -170,6 +170,10 @@ body {
   }
 }
 
+:host ::ng-deep .iti {
+  width: 100%;
+}
+
 .page {
   display: flex;
   flex-wrap: wrap;

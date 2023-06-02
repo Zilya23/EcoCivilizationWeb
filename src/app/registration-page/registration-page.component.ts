@@ -32,10 +32,16 @@ export class RegistrationPageComponent {
         this.cities.push(city)
       })
     });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      var search_obj = document.getElementById("searchBox");
+      search_obj!.style.display = "none";
+      var menu_obj = document.getElementById("menu");
+      menu_obj!.style.display = "none";
+    });
+
     var menu_obj = document.getElementById("menu");
-    var search_obj = document.getElementById("search");
-    search_obj!.style.display = "none";
-    menu_obj!.style.display = "none";
+      menu_obj!.style.display = "none";
    }
 
   ngOnInit() {

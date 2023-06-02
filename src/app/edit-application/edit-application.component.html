@@ -78,7 +78,12 @@
 
         <p>
             <button type="submit" class="btn">Сохранить</button>
-            <a style="text-align: center;" (click)="deleteEvent()" class="btn">Удалить</a>
+            <dialog #myDialog>
+                <p>Вы действительно хотите удалить событие?</p>
+                <a (click)="deleteEvent()">Да</a>
+                <a (click)="myDialog.close()">Нет</a>
+             </dialog>
+            <a style="text-align: center;" (click)="myDialog.show()" class="btn">Удалить</a>
         </p>
     </form>
 </div>

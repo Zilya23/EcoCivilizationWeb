@@ -1,7 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ConfigService } from '../config/config.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from  '@angular/forms';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-application-info',
@@ -17,10 +22,14 @@ export class ApplicationInfoComponent {
   partUser: any;
   participant: any;
   idPart: any;
+  animal: any;
+  name: any;
 
     constructor(private router: Router, private data: ConfigService, private route: ActivatedRoute) { 
       this.id = this.route.snapshot.paramMap.get('id');
       this.update();
+      var search_obj = document.getElementById("searchBox");
+      search_obj!.style.display = "none";
     }
 
     picPhoto(photo: any) {
@@ -38,15 +47,22 @@ export class ApplicationInfoComponent {
         var partDate = new Date(this.applicationID.date);
         var dateNow = new Date();
         if(this.diffDates(partDate, dateNow)) {
-          if(localStorage.getItem('USER_IDENTIFIER') == this.applicationID.idUser) {
-            this.participant = 'Редактировать';
+          if(this.applicationID.isDelete) {
+            this.participant = 'Удалено';
           }
           else {
-            this.data.partExists(this.applicationID.id, localStorage.getItem('USER_IDENTIFIER')).subscribe(exists =>
-              {this.participant = 'Отказаться';
-                this.idPart = exists.id;
-              }, error => {this.participant = 'Участвовать!'}
-            );
+            if(localStorage.getItem('USER_IDENTIFIER') == this.applicationID.idUser) {
+              this.participant = 'Редактировать';
+              var mail_obj = document.getElementById("sendMailUsers");
+              mail_obj!.style.display = "block";
+            }
+            else {
+              this.data.partExists(this.applicationID.id, localStorage.getItem('USER_IDENTIFIER')).subscribe(exists =>
+                {this.participant = 'Отказаться';
+                  this.idPart = exists.id;
+                }, error => {this.participant = 'Участвовать!'}
+              );
+            }
           }
         }
         else{
@@ -95,8 +111,8 @@ export class ApplicationInfoComponent {
           this.router.navigateByUrl(`edit/${this.applicationID.id}`);
         }
       }
-      else {
-        this.router.navigateByUrl('/auth');
-      }
+    else {
+      this.router.navigateByUrl('/auth');
+    }
   }
 }

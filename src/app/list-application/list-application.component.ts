@@ -22,6 +22,8 @@ export class ListApplicationComponent {
     });
     var obj = document.getElementById("account");
     var auth_obj = document.getElementById("authoriz");
+    var search_obj = document.getElementById("searchBox");
+    search_obj!.style.display = "block";
 
     if(localStorage.getItem('AUTH_TOKEN') == null) {
       obj!.style.display = "none";
@@ -33,6 +35,11 @@ export class ListApplicationComponent {
     }
     var menu_obj = document.getElementById("menu");
     menu_obj!.style.display = "block";
+
+    document.addEventListener('DOMContentLoaded', () => {
+      var search_obj = document.getElementById("searchBox");
+      search_obj!.style.display = "block";
+    });
   }
 
   // getSearchApplication() {

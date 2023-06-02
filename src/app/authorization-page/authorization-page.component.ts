@@ -15,9 +15,9 @@ export class AuthorizationPageComponent {
   constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) {
     var obj = document.getElementById("account");
     var auth_obj = document.getElementById("authoriz");
+    var search_obj = document.getElementById("searchBox");
     var menu_obj = document.getElementById("menu");
-    var search_obj = document.getElementById("search");
-    var search_obj = document.getElementById("search");
+    menu_obj!.style.display = "none";
     search_obj!.style.display = "none";
 
     if(localStorage.getItem('AUTH_TOKEN') == null) {
@@ -28,8 +28,13 @@ export class AuthorizationPageComponent {
       obj!.style.display = "block";
       auth_obj!.style.display = "none";
     }
-    menu_obj!.style.display = "none";
-    search_obj!.style.display = "block";
+
+    document.addEventListener('DOMContentLoaded', () => {
+      var search_obj = document.getElementById("searchBox");
+      search_obj!.style.display = "none";
+      var menu_obj = document.getElementById("menu");
+      menu_obj!.style.display = "none";
+    });
    }
 
   ngOnInit() {

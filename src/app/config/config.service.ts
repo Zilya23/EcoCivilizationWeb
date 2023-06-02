@@ -138,4 +138,20 @@ export class ConfigService {
       id: id
     }, {headers: head})
   }
+
+  public sendMail(token: any, recipientEmail: any, subject: any, body: any ): Observable<any> {
+    var url = this.baseUrl + 'Users/Mail';
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      _recipientEmail: recipientEmail,
+      _subject: subject,
+      _body: body
+    }, {headers: head})
+  }
+
+  // Выдает какие пользователи подписались на событие и инфа о них
+  public GetPartUser(id: any): Observable<any> {
+    var url = this.baseUrl + `ApplicationUsers/GetPartsUser?id=${id}`;
+    return this.client.get<any>(url);
+  }
 }

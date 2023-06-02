@@ -20,12 +20,10 @@ export class EditApplicationComponent {
   minDate: any;
   maxDate: any;
   idCity: any;
+  recipientEmail: any[] = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private configService: ConfigService) { 
     this.id = this.route.snapshot.paramMap.get('id');
-    var search_obj = document.getElementById("search");
-    search_obj!.style.display = "none";
-
     this.configService.getApplication(this.id)
     .subscribe((info:any) => {
       this.editApplicaton = info;
@@ -39,10 +37,11 @@ export class EditApplicationComponent {
       this.idCity = info.idCityNavigation.id;
       this.photos = info.photoApplications;
       this.deletePhotos = structuredClone(info.photoApplications);
-      
-      console.log(info);
-      console.log(this.deletePhotos);
-      console.log(this.photos);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      var search_obj = document.getElementById("searchBox");
+      search_obj!.style.display = "none";
     });
 
     this.configService.getCities()
@@ -50,6 +49,10 @@ export class EditApplicationComponent {
         cities.forEach(city =>{
         this.cities.push(city)
       })
+    });
+
+    configService.GetPartUser(this.id).subscribe( info => {
+      this.recipientEmail = info;
     });
   }
 
@@ -90,6 +93,7 @@ export class EditApplicationComponent {
 
   deleteEvent() {
     this.configService.deleteEvent(localStorage.getItem('AUTH_TOKEN'), this.id,).subscribe(resp =>{
+      this.sendDeleteMail();
       console.log(resp);
     });
     alert("Событие удалено!");
@@ -122,32 +126,76 @@ export class EditApplicationComponent {
       this.configService.editApplication(localStorage.getItem('AUTH_TOKEN'), this.id, name, description,
                                         this.idCity, place, date, countPart, 
                                         localStorage.getItem('USER_IDENTIFIER')).subscribe(response => {
-            for(let del of this.deletePhotos) {
-              this.configService.deletePhoto(del.id).subscribe(resp => {
-                console.log(resp);
-              });
-            }
+        for(let del of this.deletePhotos) {
+          this.configService.deletePhoto(del.id).subscribe(resp => {
+            console.log(resp);
+          });
+        }
 
-            for(let photo of this.photos){
-              this.configService.addPhoto(response.id, photo.photo).subscribe(resp => {
-                console.log(resp);
-              });
-            }                            
-            alert("Успешно!");
-            this.router.navigateByUrl('/applications');
-          }, error =>
-          {
-            if(error.status === 401){
-              alert("Для начала авторизуйтесь!")
-              this.router.navigateByUrl('/auth');
-            }
-            else{
-              console.log(error);
-              
-              alert("Ошибка! Попробуйте еще раз")
-            }
-          }
-        );
+        for(let photo of this.photos){
+          this.configService.addPhoto(response.id, photo.photo).subscribe(resp => {
+            console.log(resp);
+          });
+        }
+        this.sendAuthoMail();              
+        alert("Успешно!");
+        this.router.navigateByUrl('/applications');
+      }, error =>
+      {
+        if(error.status === 401){
+          alert("Для начала авторизуйтесь!")
+          this.router.navigateByUrl('/auth');
+        }
+        else{
+          console.log(error);
+          
+          alert("Ошибка! Попробуйте еще раз")
+        }
+      });
+    }
+  }
+
+  sendAuthoMail() {
+    var subject = "Событие, на которое вы подписались было изменено";
+    var body = "Возможно автор внес важные изменения в событие! Просмотрите их, что бы быть в курсе." + 
+    "\n" + "Ссылка на событие: " + "http://localhost:4200/application/" + this.id;
+
+    for (let recip of this.recipientEmail) {
+      console.log(recip.idUserNavigation);
+      this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
+      .subscribe(info => {
+        console.log(info);
+      }, error => {
+        if(error.status === 401){
+          this.router.navigateByUrl('/auth');
+        }
+        else
+        {
+          alert("Ошибка! Попробуйте еще раз")
+        }
+      });
+    }
+  }
+
+  sendDeleteMail() {
+    var subject = "Событие, на которое вы подписались было удалено";
+    var body = "Событие из ваших подписок было отменено его автором! Просмотрите что это за событие, что бы быть в курсе." + 
+    "\n" + "Ссылка на событие: " + "http://localhost:4200/application/" + this.id;
+
+    for (let recip of this.recipientEmail) {
+      console.log(recip.idUserNavigation);
+      this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
+      .subscribe(info => {
+        console.log(info);
+      }, error => {
+        if(error.status === 401){
+          this.router.navigateByUrl('/auth');
+        }
+        else
+        {
+          alert("Ошибка! Попробуйте еще раз")
+        }
+      });
     }
   }
 }

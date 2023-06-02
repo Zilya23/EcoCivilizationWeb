@@ -39,6 +39,7 @@
         <p>Участников <span>{{partUser}}</span>  из <span>{{applicationID.countUser}}</span>:</p>
         <progress max="{{applicationID.countUser}}" value="{{partUser}}"></progress>
         <button formControlName="btn" (click)="partApplication()">{{participant}}</button>
+        <a id="sendMailUsers" style="display: none;" [routerLink]="['/sendMail/' + applicationID.id]">Отправить сообщение участникам</a>
     </div>
   </div>
   

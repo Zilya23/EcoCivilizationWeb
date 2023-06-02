@@ -19,6 +19,8 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import {DropdownModule, SharedModule} from '@coreui/angular';
 import { AlertModule } from '@coreui/angular';
 import { MatIconModule } from '@angular/material/icon'
+import {MatButtonModule} from '@angular/material/button';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 import { ApplicationInfoComponent } from './application-info/application-info.component';
@@ -29,6 +31,8 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { UserCreatedEventsComponent } from './user-created-events/user-created-events.component';
 import { UserPartEventsComponent } from './user-part-events/user-part-events.component';
 import { EditApplicationComponent } from './edit-application/edit-application.component';
+import { SendMailDialogComponent } from './send-mail-dialog/send-mail-dialog.component';
+import { StatisticPageComponent } from './statistic-page/statistic-page.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,8 @@ import { EditApplicationComponent } from './edit-application/edit-application.co
     UserCreatedEventsComponent,
     UserPartEventsComponent,
     EditApplicationComponent,
+    SendMailDialogComponent,
+    StatisticPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +68,8 @@ import { EditApplicationComponent } from './edit-application/edit-application.co
     SharedModule,
     AlertModule,
     MatIconModule,
+    MatButtonModule,
+    ModalModule.forRoot(),
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'ru-ru'},],
   bootstrap: [AppComponent]

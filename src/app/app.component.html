@@ -1,46 +1,73 @@
-<div class="header">
-  <div class="name">
-    <p>ЭкоЦивилизация</p>
-  </div>
-
-  <div class="rightspace">
-    <div class="search">
-      <form>
-        <input id="searchBox" type="text" class="search-box" name="search" placeholder="Поиск.." (input)="searchText()">
-      </form>
-    </div>
-
-    <div class="dropdown">
-      <div id="account" style="display: none;">
-        <a>
-          <mat-icon>home</mat-icon>
-        </a>
-        <div class="dropdown-content">
-          <a [routerLink]="['/add']">Добавить</a>
-          <a [routerLink]="['/yourEvents']">Мои события</a>
-          <a [routerLink]="['/yourPart']">Мои участия</a>
-          <a href="#">Статистика</a>
-          <a (click)="exit()">Выйти</a>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <div class="name">
+        <p>ЭкоЦивилизация</p>
+      </div>
+    
+      <div class="rightspace">
+        <div class="search">
+          <input id="searchBox" type="text" class="search-box" name="search" placeholder="Поиск.." (input)="searchText()">
+        </div>
+    
+        <div class="dropdown">
+          <div id="account" style="display: none;">
+            <a>
+              <mat-icon>home</mat-icon>
+            </a>
+            <div class="dropdown-content">
+              <a href="">Главная</a>
+              <a [routerLink]="['/add']">Добавить</a>
+              <a [routerLink]="['/yourEvents']">Мои события</a>
+              <a [routerLink]="['/yourPart']">Мои участия</a>
+              <a [routerLink]="['/statistic']">Статистика</a>
+              <a (click)="exit()">Выйти</a>
+            </div>
+          </div>
+    
+          <div id="authoriz" style="display: none;">
+            <a [routerLink]="['/auth']" class="icon">
+              <mat-icon>account_circle</mat-icon>
+            </a>
+          </div>
         </div>
       </div>
-      <div id="authoriz" style="display: none;">
-        <a [routerLink]="['/auth']" class="icon">
-          <mat-icon>account_circle</mat-icon>
-        </a>
-      </div>
+    </div>
+    
+    <div id="menu" style="display: block;">
+      <ul class="menu-main">
+        <li><a href="">Главная</a></li>
+        <li><a [routerLink]="['/add']">Добавить</a></li>
+        <li><a [routerLink]="['/statistic']">Статистика</a></li>
+      </ul>
+    </div>
+    
+    <div class="main">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</body>
+  
+<footer class="footer-distributed">
+  <div class="footer-left">
+    <h3>Eco<span>Civilization</span></h3>
+    <p class="footer-company-name">ЭкоЦивилизация © 2023</p>
+  </div>
+
+  <div class="footer-center">
+    <div>
+      <p>+79377783180</p>
     </div>
 
+    <div>
+      <p><a href="EcoCivilizationApp@yandex.com">EcoCivilizationApp@yandex.com</a></p>
+    </div>
   </div>
-</div>
 
-<div id="menu" style="display: none;">
-  <ul class="menu-main">
-    <li><a href="">Главная</a></li>
-    <li><a [routerLink]="['/add']">Добавить</a></li>
-    <li><a href="">Статистика</a></li>
-  </ul>
-</div>
-
-<div class="main">
-    <router-outlet></router-outlet>
-</div>
+  <div class="footer-right">
+    <p class="footer-company-about">
+      <span>О продукте</span>
+      Платформа для организации волонтерской деятельности и субботников.
+    </p>
+  </div>
+</footer>

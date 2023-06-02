@@ -1,0 +1,30 @@
+<div class="mail">
+    <h2 class="mail-header">Письмо</h2>
+    <form name="theme" [formGroup]="mailForm" class="theme-container" (ngSubmit)="sendMail()"><br/>
+        <label style="margin-left: 10px;">Тема</label><br/>
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.theme.errors }">
+            <input type="text" formControlName="theme">
+        </p>
+        <div *ngIf="isSubmitted && formControls.theme.errors" class="help-block">
+            <div *ngIf="formControls.theme.errors.required" style="margin-left: 10px;">Заполните заголовок письма</div>
+        </div>
+
+        <div class="floating-label">
+            <p [ngClass]="{ 'has-error': isSubmitted && formControls.mail_text.errors }"></p>
+            <label style="margin-left: 10px;">Письмо</label><br/>
+            <mat-form-field style="margin-top: 10px;">
+                <textarea matInput class="floating-label__input" formControlName="mail_text"></textarea>
+            </mat-form-field>
+        </div>
+        <div *ngIf="isSubmitted && formControls.mail_text.errors" class="help-block">
+            <div *ngIf="formControls.mail_text.errors.required" style="margin-left: 10px;">Напишите собщение</div>
+        </div>
+
+      <p>
+        <input type="submit" value="Отправить">
+      </p>
+      <p>
+        <button class="btn" [routerLink]="['/application/' + id]">Назад</button>
+      </p>
+    </form>
+  </div>

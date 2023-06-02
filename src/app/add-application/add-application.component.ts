@@ -22,8 +22,10 @@ export class AddApplicationComponent {
   time? = new Date();
 
   constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) {
-    var search_obj = document.getElementById("search");
-    search_obj!.style.display = "none";
+    document.addEventListener('DOMContentLoaded', () => {
+      var search_obj = document.getElementById("searchBox");
+      search_obj!.style.display = "none";
+    });
     this.configService.getCities()
       .subscribe((cities:any[])=>{
         cities.forEach(city =>{

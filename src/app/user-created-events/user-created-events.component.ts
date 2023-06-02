@@ -19,7 +19,9 @@ export class UserCreatedEventsComponent {
       this.userApplications.reverse();
       })
     })
-    var search_obj = document.getElementById("search");
-    search_obj!.style.display = "block";
+    document.addEventListener('DOMContentLoaded', () => {
+      var search_obj = document.getElementById("searchBox");
+      search_obj!.style.display = "block";
+    });
   }
 }
