@@ -80,8 +80,35 @@ export class UserAccountPageComponent {
 
     if(isNaN(Number(this.profilForm.value.city))){ }
       else {this.idCity = this.profilForm.value.city;}
-    
-      console.log(this.idCity);
+
+      if(password === this.user.password) {
+        if(password === newPassword) {
+          alert("Старый и новый пароль совпадают");
+        }
+        else
+        {
+          this.configService.editUser(localStorage.getItem('AUTH_TOKEN'), this.user.id, name, email, 
+          surname, telephone, idGender, this.idCity, newPassword).subscribe( response => {
+            alert("Успешно!");
+            this.router.navigateByUrl('/');
+          }, error => {
+            if(error.status === 401) {
+              alert("Для начала авторизуйтесь!")
+              this.router.navigateByUrl('/auth');
+            }
+            else if(error.status == 200) {
+              alert("Email и/или телефон не уникальны");
+            }
+            else {
+              alert("Ошибка! Попробуйте еще раз");
+            }
+          });
+        }
+      }
+      else
+      {
+        alert("Старый пароль введен не верно");
+      }
       
 //Проверить совпадает ли пароль из формы с паролем в бд
 // Проверить не совпадают ли старый пароль и новый пароль

@@ -131,6 +131,22 @@ export class ConfigService {
     }, {headers: head})
   }
 
+  public editUser(token: any, id: any, name: any, email: any, surname: any, telephone: any, 
+    idGender: any, idCity: any, password: any): Observable<any> {
+    var url = this.baseUrl + `Users/${id}`;
+    var head = {'token': token};
+    return this.client.put<any>(url, {
+      id: id,
+      name: name,
+      surname: surname,
+      telephone: telephone,
+      email: email,
+      idGender: idGender,
+      idCity: idCity,
+      password: password
+    }, {headers: head})
+  }
+
   public deleteEvent(token: any, id: any): Observable<any> {
     var url = this.baseUrl + `Applications/Delete`;
     var head = {'token': token};
