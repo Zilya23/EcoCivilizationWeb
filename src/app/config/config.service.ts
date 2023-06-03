@@ -154,4 +154,12 @@ export class ConfigService {
     var url = this.baseUrl + `ApplicationUsers/GetPartsUser?id=${id}`;
     return this.client.get<any>(url);
   }
+
+  public GetStatistic(token: any, id: any): Observable<any> {
+    var url = this.baseUrl + 'Users/Statistic';
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      id: id
+    }, {headers: head})
+  }
 }

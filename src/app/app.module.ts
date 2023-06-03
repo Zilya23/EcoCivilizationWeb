@@ -21,6 +21,8 @@ import { AlertModule } from '@coreui/angular';
 import { MatIconModule } from '@angular/material/icon'
 import {MatButtonModule} from '@angular/material/button';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 
 
 import { ApplicationInfoComponent } from './application-info/application-info.component';
@@ -70,6 +72,8 @@ import { StatisticPageComponent } from './statistic-page/statistic-page.componen
     MatIconModule,
     MatButtonModule,
     ModalModule.forRoot(),
+    MatTabsModule,
+    MatTableModule,
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'ru-ru'},],
   bootstrap: [AppComponent]

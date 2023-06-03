@@ -1,1 +1,86 @@
-<p>statistic-page works!</p>
+<mat-tab-group style="font-size: 20px;">
+    <mat-tab class="mat-tab-header" label="Пользовательская статистика">
+        <div class="user-statisic">
+            <h2 class="user-statisic-header">Статистика</h2>
+            <ol>
+                <li>
+                  <div>Количество созданных событий</div>
+                  <div></div>
+                  <div>{{statistic.countApplication}}</div>
+                </li>
+                <li>
+                  <div>Количество участий в событиях</div>
+                  <div></div>
+                  <div>{{statistic.countPartApplication}}</div>
+                </li>
+                <li>
+                  <div>Количество событий в моем городе</div>
+                  <div></div>
+                  <div>{{statistic.countUserCityApplication}}</div>
+                </li>
+                <li>
+                  <div>Количество событий созданных в этом году участниками</div>
+                  <div></div>
+                  <div>{{statistic.countApplicationThisYear}}</div>
+                </li>
+                <li>
+                  <div>Количество участников в моем городе</div>
+                  <div></div>
+                  <div>{{statistic.countUserInCity}}</div>
+                </li>
+                <li>
+                    <div>Количество дней с регистрации</div>
+                    <div></div>
+                    <div>{{statistic.countActivDays}}</div>
+                </li>
+                <li>
+                    <div>Количество участников в приложении</div>
+                    <div></div>
+                    <div>{{statistic.countUserInApp}}</div>
+                </li>
+                <li>
+                    <div>Мое место в топе по участникам</div>
+                    <div></div>
+                    <div>{{statistic.countTopUserPlace}}</div>
+                </li>
+                <li>
+                    <div>Мое место в топе по городам</div>
+                    <div></div>
+                    <div>{{statistic.countTopUserCityPlace}}</div>
+                </li>
+            </ol>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Топ пользователей">
+        <div class="user-top">
+            <table id="users" style="font-size: 20px;">
+                <tr>
+                    <th>№</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                  </tr>
+                <tr *ngFor="let user of topUser; let i = index">
+                    <td>{{i + 1}}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.surname }}</td>
+                </tr>
+            </table>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Топ городов">
+        <div class="city-top">
+            <table id="users" style="font-size: 20px;">
+                <tr>
+                    <th>№</th>
+                    <th>Город</th>
+                    </tr>
+                <tr *ngFor="let city of topCity; let i = index">
+                    <td>{{i + 1}}</td>
+                    <td>{{ city.name }}</td>
+                </tr>
+            </table>
+        </div>
+    </mat-tab>
+  </mat-tab-group>
