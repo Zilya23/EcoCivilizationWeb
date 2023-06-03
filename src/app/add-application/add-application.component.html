@@ -40,7 +40,7 @@
                 <div class="floating-label">
                     <p [ngClass]="{ 'has-error': isSubmitted && formControls.date.errors }"></p>
                         <label>Выберите дату и время*</label>
-                        <input class="date-time" type="datetime-local" (min)="minDate" (max)="maxDate" formControlName="date">
+                        <input class="date-time" type="datetime-local" id="dateTime" formControlName="date" required>
                 </div>
                 <div *ngIf="isSubmitted && formControls.date.errors" class="help-block">
                     <div *ngIf="formControls.date.errors.required" style="color: red;">Выберите дату!</div>

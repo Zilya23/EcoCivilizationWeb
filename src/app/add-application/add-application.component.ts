@@ -30,6 +30,27 @@ export class AddApplicationComponent {
     })
     this.minDate = new Date();
     this.maxDate = new Date('2023-12-31T12:00');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      var dd = this.minDate.getDate(); //Current day
+      var mm = this.minDate.getMonth() + 1; //January is 0!
+      var yyyy = this.minDate.getFullYear(); //(Year is 2022)
+      if (dd < 10) {
+          dd = '0' + dd;
+      } 
+      if (mm < 10) {
+          mm = '0' + mm;
+      }
+      var today_min = yyyy + '-' + mm + '-' + dd + "T08:00";
+      var maxdd = this.maxDate.getDate(); //Current day
+      var maxmm = this.maxDate.getMonth() + 1; //January is 0!
+      var maxyyyy = this.maxDate.getFullYear(); //(Year is 2022)
+      var today_max = maxyyyy + '-' + maxmm + '-' + maxdd + "T20:00";
+      console.log(today_min);
+      console.log(today_max);
+      document.getElementById("dateTime")!.setAttribute("min", today_min);
+      document.getElementById("dateTime")!.setAttribute("max", today_max);
+    });
    }
 
     url: any = '';
