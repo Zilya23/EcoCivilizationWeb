@@ -49,24 +49,10 @@ body {
   box-sizing: border-box;
   display: block;
   width: 100%;
-  border-width: 1px;
-  border-style: solid;
   padding: 16px;
   outline: 0;
   font-family: inherit;
   font-size: 0.95em;
-}
-
-.login input[type="email"],
-.login input[type="password"] {
-  background: #fff;
-  border-color: rgb(64, 81, 59);
-  color: rgb(64, 81, 59);
-}
-
-.login input[type="email"]:focus,
-.login input[type="password"]:focus {
-  border-color: rgb(64, 81, 59);
 }
 
 .login input[type="submit"] {
@@ -104,4 +90,21 @@ body {
   border-color: transparent;
   color: rgb(64, 81, 59);
   cursor: pointer;
+}
+
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
 }

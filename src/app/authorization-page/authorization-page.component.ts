@@ -11,6 +11,7 @@ import { ConfigService } from '../config/config.service';
 export class AuthorizationPageComponent {
   authForm: FormGroup | any;
   isSubmitted  =  false;
+  hide = true;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) {
     var obj = document.getElementById("account");

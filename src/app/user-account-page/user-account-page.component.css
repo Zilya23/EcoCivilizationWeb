@@ -2,7 +2,7 @@ body {
     background: rgb(157, 192, 139);
 }
 
-.login {
+.profil {
   width: 60%;
   margin: 16px auto;
   font-size: 16px;
@@ -12,13 +12,13 @@ body {
   border-style: solid;
 }
 
-.login-header,
-.login p {
+.profil-header,
+.profil p {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.login-triangle {
+.profil-triangle {
   width: 0;
   margin-right: auto;
   margin-left: auto;
@@ -26,25 +26,25 @@ body {
   border-bottom-color: rgb(157, 192, 139);
 }
 
-.login-header {
-  background: rgb(157, 192, 139);
+.profil-header {
+  background: rgb(64, 81, 59);
   padding: 20px;
   font-size: 1.4em;
   font-weight: normal;
   text-align: center;
   text-transform: uppercase;
-  color: rgb(64, 81, 59);
+  color: rgb(237, 241, 214);
 }
 
-.login-container {
+.profil-container {
   padding: 12px;
 }
 
-.login p {
+.profil p {
   padding: 12px;
 }
 
-.login input {
+.profil input {
   box-sizing: border-box;
   display: block;
   width: 100%;
@@ -56,7 +56,7 @@ body {
   font-size: 0.95em;
 }
 
-.login select {
+.profil select {
   box-sizing: border-box;
   display: block;
   width: 100%;
@@ -68,7 +68,7 @@ body {
   font-size: 0.95em;
 }
 
-.login ng-select {
+.profil ng-select {
   box-sizing: border-box;
   display: block;
   width: 100%;
@@ -89,40 +89,40 @@ body {
   }
 }
 
-.login select:required:invalid {
+.profil select:required:invalid {
   color: gray;
 }
-.loginoption[value=""][disabled] {
+.profiloption[value=""][disabled] {
   display: none;
 }
-.login option {
+.profil option {
   color: black;
 }
 
-.login input[type="email"],
-.login input[type="password"] {
+.profil input[type="email"],
+.profil input[type="password"] {
   background: #fff;
   border-color: rgb(64, 81, 59);
   color: rgb(64, 81, 59);
 }
 
-.login input[type="email"]:focus,
-.login input[type="password"]:focus {
+.profil input[type="email"]:focus,
+.profil input[type="password"]:focus {
   border-color: rgb(64, 81, 59);
 }
 
-.login input[type="submit"] {
-  background: rgb(157, 192, 139);
+.profil input[type="submit"] {
+  background: rgb(64, 81, 59);
   border-color: transparent;
-  color: rgb(64, 81, 59);
+  color: rgb(237, 241, 214);
   cursor: pointer;
 }
 
-.login input[type="submit"]:hover {
+.profil input[type="submit"]:hover {
   background: rgb(157, 192, 139);;
 }
 
-.login input[type="submit"]:focus {
+.profil input[type="submit"]:focus {
   border-color: rgb(157, 192, 139);;
 }
 
@@ -180,7 +180,7 @@ body {
 }
 
 .placeholder-label {
-  font-size: 18px;
-  margin-left: 10px;
-  color: rgb(64, 81, 59);
+    font-size: 18px;
+    margin-left: 10px;
+    color: rgb(64, 81, 59);
 }

@@ -24,7 +24,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 
-
 import { ApplicationInfoComponent } from './application-info/application-info.component';
 import { AuthorizationPageComponent } from './authorization-page/authorization-page.component';
 import { AddApplicationComponent } from './add-application/add-application.component';
@@ -35,6 +34,7 @@ import { UserPartEventsComponent } from './user-part-events/user-part-events.com
 import { EditApplicationComponent } from './edit-application/edit-application.component';
 import { SendMailDialogComponent } from './send-mail-dialog/send-mail-dialog.component';
 import { StatisticPageComponent } from './statistic-page/statistic-page.component';
+import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +50,7 @@ import { StatisticPageComponent } from './statistic-page/statistic-page.componen
     EditApplicationComponent,
     SendMailDialogComponent,
     StatisticPageComponent,
+    UserAccountPageComponent,
   ],
   imports: [
     BrowserModule,

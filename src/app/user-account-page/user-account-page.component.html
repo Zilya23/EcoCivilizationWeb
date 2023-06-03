@@ -1,0 +1,102 @@
+<div class="profil">
+    <h2 class="profil-header">Профиль</h2>
+    <form name="profil" [formGroup]="profilForm" class="profil-container" (ngSubmit)="signIn()">
+      <div class="page">
+        <div class="first-column">
+            <label class="placeholder-label">Имя</label>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.name.errors }">
+            <input type="name" formControlName="name">
+          </p>
+          <div *ngIf="isSubmitted && formControls.name.errors" class="help-block">
+            <div *ngIf="formControls.name.errors.required" style="color: red;">Заполните поле имени!</div>
+          </div>
+    
+          <label class="placeholder-label">Фамилия</label>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.surname.errors }">
+            <input type="surname" formControlName="surname">
+          </p>
+          <div *ngIf="isSubmitted && formControls.surname.errors" class="help-block">
+            <div *ngIf="formControls.surname.errors.required" style="color: red;">Заполните поле фамилии!</div>
+          </div>
+    
+          <label class="placeholder-label">Телефон</label>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.telephone.errors }">
+            <ngx-intl-tel-input [cssClass]="'custom'" [searchCountryFlag]="true"
+            [searchCountryField]="[
+              SearchCountryField.Iso2,
+              SearchCountryField.Name
+            ]"
+            [selectedCountryISO]="CountryISO.Russia" [maxLength]="13" [phoneValidation]="true"
+            [numberFormat]="PhoneNumberFormat.National" formControlName="telephone">
+          </ngx-intl-tel-input>
+          </p>
+          <div *ngIf="profilForm.get('telephone')?.errors?.incorrect" style="color: red;">Введите другой телефон!</div>
+          <div *ngIf="isSubmitted && formControls.telephone.errors" class="help-block">
+            <div *ngIf="formControls.telephone.errors.required" style="color: red;">Заполните поле телефона!</div>
+          </div>
+    
+          <label class="placeholder-label">Пол</label>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.gender.errors }">
+            <select required formControlName="gender">
+              <option value="" disabled selected>Выберите пол</option>
+              <option value="1">Женский</option>
+              <option value="2">Мужской</option>
+            </select>
+          </p>
+          <div *ngIf="isSubmitted && formControls.gender.errors" class="help-block">
+            <div *ngIf="formControls.gender.errors.required" style="color: red;">Укажите пол!</div>
+          </div>
+        </div>
+        
+        <div class="second-column">
+
+           <label class="placeholder-label">Город</label>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.city.errors }">
+            <ng-select required formControlName="city">
+              <ng-option value="" disabled selected>Выберите город</ng-option>
+              <ng-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ng-option>
+           </ng-select>
+          </p>
+          <div *ngIf="isSubmitted && formControls.city.errors" class="help-block">
+            <div *ngIf="formControls.city.errors.required" style="color: red;">Укажите город!</div>
+          </div>
+    
+          <label class="placeholder-label">Email</label>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+            <input type="email" ngModel [email]="true" formControlName="email">
+          </p>
+          <div *ngIf="profilForm.get('email')?.errors?.email" style="color: red;">Почта введена не верно</div>
+          <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+            <div *ngIf="formControls.email.errors.required" style="color: red;">Заполните поле почты!</div>
+          </div>
+          
+          <label class="placeholder-label">Старый пароль</label>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+            <input name="passwordInput" type="password" formControlName="password">
+          </p>
+          <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+            <div *ngIf="formControls.password.errors.required" style="color: red;">Заполните поле пароля!</div>
+          </div>
+    
+          <label class="placeholder-label">Новый пароль</label>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.newPassword.errors }">
+            <input name="newPassword" type="password" formControlName="newPassword" ngModel [pattern]="unamePattern">
+          </p>
+          <div *ngIf="isSubmitted && formControls.newPassword.errors" class="help-block">
+            <div *ngIf="formControls.newPassword.errors?.pattern" style="color: red;">
+                Пароль должен содержать хотя бы одну цифру, 
+                одну заглавную букву и
+                прописную и состоять минимум из 8ми символов
+                <br/> Пароль не может содержать пробел
+              </div>
+            <div *ngIf="formControls.newPassword.errors.required" style="color: red;">Введите новый пароль!</div>
+          </div>
+        </div>
+      </div>
+      
+      <p>
+        <input type="submit" value="Сохранить">
+      </p>
+    </form>
+  </div>
+  

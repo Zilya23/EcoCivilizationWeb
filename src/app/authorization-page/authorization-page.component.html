@@ -2,17 +2,24 @@
     <h2 class="login-header">Авторизация</h2>
     <form name="authorize" [formGroup]="authForm" class="email-container" (ngSubmit)="signIn()">
       <p [ngClass]="{ 'has-error': isSubmitted && formControls.login.errors }">
-        <input type="email" placeholder="Email" formControlName="email">
+          <mat-form-field class="example-container" style="width: 100%;">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="pat@example.com" formControlName="email" required>
+          </mat-form-field>
       </p>
       <div *ngIf="authForm.get('email')?.errors?.incorrect">Неверная почта и/или пароль</div>
       <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
         <div *ngIf="formControls.email.errors.required">Заполните поле почты</div>
       </div>
-      <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
-        <input name="passwordInput" type="password" placeholder="Пароль" formControlName="password">
-        <!-- <button (click)="x.type=x.type=='password'?'text':'password'" class="eye_button">
-          <mat-icon>visibility</mat-icon>
-        </button> -->
+
+      <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }" class="example-container">
+        <mat-form-field style="width: 100%;">
+          <mat-label>Пароль</mat-label>
+          <input name="passwordInput" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+          <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </a>
+        </mat-form-field>
       </p>
       <div *ngIf="authForm.get('password')?.errors?.incorrect">Неверный логин и/или пароль</div>
       <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
