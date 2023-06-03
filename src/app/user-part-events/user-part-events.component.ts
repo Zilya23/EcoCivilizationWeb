@@ -19,9 +19,5 @@ export class UserPartEventsComponent {
       this.userPartApplications.reverse();
       })
     })
-    document.addEventListener('DOMContentLoaded', () => {
-      var search_obj = document.getElementById("searchBox");
-      search_obj!.style.display = "block";
-    });
   }
 }

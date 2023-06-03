@@ -6,10 +6,6 @@
       </div>
     
       <div class="rightspace">
-        <div class="search">
-          <input id="searchBox" type="text" class="search-box" name="search" placeholder="Поиск.." (input)="searchText()">
-        </div>
-    
         <div class="dropdown">
           <div id="account" style="display: none;">
             <a>
@@ -32,14 +28,6 @@
           </div>
         </div>
       </div>
-    </div>
-    
-    <div id="menu" style="display: block;">
-      <ul class="menu-main">
-        <li><a href="">Главная</a></li>
-        <li><a [routerLink]="['/add']">Добавить</a></li>
-        <li><a [routerLink]="['/statistic']">Статистика</a></li>
-      </ul>
     </div>
     
     <div class="main">

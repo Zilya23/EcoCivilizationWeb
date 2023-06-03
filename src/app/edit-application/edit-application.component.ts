@@ -38,12 +38,7 @@ export class EditApplicationComponent {
       this.photos = info.photoApplications;
       this.deletePhotos = structuredClone(info.photoApplications);
     });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      var search_obj = document.getElementById("searchBox");
-      search_obj!.style.display = "none";
-    });
-
+    
     this.configService.getCities()
       .subscribe((cities:any[])=>{
         cities.forEach(city =>{

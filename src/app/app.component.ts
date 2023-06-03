@@ -34,9 +34,4 @@ export class AppComponent {
     localStorage.removeItem('USER_IDENTIFIER');
     this.router.navigateByUrl('/auth');
   }
-
-  searchText() {
-    this.searchBoxText = (<HTMLInputElement>document.getElementById("searchBox")).value;
-    //console.log(this.searchBoxText);
-  }
 }

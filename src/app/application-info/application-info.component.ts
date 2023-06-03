@@ -28,8 +28,6 @@ export class ApplicationInfoComponent {
     constructor(private router: Router, private data: ConfigService, private route: ActivatedRoute) { 
       this.id = this.route.snapshot.paramMap.get('id');
       this.update();
-      var search_obj = document.getElementById("searchBox");
-      search_obj!.style.display = "none";
     }
 
     picPhoto(photo: any) {
