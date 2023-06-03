@@ -28,6 +28,10 @@ export class UserAccountPageComponent {
   idCity: any;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) { 
+    if(localStorage.getItem('AUTH_TOKEN') == null) {
+      this.router.navigateByUrl('/auth');
+    }
+    
     this.configService.getCities()
       .subscribe((cities:any[])=>{
         cities.forEach(city =>{

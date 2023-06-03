@@ -14,6 +14,10 @@ export class StatisticPageComponent {
 
 
   constructor(private router: Router, private configServices: ConfigService, private route: ActivatedRoute) {
+    if(localStorage.getItem('AUTH_TOKEN') == null) {
+      this.router.navigateByUrl('/auth');
+    }
+    
     this.configServices.GetStatistic(localStorage.getItem('AUTH_TOKEN'), localStorage.getItem('USER_IDENTIFIER')).subscribe(
       response => {
         this.statistic = response;

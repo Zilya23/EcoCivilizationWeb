@@ -23,10 +23,19 @@ export class EditApplicationComponent {
   recipientEmail: any[] = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private configService: ConfigService) { 
+    if(localStorage.getItem('AUTH_TOKEN') == null) {
+      this.router.navigateByUrl('/auth');
+    }
+  
     this.id = this.route.snapshot.paramMap.get('id');
     this.configService.getApplication(this.id)
     .subscribe((info:any) => {
       this.editApplicaton = info;
+
+      if(info.idUser != localStorage.getItem('USER_IDENTIFIER')) {
+        this.router.navigateByUrl('/');
+      }
+
       this.editForm.controls['name'].setValue(info.name);
       this.editForm.controls['description'].setValue(info.description);
       this.editForm.controls['date'].setValue(info.date);
@@ -67,8 +76,7 @@ export class EditApplicationComponent {
       var maxmm = this.maxDate.getMonth() + 1; //January is 0!
       var maxyyyy = this.maxDate.getFullYear(); //(Year is 2022)
       var today_max = maxyyyy + '-' + maxmm + '-' + maxdd + "T20:00";
-      console.log(today_min);
-      console.log(today_max);
+
       document.getElementById("dateTime")!.setAttribute("min", today_min);
       document.getElementById("dateTime")!.setAttribute("max", today_max);
     });

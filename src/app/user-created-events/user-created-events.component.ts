@@ -11,6 +11,10 @@ export class UserCreatedEventsComponent {
   userApplications:any[] = [];
 
   constructor(private router: Router, private data: ConfigService) {
+    if(localStorage.getItem('AUTH_TOKEN') == null) {
+      this.router.navigateByUrl('/auth');
+    }
+    
     this.data.getUserCreateApplication(localStorage.getItem('USER_IDENTIFIER'), localStorage.getItem('AUTH_TOKEN'))
     .subscribe((applications:any[])=>{
       applications.forEach(application =>{

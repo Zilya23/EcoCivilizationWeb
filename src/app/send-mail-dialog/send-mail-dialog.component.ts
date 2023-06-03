@@ -16,6 +16,10 @@ export class SendMailDialogComponent {
 
 
   constructor(private router: Router, private configService: ConfigService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+    if(localStorage.getItem('AUTH_TOKEN') == null) {
+      this.router.navigateByUrl('/auth');
+    }
+
     this.id = this.route.snapshot.paramMap.get('id');
     configService.GetPartUser(this.id).subscribe( info => {
       this.recipientEmail = info;
