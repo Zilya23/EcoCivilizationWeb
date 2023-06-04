@@ -1,25 +1,23 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ConfigService } from '../config/config.service';
-import { AppComponent } from '../app.component';
+import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 
 @Component({
   selector: 'app-list-application',
   templateUrl: './list-application.component.html',
-  styleUrls: ['./list-application.component.css']
+  styleUrls: ['./list-application.component.css'],
 })
 export class ListApplicationComponent {
-  applications:any[] = [];
+  applications: any[] = [];
   obj1: any;
 
-  constructor(private router: Router, private data: ConfigService, public appComponent: AppComponent) {
+  constructor(private router: Router, private data: ConfigService, private formBuilder: FormBuilder) {
     this.data.getCurrentApplicationList()
-    .subscribe((applications:any[])=>{
-      applications.forEach(application =>{
-      this.applications.push(application)
-      this.applications.reverse();
-      })
+    .subscribe(applications => {
+      this.applications = applications;
     });
+
     var obj = document.getElementById("account");
     var auth_obj = document.getElementById("authoriz");
 
@@ -31,12 +29,30 @@ export class ListApplicationComponent {
       obj!.style.display = "block";
       auth_obj!.style.display = "none";
     }
+
+    if(this.applications.length > 0) {
+      this.applications.reverse;
+    }
   }
 
-  // getSearchApplication() {
-  //   let search = this.appComponent.searchBoxText;
-  //   this.applications =  this.applications.filter(x => x.name.contains(search));
+  filter() {
+    var searchBoxText = (<HTMLInputElement>document.getElementById("searchBox")).value;
+    if(searchBoxText === '' ) {
+      this.data.getCurrentApplicationList()
+      .subscribe(applications => {
+        this.applications = applications;
+      });  
+    }
 
-  //   this.appComponent.searchText();
-  // }
+    if(searchBoxText != '' ) {
+      this.applications = (Object.values(this.applications).filter(x => x.name.toLowerCase().indexOf(searchBoxText.toLowerCase())>= 0 
+      || x.idCityNavigation.name.toLowerCase().indexOf(searchBoxText.toLowerCase())>= 0
+      || x.description.toLowerCase().indexOf(searchBoxText.toLowerCase())>= 0));
+    }
+    
+    if(this.applications.length > 0) {
+      this.applications.reverse;
+    }
+  }
 }
+

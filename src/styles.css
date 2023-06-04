@@ -2,7 +2,7 @@ html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: rgb(237, 241, 214);
+  background-color: rgba(214, 218, 196, 0.342);
   font-weight: lighter;
 }
 

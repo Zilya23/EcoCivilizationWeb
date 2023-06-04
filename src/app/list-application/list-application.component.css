@@ -43,3 +43,19 @@ img {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+.search {
+ width: 40%;
+ font-size: 20px;
+ height: 40px;
+ color: black;
+ margin-bottom: 10px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: rgb(97 116 88 / 61%);
+  padding-top: 10px;
+}

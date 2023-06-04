@@ -1,4 +1,9 @@
-<div class="main inline">
+
+<div class="filters">
+  <input class="search" id="searchBox" placeholder="Поиск..." (input)="filter()">
+</div>
+
+<div class="main inline" id="content"  *ngIf="applications.length > 0">
     <div class="left-block"></div>
     <div class="content">
       <div *ngFor="let application of applications" class="child">
@@ -14,5 +19,5 @@
       </div>
     </div>
     <div class="right-block"></div>
-  </div>
+</div>
   
