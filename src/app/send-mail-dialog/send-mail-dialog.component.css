@@ -49,7 +49,7 @@ mat-form-field {
 }
 
 .floating-label__input:not(:placeholder-shown) + .floating-label__label {
-    background: rgb(237, 241, 214);
+    background: rgba(214, 218, 196, 0.342);
     transform: translate(0, -200%);
     opacity: 1;
 }

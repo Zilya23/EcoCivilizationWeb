@@ -52,8 +52,7 @@ export class AuthorizationPageComponent {
         );
         this.router.navigateByUrl('/applications');
       }, error => {
-        this.authForm.controls['email'].setErrors({'incorrect' : true});
-        this.authForm.controls['password'].setErrors({'incorrect' : true});
+        alert("Неверный логин или пароль!");
       });
   }
 }

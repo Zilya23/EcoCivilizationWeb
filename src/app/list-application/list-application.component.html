@@ -14,13 +14,13 @@
     <div class="content">
       <div *ngFor="let application of applications" class="child">
         <div class="img">
-          <img class="listimg" src={{application.photoApplications[0].photo}}>
+          <img class="listimg" [routerLink]="['/application/' + application.id]" src={{application.photoApplications[0].photo}}>
         </div>
         <div class="contentimg">
           <nav>
             <a class="nava" [routerLink]="['/application/' + application.id]">{{application["name"]}}</a>
           </nav>
-          <p class="description">{{(application["description"].length>50)? (application["description"] |slice:0:50) + '...':(application["description"])}}</p>
+          <p class="description" [routerLink]="['/application/' + application.id]">{{(application["description"].length>50)? (application["description"] |slice:0:50) + '...':(application["description"])}}</p>
         </div>
       </div>
     </div>

@@ -25,7 +25,6 @@ export class AddApplicationComponent {
     if(localStorage.getItem('AUTH_TOKEN') == null) {
       this.router.navigateByUrl('/auth');
     }
-    
     this.configService.getCities()
       .subscribe((cities:any[])=>{
         cities.forEach(city =>{

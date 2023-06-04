@@ -32,7 +32,7 @@ export class EditApplicationComponent {
     .subscribe((info:any) => {
       this.editApplicaton = info;
 
-      if(info.idUser != localStorage.getItem('USER_IDENTIFIER')) {
+      if(info.idUser != localStorage.getItem('USER_IDENTIFIER') || info.date< Date.now) {
         this.router.navigateByUrl('/');
       }
 
