@@ -10,7 +10,9 @@ import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 })
 export class ListApplicationComponent {
   applications: any[] = [];
+  cities: any[] = [];
   obj1: any;
+  cityForm: FormGroup | any;
 
   constructor(private router: Router, private data: ConfigService, private formBuilder: FormBuilder) {
     this.data.getCurrentApplicationList()
@@ -30,24 +32,41 @@ export class ListApplicationComponent {
       auth_obj!.style.display = "none";
     }
 
+    this.data.getCities()
+      .subscribe((cities:any[])=>{
+        cities.forEach(city =>{
+        this.cities.push(city)
+      })
+    })
+
     if(this.applications.length > 0) {
       this.applications.reverse;
     }
   }
 
+  ngOnInit() {
+    this.cityForm  =  this.formBuilder.group({
+        city : ['', Validators.required],
+    });
+  }
+
   filter() {
     var searchBoxText = (<HTMLInputElement>document.getElementById("searchBox")).value;
-    if(searchBoxText === '' ) {
+    var idCity = this.cityForm.value.city;
+
+    if(idCity === '' && searchBoxText === '' ) {
       this.data.getCurrentApplicationList()
       .subscribe(applications => {
         this.applications = applications;
       });  
     }
-
-    if(searchBoxText != '' ) {
-      this.applications = (Object.values(this.applications).filter(x => x.name.toLowerCase().indexOf(searchBoxText.toLowerCase())>= 0 
-      || x.idCityNavigation.name.toLowerCase().indexOf(searchBoxText.toLowerCase())>= 0
-      || x.description.toLowerCase().indexOf(searchBoxText.toLowerCase())>= 0));
+    else {
+      if(idCity === '') {
+        idCity = 0;
+      }
+      this.data.getFilteredApplication(idCity, searchBoxText).subscribe(response =>{
+        this.applications = response;
+      });
     }
     
     if(this.applications.length > 0) {

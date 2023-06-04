@@ -1,6 +1,12 @@
 
 <div class="filters">
   <input class="search" id="searchBox" placeholder="Поиск..." (input)="filter()">
+  <form [formGroup]="cityForm">
+    <ng-select class="ng-dropdown"  required formControlName="city" (change)="filter()">
+      <ng-option value="" disabled selected >Выберите город</ng-option>
+      <ng-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ng-option>
+    </ng-select>
+  </form>
 </div>
 
 <div class="main inline" id="content"  *ngIf="applications.length > 0">
@@ -19,5 +25,9 @@
       </div>
     </div>
     <div class="right-block"></div>
+</div>
+
+<div class="empty" *ngIf="applications.length == 0">
+<label>ПУСТО</label>
 </div>
   

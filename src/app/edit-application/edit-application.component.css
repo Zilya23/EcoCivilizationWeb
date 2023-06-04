@@ -247,29 +247,6 @@ ng-select {
   margin-top: 10px;
 }
 
-dialog {
-  background-color: rgba(64, 81, 59, 0.836);
-  color: white;
-  border-color: transparent;
-  overflow: hidden;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 0 20px 8px #d0d0d0;
-  height: 100px;
-  width: 200px;
-  position: fixed;
-  top: 50%;
-}
-
-dialog a {
-  border-width: 1px;
-  border-style: solid; 
-  margin-right: 20px;
-  font-family: inherit;
-  font-size: 0.95em;
-  cursor: pointer;
-  padding: 10px;
-}
 
 @media (max-width: 900px){
   .page {

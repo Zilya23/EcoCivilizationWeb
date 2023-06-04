@@ -108,6 +108,14 @@ export class ConfigService {
     }, {headers: head});
   }
 
+  public getFilteredApplication(idCity: any, name: any): Observable<any> {
+    var url = this.baseUrl + 'Applications/GetFilteredApplication';
+    return this.client.post<any>(url, {
+      idCity: idCity,
+      name: name
+    });
+  }
+
   public getUserPartApplication(idUser: any, token: any): Observable<any> {
     var url = this.baseUrl + 'ApplicationUsers/UserPartApplication';
     var head = {'token': token};

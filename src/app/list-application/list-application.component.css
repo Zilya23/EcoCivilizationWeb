@@ -44,10 +44,32 @@ img {
     justify-content: space-evenly;
 }
 
+ng-select {
+  display: block;
+  width: 258px;
+  border-style: solid;
+  border-width: 1px;
+  outline: 0;
+  padding-top: 16px;
+  padding-left: 5px;
+  font-family: inherit;
+  font-size: 20px;
+  background: white;
+  border-color: black;
+  color: black;
+  height: 56px;
+  .ng-dropdown-panel .ng-dropdown-panel-items{
+    background: whitesmoke;
+  }
+  .ng-dropdown-panel .ng-option.ng-option-marked {
+    background: rgb(157, 192, 139);
+  }
+}
+
 .search {
- width: 40%;
+ width: 250px;
  font-size: 20px;
- height: 40px;
+ height: 50px;
  color: black;
  margin-bottom: 10px;
 }
@@ -58,4 +80,12 @@ img {
   justify-content: space-evenly;
   background-color: rgb(97 116 88 / 61%);
   padding-top: 10px;
+}
+
+.empty {
+  font-size: 500%;
+  text-align: center;
+  align-self: center;
+  color: rgb(97 116 88);
+  margin-top: 25%;
 }
