@@ -1,5 +1,5 @@
 <h1>Мои события</h1>
-<div class="main inline">
+<div class="main inline" *ngIf="userApplications.length > 0">
     <div class="left-block"></div>
     <div class="content">
       <div *ngFor="let application of userApplications" class="child">
@@ -17,3 +17,6 @@
     <div class="right-block"></div>
   </div>
   
+  <div class="empty" *ngIf="userApplications.length == 0">
+    <label>ПУСТО</label>
+  </div>

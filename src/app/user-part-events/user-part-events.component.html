@@ -1,5 +1,5 @@
 <h1>Мои участия</h1>
-<div class="main inline">
+<div class="main inline" *ngIf="userPartApplications.length > 0">
     <div class="left-block"></div>
     <div class="content">
       <div *ngFor="let application of userPartApplications" class="child">
@@ -17,3 +17,6 @@
     <div class="right-block"></div>
   </div>
   
+  <div class="empty" *ngIf="userPartApplications.length == 0">
+    <label>ПУСТО</label>
+  </div>

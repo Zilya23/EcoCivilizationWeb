@@ -11,13 +11,13 @@ import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 export class ListApplicationComponent {
   applications: any[] = [];
   cities: any[] = [];
-  obj1: any;
   cityForm: FormGroup | any;
 
   constructor(private router: Router, private data: ConfigService, private formBuilder: FormBuilder) {
     this.data.getCurrentApplicationList()
     .subscribe(applications => {
       this.applications = applications;
+      this.applications.reverse();
     });
 
     var obj = document.getElementById("account");
@@ -38,10 +38,6 @@ export class ListApplicationComponent {
         this.cities.push(city)
       })
     })
-
-    if(this.applications.length > 0) {
-      this.applications.reverse;
-    }
   }
 
   ngOnInit() {
@@ -70,7 +66,7 @@ export class ListApplicationComponent {
     }
     
     if(this.applications.length > 0) {
-      this.applications.reverse;
+      this.applications.reverse();
     }
   }
 }
