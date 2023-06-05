@@ -66,7 +66,8 @@ export class RegistrationPageComponent {
     var idGender = this.authForm.value.gender;
     var repeatPassword = this.authForm.value.repeatPassword.toString();
 
-    if(password === repeatPassword) {
+    if(password == repeatPassword) {
+      // this.authForm.controls['repeatPassword'].setErrors({'incorrect' : false});
       this.configService.registration(name, surname, telephone, 
                     idCity, idGender, email, password).subscribe(response => {
         alert("Успешно!");
@@ -74,6 +75,7 @@ export class RegistrationPageComponent {
         }, error => {
           if(error.status === 404)
           {
+            // this.authForm.controls['repeatPassword'].setErrors({'incorrect' : false});
             this.authForm.controls['email'].setErrors({'incorrect' : true});
             this.authForm.controls['telephone'].setErrors({'incorrect' : true});
           }
@@ -83,6 +85,6 @@ export class RegistrationPageComponent {
         }
       );
     }
-    this.authForm.controls['repeatPassword'].setErrors({'incorrect' : true});
+    // this.authForm.controls['repeatPassword'].setErrors({'incorrect' : true});
   }
 }

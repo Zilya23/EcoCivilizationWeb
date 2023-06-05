@@ -88,7 +88,7 @@
           <p [ngClass]="{ 'has-error': isSubmitted && formControls.repeatPassword.errors }">
             <input name="repeatPasswordInput" type="password" placeholder="Повторите пароль" formControlName="repeatPassword">
           </p>
-          <div *ngIf="authForm.get('repeatPassword')?.errors?.incorrect">Пароли не совпадают</div>
+          <!-- <div *ngIf="authForm.get('repeatPassword')?.errors?.incorrect">Пароли не совпадают</div> -->
           <div *ngIf="isSubmitted && formControls.repeatPassword.errors" class="help-block">
             <div *ngIf="formControls.repeatPassword.errors.required">Введите пароль еще раз!</div>
           </div>
