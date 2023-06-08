@@ -47,9 +47,14 @@ export class AuthorizationPageComponent {
     this.configService.authorization(email, password).subscribe(response =>
       {
         localStorage.setItem("AUTH_TOKEN", response.token);
-        this.configService.getUserIdentifier(localStorage.getItem('AUTH_TOKEN')).subscribe( resp =>
-          localStorage.setItem("USER_IDENTIFIER", resp)
-        );
+        this.configService.getUserIdentifier(localStorage.getItem('AUTH_TOKEN')).subscribe( resp => {
+          localStorage.setItem("USER_IDENTIFIER", resp);
+          this.configService.GetUser(resp).subscribe(x=> {
+            if(x.idRole == 1)
+            localStorage.setItem("USER_Role", "1");
+            this.router.navigateByUrl('/adminApplications');
+          })
+      });
         this.router.navigateByUrl('/applications');
       }, error => {
         alert("Неверный логин или пароль!");

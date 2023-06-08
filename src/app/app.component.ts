@@ -32,6 +32,7 @@ export class AppComponent {
   exit() {
     localStorage.removeItem('AUTH_TOKEN');
     localStorage.removeItem('USER_IDENTIFIER');
+    localStorage.removeItem('USER_Role');
     this.router.navigateByUrl('/auth');
   }
 }

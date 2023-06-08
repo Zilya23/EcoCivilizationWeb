@@ -13,6 +13,11 @@ export class ConfigService {
     return this.client.get<any[]>(url)
   }
 
+  public getUsers() :Observable<any[]> {
+    var url = this.baseUrl + 'Users';
+    return this.client.get<any[]>(url)
+  }
+
   public getCurrentApplicationList() : Observable<any[]> {
     var url = this.baseUrl + 'Applications/GetСurrentApplication';
     return this.client.get<any[]>(url)
@@ -108,6 +113,14 @@ export class ConfigService {
     }, {headers: head});
   }
 
+  public getUserAllCreateApplication(idUser: any, token: any): Observable<any> {
+    var url = this.baseUrl + 'Applications/UserAllCreateApplication';
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      id: idUser
+    }, {headers: head});
+  }
+
   public getFilteredApplication(idCity: any, name: any): Observable<any> {
     var url = this.baseUrl + 'Applications/GetFilteredApplication';
     return this.client.post<any>(url, {
@@ -189,6 +202,24 @@ export class ConfigService {
     var head = {'token': token};
     return this.client.post<any>(url, {
       id: id
+    }, {headers: head})
+  }
+
+  public BannedApplication(token: any, id: any, isBanned: any): Observable<any> {
+    var url = this.baseUrl + 'Applications/BunnedApplication';
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      id: id,
+      isBanned: isBanned
+    }, {headers: head})
+  }
+
+  public BannedUser(token: any, id: any, isBanned: any): Observable<any> {
+    var url = this.baseUrl + 'Users/BunnedUser';
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      id: id,
+      isBanned: isBanned
     }, {headers: head})
   }
 }

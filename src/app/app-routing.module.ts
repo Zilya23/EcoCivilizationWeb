@@ -11,6 +11,9 @@ import { EditApplicationComponent } from './edit-application/edit-application.co
 import { SendMailDialogComponent } from './send-mail-dialog/send-mail-dialog.component';
 import { StatisticPageComponent } from './statistic-page/statistic-page.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
+import { UsersAdminPageComponent } from './users-admin-page/users-admin-page.component';
+import { ApplicationAdminPageComponent } from './application-admin-page/application-admin-page.component';
+import { UserInfoAdminPageComponent } from './user-info-admin-page/user-info-admin-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/applications', pathMatch: 'full' },
@@ -25,6 +28,9 @@ const routes: Routes = [
   { path: 'sendMail/:id', component: SendMailDialogComponent},
   { path: 'statistic', component: StatisticPageComponent},
   { path: 'account', component: UserAccountPageComponent},
+  { path: 'adminUsers', component: UsersAdminPageComponent},
+  { path: 'adminApplications', component: ApplicationAdminPageComponent},
+  { path: 'user/:id', component: UserInfoAdminPageComponent},
 ];
 
 @NgModule({

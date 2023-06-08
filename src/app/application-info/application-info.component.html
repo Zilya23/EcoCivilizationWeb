@@ -38,8 +38,9 @@
         </ol>
         <p>Участников <span>{{partUser}}</span>  из <span>{{applicationID.countUser}}</span>:</p>
         <progress max="{{applicationID.countUser}}" value="{{partUser}}"></progress>
-        <button formControlName="btn" (click)="partApplication()">{{participant}}</button>
+        <button id="userButton" formControlName="btn" (click)="partApplication()">{{participant}}</button>
         <a id="sendMailUsers" style="display: none;" [routerLink]="['/sendMail/' + applicationID.id]">Отправить сообщение участникам</a>
+        <a id="bunned" (click)="bunnedApplication()" style="display: none; background-color: rgba(255, 0, 0, 0.473);">{{bunned}}</a>
     </div>
   </div>
   

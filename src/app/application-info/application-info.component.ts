@@ -24,6 +24,7 @@ export class ApplicationInfoComponent {
   idPart: any;
   animal: any;
   name: any;
+  bunned: any;
 
     constructor(private router: Router, private data: ConfigService, private route: ActivatedRoute) { 
       this.id = this.route.snapshot.paramMap.get('id');
@@ -44,29 +45,62 @@ export class ApplicationInfoComponent {
 
         var partDate = new Date(this.applicationID.date);
         var dateNow = new Date();
-        if(this.diffDates(partDate, dateNow)) {
-          if(this.applicationID.isDelete) {
-            this.participant = 'Удалено';
+        if(localStorage.getItem('USER_Role') === "1") {
+          var mail_obj = document.getElementById("userButton");
+          mail_obj!.style.display = "none";
+          var mail_obj = document.getElementById("bunned");
+          mail_obj!.style.display = "block";
+          if(this.applicationID.isBanned) {
+            this.bunned = "Разбанить"
           }
-          else {
-            if(localStorage.getItem('USER_IDENTIFIER') == this.applicationID.idUser) {
-              this.participant = 'Редактировать';
-              var mail_obj = document.getElementById("sendMailUsers");
-              mail_obj!.style.display = "block";
+          else{
+            this.bunned = "Забанить"
+          }
+        }
+        else {
+          if(this.diffDates(partDate, dateNow)) {
+            if(this.applicationID.isDelete) {
+              this.participant = 'Удалено';
             }
             else {
-              this.data.partExists(this.applicationID.id, localStorage.getItem('USER_IDENTIFIER')).subscribe(exists =>
-                {this.participant = 'Отказаться';
-                  this.idPart = exists.id;
-                }, error => {this.participant = 'Участвовать!'}
-              );
+              if(localStorage.getItem('USER_IDENTIFIER') == this.applicationID.idUser) {
+                this.participant = 'Редактировать';
+                var mail_obj = document.getElementById("sendMailUsers");
+                mail_obj!.style.display = "block";
+                var mail_obj = document.getElementById("userButton");
+                mail_obj!.style.display = "block";
+              }
+              else {
+                this.data.partExists(this.applicationID.id, localStorage.getItem('USER_IDENTIFIER')).subscribe(exists =>
+                  {this.participant = 'Отказаться';
+                    this.idPart = exists.id;
+                  }, error => {this.participant = 'Участвовать!'}
+                );
+              }
             }
           }
-        }
-        else{
-          this.participant = 'Событие завершено';
+          else{
+            this.participant = 'Событие завершено';
+          }
         }
       });
+    }
+
+    bunnedApplication() {
+      if(this.bunned === "Забанить") {
+        this.data.BannedApplication(localStorage.getItem('AUTH_TOKEN'), this.applicationID.id, true).subscribe(resp => {
+          this.bunned = "Разбанить";
+        }, error => {
+          alert(error);
+        })
+      }
+      else {
+        this.data.BannedApplication(localStorage.getItem('AUTH_TOKEN'), this.applicationID.id, false).subscribe(resp => {
+          this.bunned = "Забанить";
+        }, error => {
+          alert(error);
+        })
+      }
     }
 
     diffDates(day_one: any, day_two: any) {
