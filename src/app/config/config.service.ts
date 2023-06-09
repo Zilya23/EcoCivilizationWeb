@@ -222,4 +222,18 @@ export class ConfigService {
       isBanned: isBanned
     }, {headers: head})
   }
+
+  public DeletePartAdmin(token: any, id: any): Observable<any> {
+    var url = this.baseUrl + `ApplicationUsers/AdminDeletePart?id=${id}`;
+    var head = {'token': token};
+    return this.client.post<any>(url, {}, {headers: head})
+  } 
+
+  public AppealApplication(token: any, id: any): Observable<any> {
+    var url = this.baseUrl + 'Applications/AppealApplication';
+    var head = {'token': token};
+    return this.client.post<any>(url, {
+      id: id
+    }, {headers: head})
+  }
 }

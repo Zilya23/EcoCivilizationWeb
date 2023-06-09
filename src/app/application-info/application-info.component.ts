@@ -25,6 +25,7 @@ export class ApplicationInfoComponent {
   animal: any;
   name: any;
   bunned: any;
+  recipientEmail: any[] =[];
 
     constructor(private router: Router, private data: ConfigService, private route: ActivatedRoute) { 
       this.id = this.route.snapshot.paramMap.get('id');
@@ -41,13 +42,19 @@ export class ApplicationInfoComponent {
         this.applicationID = info;
         this.currentPhoto = info.photoApplications[0].photo;
         this.partUser = this.applicationID.applicationUsers.length;
-        this.formattedTime = this.applicationID.timeStart.slice(0, -3);        
+        this.formattedTime = this.applicationID.timeStart.slice(0, -3);      
+        
+        if((info.isBanned || info.isDelete) && (localStorage.getItem('USER_Role')!== "1")) {
+          this.router.navigateByUrl('/');
+        }
 
         var partDate = new Date(this.applicationID.date);
         var dateNow = new Date();
         if(localStorage.getItem('USER_Role') === "1") {
           var mail_obj = document.getElementById("userButton");
           mail_obj!.style.display = "none";
+          var spam_obj = document.getElementById("spam");
+          spam_obj!.style.display = "none";
           var mail_obj = document.getElementById("bunned");
           mail_obj!.style.display = "block";
           if(this.applicationID.isBanned) {
@@ -90,6 +97,8 @@ export class ApplicationInfoComponent {
       if(this.bunned === "Забанить") {
         this.data.BannedApplication(localStorage.getItem('AUTH_TOKEN'), this.applicationID.id, true).subscribe(resp => {
           this.bunned = "Разбанить";
+          this.deleteUserPart();
+          this.update();
         }, error => {
           alert(error);
         })
@@ -101,6 +110,37 @@ export class ApplicationInfoComponent {
           alert(error);
         })
       }
+    }
+
+    deleteUserPart() {
+      this.data.GetPartUser(this.id).subscribe( info => {
+        this.recipientEmail = info;
+      });
+  
+      var subject = "Событие, на которое вы были подписаны, удалено администрацией сайта";
+      var body = "Проверьте список своих подписок, что бы оставаться в курсе!";
+  
+      for (let recip of this.recipientEmail) {
+        this.data.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
+        .subscribe(info => {}, error => {
+          alert("Ошибка! Попробуйте еще раз")
+        });
+      }
+  
+      this.data.DeletePartAdmin(localStorage.getItem('AUTH_TOKEN'), this.id).subscribe( resp => {
+        console.log(resp);
+      }, error => {
+        console.log(error);
+      })
+    }
+
+    appealApplication() {
+      this.data.AppealApplication(localStorage.getItem('AUTH_TOKEN'), this.id).subscribe( resp => {
+        alert("Ваша жалоба будет рассмотрена");
+        this.router.navigateByUrl('/');
+      }, error => {
+        console.log(error);
+      });
     }
 
     diffDates(day_one: any, day_two: any) {

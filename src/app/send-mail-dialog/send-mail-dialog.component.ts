@@ -52,7 +52,6 @@ export class SendMailDialogComponent {
     var body = mail_text + "\n" + "Ссылка на событие: " + "http://localhost:4200/application/" + this.id;
 
     for (let recip of this.recipientEmail) {
-      console.log(recip.idUserNavigation);
       this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
       .subscribe(info => {
         this.router.navigateByUrl('/application/' + this.id);

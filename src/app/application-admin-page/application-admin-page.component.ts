@@ -32,6 +32,5 @@ export class ApplicationAdminPageComponent {
       obj!.style.display = "none";
       admin_obj!.style.display = "block";
     }
-    
   }
 }

@@ -205,8 +205,7 @@ export class EditApplicationComponent {
 
   sendDeleteMail() {
     var subject = "Событие, на которое вы подписались было удалено";
-    var body = "Событие из ваших подписок было отменено его автором! Просмотрите что это за событие, что бы быть в курсе." + 
-    "\n" + "Ссылка на событие: " + "http://localhost:4200/application/" + this.id;
+    var body = "Событие из ваших подписок было отменено его автором! Просмотрите что это за событие, что бы быть в курсе."
 
     for (let recip of this.recipientEmail) {
       console.log(recip.idUserNavigation);
