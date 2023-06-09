@@ -25,6 +25,11 @@ export class AddApplicationComponent {
     if(localStorage.getItem('AUTH_TOKEN') == null) {
       this.router.navigateByUrl('/auth');
     }
+
+    if(localStorage.getItem('USER_Role') === "1") {
+      this.router.navigateByUrl('/adminApplications');
+    }
+
     this.configService.getCities()
       .subscribe((cities:any[])=>{
         cities.forEach(city =>{

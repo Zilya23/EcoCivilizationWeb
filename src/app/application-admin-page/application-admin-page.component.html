@@ -1,44 +1,84 @@
-<table *ngIf="applications.length > 0" id="applications">
-    <tr style="text-align: center; font-weight: bold; background-color: rgb(111, 131, 105);">
-        <td>ID</td>
-        <td>Название</td>
-        <td>Дата</td>
-        <td>Необходимое кол-во участников</td>
-        <td>Место</td>
-        <td>Описание</td>
-        <td>Время</td>
-        <td>Автор</td>
-        <td>Количество жалоб</td>
-        <td>Забанено</td>
-        <td>Удалено</td>
-    </tr>
+<mat-tab-group>
+    <mat-tab class="mat-tab-header" label="События">
+        <table *ngIf="applications.length > 0" id="applications">
+            <tr style="text-align: center; font-weight: bold; background-color: rgb(111, 131, 105);">
+                <td>ID</td>
+                <td>Название</td>
+                <td>Дата</td>
+                <td>Необходимое кол-во участников</td>
+                <td>Место</td>
+                <td>Описание</td>
+                <td>Время</td>
+                <td>Автор</td>
+                <td>Количество жалоб</td>
+                <td>Забанено</td>
+                <td>Удалено</td>
+            </tr>
+        
+            <tr *ngFor="let application of applications" style="text-align: center; cursor: pointer;">
+                <td [routerLink]="['/application/' + application.id]">{{application.id}}</td>
+                <td [routerLink]="['/application/' + application.id]">{{application.name}}</td>
+                <td [routerLink]="['/application/' + application.id]">{{application["date"] | date: 'dd.MM.yyyy'}}</td>
+                <td [routerLink]="['/application/' + application.id]">{{application.countUser}}</td>
+                <td [routerLink]="['/application/' + application.id]">{{application.place}}</td>
+                <td [routerLink]="['/application/' + application.id]">{{application.description}}</td>
+                <td [routerLink]="['/application/' + application.id]">{{application.timeStart}}</td>
+                <td [routerLink]="['/user/' + application.idUser]">{{application.idUser}}</td>
+                <td *ngIf="application.appealCount > 0" [routerLink]="['/application/' + application.id]" style="background-color: rgba(255, 0, 0, 0.473);">
+                    {{application.appealCount}}
+                </td>
+                <td *ngIf="application.appealCount == 0" [routerLink]="['/application/' + application.id]" style="background-color: rgba(50, 141, 66, 0.61);">
+                    {{application.appealCount}}
+                </td>
+                <td *ngIf="application.isBanned" [routerLink]="['/application/' + application.id]" style="background-color: rgba(255, 0, 0, 0.473);">
+                    {{application.isBanned}}
+                </td>
+                <td *ngIf="!application.isBanned" [routerLink]="['/application/' + application.id]" style="background-color: rgba(50, 141, 66, 0.61);">
+                    {{application.isBanned}}
+                </td>
+                <td *ngIf="application.isDelete" [routerLink]="['/application/' + application.id]" style="background-color: rgba(255, 0, 0, 0.473);">
+                    {{application.isDelete}}
+                </td>
+                <td *ngIf="!application.isDelete" [routerLink]="['/application/' + application.id]" style="background-color: rgba(50, 141, 66, 0.61);">
+                    {{application.isDelete}}
+                </td>
+            </tr>
+        </table>        
+    </mat-tab>
 
-    <tr *ngFor="let application of applications" style="text-align: center; cursor: pointer;">
-        <td [routerLink]="['/application/' + application.id]">{{application.id}}</td>
-        <td [routerLink]="['/application/' + application.id]">{{application.name}}</td>
-        <td [routerLink]="['/application/' + application.id]">{{application["date"] | date: 'dd.MM.yyyy'}}</td>
-        <td [routerLink]="['/application/' + application.id]">{{application.countUser}}</td>
-        <td [routerLink]="['/application/' + application.id]">{{application.place}}</td>
-        <td [routerLink]="['/application/' + application.id]">{{application.description}}</td>
-        <td [routerLink]="['/application/' + application.id]">{{application.timeStart}}</td>
-        <td [routerLink]="['/user/' + application.idUser]">{{application.idUser}}</td>
-        <td *ngIf="application.appealCount > 0" [routerLink]="['/application/' + application.id]" style="background-color: rgba(255, 0, 0, 0.473);">
-            {{application.appealCount}}
-        </td>
-        <td *ngIf="application.appealCount == 0" [routerLink]="['/application/' + application.id]" style="background-color: rgba(50, 141, 66, 0.61);">
-            {{application.appealCount}}
-        </td>
-        <td *ngIf="application.isBanned" [routerLink]="['/application/' + application.id]" style="background-color: rgba(255, 0, 0, 0.473);">
-            {{application.isBanned}}
-        </td>
-        <td *ngIf="!application.isBanned" [routerLink]="['/application/' + application.id]" style="background-color: rgba(50, 141, 66, 0.61);">
-            {{application.isBanned}}
-        </td>
-        <td *ngIf="application.isDelete" [routerLink]="['/application/' + application.id]" style="background-color: rgba(255, 0, 0, 0.473);">
-            {{application.isDelete}}
-        </td>
-        <td *ngIf="!application.isDelete" [routerLink]="['/application/' + application.id]" style="background-color: rgba(50, 141, 66, 0.61);">
-            {{application.isDelete}}
-        </td>
-    </tr>
-</table>
+    <mat-tab class="mat-tab-header" label="Пользователи">
+        <table *ngIf="users.length > 0" id="users">
+            <tr style="text-align: center; font-weight: bold; background-color: rgb(111, 131, 105);">
+                <td>ID</td>
+                <td>Имя</td>
+                <td>Фамилия</td>
+                <td>Город</td>
+                <td>Дата регистрации</td>
+                <td>Количество забаненных событий</td>
+                <td>Забанен</td>
+            </tr>
+        
+            <tr *ngFor="let user of users" style="text-align: center;">
+                <td [routerLink]="['/user/' + user.id]" style="cursor: pointer;">{{user.id}}</td>
+                <td [routerLink]="['/user/' + user.id]" style="cursor: pointer;">{{user.name}}</td>
+                <td [routerLink]="['/user/' + user.id]" style="cursor: pointer;">{{user.surname}}</td>
+                <td [routerLink]="['/user/' + user.id]" style="cursor: pointer;">{{user.idCityNavigation.name}}</td>
+                <td [routerLink]="['/user/' + user.id]" style="cursor: pointer;">{{user["dateRegist"] | date: 'dd.MM.yyyy'}}</td>
+                <td *ngIf="user.countBannedApplication > 0" style="background-color: rgba(255, 0, 0, 0.473); cursor: pointer;" [routerLink]="['/user/' + user.id]">
+                    {{user.countBannedApplication}}
+                </td>
+                <td *ngIf="user.countBannedApplication == 0" style="background-color: rgba(50, 141, 66, 0.61); cursor: pointer;" [routerLink]="['/user/' + user.id]">
+                    {{user.countBannedApplication}}
+                </td>
+                <td *ngIf="user.isBanned"  style="background-color: rgba(255, 0, 0, 0.473); cursor: pointer;" [routerLink]="['/user/' + user.id]">
+                    {{user.isBanned}}
+                </td>
+                <td *ngIf="!user.isBanned" style="background-color: rgba(50, 141, 66, 0.61); cursor: pointer;" [routerLink]="['/user/' + user.id]">
+                    {{user.isBanned}}
+                </td>
+            </tr>
+        </table>
+    </mat-tab>
+</mat-tab-group>
+
+

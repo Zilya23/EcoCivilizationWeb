@@ -26,15 +26,15 @@ export class EditApplicationComponent {
     if(localStorage.getItem('AUTH_TOKEN') == null) {
       this.router.navigateByUrl('/auth');
     }
+
+    if(localStorage.getItem('USER_Role') === "1") {
+      this.router.navigateByUrl('/adminApplications');
+    }
   
     this.id = this.route.snapshot.paramMap.get('id');
     this.configService.getApplication(this.id)
     .subscribe((info:any) => {
       this.editApplicaton = info;
-
-      if(info.idUser != localStorage.getItem('USER_IDENTIFIER') || info.date< Date.now) {
-        this.router.navigateByUrl('/');
-      }
 
       this.editForm.controls['name'].setValue(info.name);
       this.editForm.controls['description'].setValue(info.description);

@@ -14,6 +14,10 @@ export class UserCreatedEventsComponent {
     if(localStorage.getItem('AUTH_TOKEN') == null) {
       this.router.navigateByUrl('/auth');
     }
+
+    if(localStorage.getItem('USER_Role') === "1") {
+      this.router.navigateByUrl('/adminApplications');
+    }
     
     this.data.getUserCreateApplication(localStorage.getItem('USER_IDENTIFIER'), localStorage.getItem('AUTH_TOKEN'))
     .subscribe((applications:any[])=>{

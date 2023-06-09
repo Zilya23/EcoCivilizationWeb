@@ -17,6 +17,10 @@ export class StatisticPageComponent {
     if(localStorage.getItem('AUTH_TOKEN') == null) {
       this.router.navigateByUrl('/auth');
     }
+
+    if(localStorage.getItem('USER_Role') === "1") {
+      this.router.navigateByUrl('/adminApplications');
+    }
     
     this.configServices.GetStatistic(localStorage.getItem('AUTH_TOKEN'), localStorage.getItem('USER_IDENTIFIER')).subscribe(
       response => {

@@ -50,6 +50,11 @@ export class AuthorizationPageComponent {
         this.configService.getUserIdentifier(localStorage.getItem('AUTH_TOKEN')).subscribe( resp => {
           localStorage.setItem("USER_IDENTIFIER", resp);
           this.configService.GetUser(resp).subscribe(x=> {
+            if(x.isBanned) {
+              alert("Ваш аккаунт был забанен");
+              localStorage.removeItem('AUTH_TOKEN');
+              localStorage.removeItem('USER_IDENTIFIER');
+            }
             if(x.idRole == 1)
             localStorage.setItem("USER_Role", "1");
             this.router.navigateByUrl('/adminApplications');

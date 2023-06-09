@@ -20,6 +20,10 @@ export class SendMailDialogComponent {
       this.router.navigateByUrl('/auth');
     }
 
+    if(localStorage.getItem('USER_Role') === "1") {
+      this.router.navigateByUrl('/adminApplications');
+    }
+
     this.id = this.route.snapshot.paramMap.get('id');
     configService.GetPartUser(this.id).subscribe( info => {
       this.recipientEmail = info;

@@ -35,7 +35,6 @@ import { EditApplicationComponent } from './edit-application/edit-application.co
 import { SendMailDialogComponent } from './send-mail-dialog/send-mail-dialog.component';
 import { StatisticPageComponent } from './statistic-page/statistic-page.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
-import { UsersAdminPageComponent } from './users-admin-page/users-admin-page.component';
 import { ApplicationAdminPageComponent } from './application-admin-page/application-admin-page.component';
 import { UserInfoAdminPageComponent } from './user-info-admin-page/user-info-admin-page.component';
 
@@ -54,7 +53,6 @@ import { UserInfoAdminPageComponent } from './user-info-admin-page/user-info-adm
     SendMailDialogComponent,
     StatisticPageComponent,
     UserAccountPageComponent,
-    UsersAdminPageComponent,
     ApplicationAdminPageComponent,
     UserInfoAdminPageComponent,
   ],
