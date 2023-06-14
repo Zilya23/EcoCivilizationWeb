@@ -1,4 +1,4 @@
-.page {
+/* .page {
   display: flex;
   flex-wrap: wrap;
   height: 100%;
@@ -258,4 +258,527 @@ ng-select {
   .gallery {
     width: 100%;
   }
+} */
+
+/* Добавление события */ 
+input[type="datetime-local"] {  
+  color: #111111; 
+} 
+input[type="number"] {  
+  color: #111111; 
+} 
+.form3 { 
+  display: flex; 
+  gap: 20px; 
+  justify-content: space-evenly; 
+  align-items: flex-start; 
+} 
+.form3_img { 
+  padding: 98px 80px; 
+  background: #F9F9F9; 
+  border: 1px solid #A4CA62; 
+  border-radius: 30px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 15px; 
+} 
+.form3_img input { 
+  font-family: "Montserrat"; 
+  padding: 7px 15px; 
+  background: #FFFFFF; 
+  border: 1px solid #A4CA62; 
+  border-radius: 30px; 
+  cursor: pointer; 
+  position: relative; 
+display: inline-block; 
+} 
+textarea { 
+  resize: none; 
+  font-family: "Montserrat"; 
+  font-weight: 400; 
+  font-size: 24px; 
+  padding: 20px 30px; 
+  appearance: none; 
+  outline: none; 
+  cursor: text; 
+  -moz-appearance: none;  
+  -webkit-appearance: none; 
+  border-style: solid; 
+  cursor: text; 
+  background: #FFFFFF; 
+  border: 1px solid #A4CA62; 
+  border-radius: 30px; 
+  color: #111111; 
+} 
+.edit-item-input-320 { 
+  width: 954px; 
+  height: 350px; 
+  margin-bottom: 20px; 
+} 
+.input-file { 
+position: relative; 
+display: inline-block; 
+} 
+.input-file span { 
+position: relative; 
+display: inline-block; 
+cursor: pointer; 
+outline: none; 
+text-decoration: none; 
+font-size: 16px; 
+font-family: "Montserrat"; 
+vertical-align: middle; 
+color: #111111; 
+text-align: center; 
+border-radius: 100px; 
+background-color: #FFFFFF; 
+padding: 7px 15px; 
+border: 1px dashed #8B8B8B; 
+margin: 0; 
+transition: background-color 0.2s;
+margin-bottom: 10px;
+} 
+.input-file input[type=file] { 
+position: absolute; 
+z-index: -1; 
+opacity: 0; 
+display: block; 
+width: 0; 
+height: 0; 
+} 
+.input-file input[type=file]:focus + span { 
+box-shadow: #A4CA62; 
+} 
+.input-file:hover span { 
+background-color: #EEEEEE; 
+} 
+.input-file:active span { 
+background-color: #EEEEEE; 
+} 
+.input-file input[type=file]:disabled + span { 
+background-color: #EEEEEE; 
+} 
+.eco_button6 { 
+  width: 953px; 
+  height: 64px; 
+  background: #215732; 
+  border: 1px solid #215732; 
+  border-radius: 100px; 
+  font-family: "Montserrat"; 
+  font-weight: 500; 
+  font-size: 20px; 
+  color: #FFFFFF; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: baseline; 
+  justify-content: center; 
+} 
+.eco_button6:hover { 
+  background: #224C23; 
+  border: 1px solid #224C23; 
+  transition: all 0.2s ease; 
+  color: #FFFFFF; 
+} 
+.eco_button7 {
+  width: 953px; 
+  height: 64px; 
+  background: #FFFFFF;
+  border: 1px solid #215732;
+  border-radius: 100px;
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 20px;
+  color: #215732;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-top: 10px;
+  padding-top: 15px;
+}
+.eco_button7:hover {
+  background: #215732;
+  border: 1px solid #215732;
+  transition: all 0.2s ease;
+  color: #FFFFFF;
+}
+.eco_input2 { 
+  background: #FFFFFF; 
+  border: 1px solid #A4CA62; 
+  border-radius: 100px; 
+  padding: 20px 30px; 
+  width: 466px; 
+  font-family: "Montserrat"; 
+  font-weight: 300; 
+  font-size: 24px; 
+  color: #8B8B8B; 
+  appearance: none; 
+  outline: none; 
+  cursor: text; 
+  -moz-appearance: none;  
+  -webkit-appearance: none; 
+  border-style: solid; 
+  cursor: text; 
+  margin-bottom: 20px; 
+}  
+.eco_input3 { 
+  background: #FFFFFF; 
+  border: 1px solid #A4CA62; 
+  border-radius: 100px; 
+  padding: 20px 30px; 
+  width: 953px; 
+  font-family: "Montserrat"; 
+  font-weight: 300; 
+  font-size: 24px; 
+  color: #8B8B8B; 
+  appearance: none; 
+  outline: none; 
+  cursor: text; 
+  -moz-appearance: none;  
+  -webkit-appearance: none; 
+  border-style: solid; 
+  cursor: text; 
+  margin-bottom: 20px; 
+}  
+.eco_input4 { 
+  background: #FFFFFF; 
+  border: 1px solid #A4CA62; 
+  border-radius: 100px; 
+  padding: 20px 30px; 
+  width: 466px; 
+  font-family: "Montserrat"; 
+  font-weight: 300; 
+  font-size: 24px; 
+  color: #8B8B8B; 
+  appearance: none; 
+  outline: none; 
+  cursor: text; 
+  -moz-appearance: none;  
+  -webkit-appearance: none; 
+  border-style: solid; 
+  cursor: text; 
+  margin-bottom: 20px; 
+}  
+.eco_input4::-webkit-outer-spin-button, 
+  input::-webkit-inner-spin-button { 
+    -webkit-appearance: none; 
+    -moz-appearance: textfield; 
+    margin: 0; 
+} 
+.banner4 { 
+  background: #F6F6F6; 
+  background-size: 100%;
+  padding-bottom: 40px; 
+} 
+.form3_display_flex { 
+  display: flex; 
+  gap: 40px; 
+} 
+.form3_img h1 { 
+  font-family: "Montserrat"; 
+  font-weight: 300; 
+  font-size: 20px; 
+  color: #8B8B8B; 
+  text-align: center; 
+} 
+.form3_display { 
+  display: flex; 
+  gap: 20px; 
+} 
+
+.form3_display select:focus { 
+  color: #111111; 
+} 
+/* Адаптив */ 
+@media screen and (max-width: 1501px) { 
+  .form3 { 
+      display: grid; 
+      gap: 20px; 
+  } 
+  .form3_display_flex { 
+      display: grid; 
+      gap: 40px; 
+      justify-items: center; 
+  } 
+  .form3_img { 
+      padding: 98px 80px; 
+      background: #F9F9F9; 
+      border: 1px solid #A4CA62; 
+      border-radius: 30px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 15px; 
+      width: 952px; 
+  } 
+  .container { 
+      padding: 0px; 
+  } 
+} 
+@media screen and (max-width: 1020px) { 
+  .form3_img { 
+      width: 820px; 
+  } 
+  .container { 
+      padding: 0px 20px; 
+  } 
+  .eco_input3 { 
+      width: 820px; 
+  } 
+  .eco_input2 { 
+      width: 400px; 
+  } 
+  .eco_input4 { 
+      width: 400px; 
+  } 
+  .form3_display select { 
+      width: 400px; 
+  } 
+  .edit-item-input-320 { 
+      width: 820px; 
+  } 
+  .eco_button6 { 
+      width: 820px; 
+  } 
+  .eco_button7 { 
+    width: 820px; 
+  }
+} 
+@media screen and (max-width: 880px) { 
+  .form3_img { 
+      width: 720px; 
+  } 
+  .container { 
+      padding: 0px 20px; 
+  } 
+  .eco_input3 { 
+      width: 720px; 
+  } 
+  .eco_input2 { 
+      width: 350px; 
+  } 
+  .eco_input4 { 
+      width: 350px; 
+  } 
+  .form3_display select { 
+      width: 350px; 
+  } 
+  .edit-item-input-320 { 
+      width: 720px; 
+  } 
+  .eco_button6 { 
+      width: 720px; 
+  } 
+  .eco_button7 { 
+    width: 720px; 
+  }
+} 
+@media screen and (max-width: 770px) { 
+  .form3_img { 
+      width: 600px; 
+  } 
+  .container { 
+      padding: 0px 20px; 
+  } 
+  .eco_input3 { 
+      width: 600px; 
+  } 
+  .eco_input2 { 
+      width: 290px; 
+  } 
+  .eco_input4 { 
+      width: 290px; 
+  } 
+  .form3_display select { 
+      width: 290px; 
+  } 
+  .edit-item-input-320 { 
+      width: 600px; 
+  } 
+  .eco_button6 { 
+      width: 600px; 
+  } 
+  .eco_button7 { 
+    width: 600px; 
+  }
+} 
+@media screen and (max-width: 660px) { 
+  .form3_display { 
+      display: flex; 
+      gap: 20px; 
+      flex-direction: column; 
+  } 
+  .form3_img { 
+      width: 540px; 
+  } 
+  .container { 
+      padding: 0px 20px; 
+  } 
+  .eco_input3 { 
+      width: 540px; 
+  } 
+  .eco_input2 { 
+      width: 540px; 
+  } 
+  .eco_input4 { 
+      width: 540px; 
+  } 
+  .form3_display select { 
+      width: 540px; 
+  } 
+  .edit-item-input-320 { 
+      width: 540px; 
+  } 
+  .eco_button6 { 
+      width: 540px; 
+  } 
+  .eco_button7 { 
+    width: 540px; 
+  }
+} 
+@media screen and (max-width: 600px) { 
+  .form3_display { 
+      display: flex; 
+      gap: 20px; 
+      flex-direction: column; 
+  } 
+  .form3_img { 
+      width: 500px; 
+  } 
+  .container { 
+      padding: 0px 20px; 
+  } 
+  .eco_input3 { 
+      width: 500px; 
+  } 
+  .eco_input2 { 
+      width: 500px; 
+  } 
+  .eco_input4 { 
+      width: 500px; 
+  } 
+  .form3_display select { 
+      width: 500px; 
+  } 
+  .edit-item-input-320 { 
+      width: 500px; 
+  } 
+  .eco_button6 { 
+      width: 500px; 
+  } 
+  .eco_button7 { 
+    width: 500px; 
+  } 
+} 
+@media screen and (max-width: 570px) { 
+  .form3_display { 
+      display: flex; 
+      gap: 20px; 
+      flex-direction: column; 
+  } 
+  .form3_img { 
+      width: 420px; 
+  }
+
+  .container { 
+      padding: 0px 20px; 
+  } 
+  .eco_input3 { 
+      width: 420px; 
+  } 
+  .eco_input2 { 
+      width: 420px; 
+  } 
+  .eco_input4 { 
+      width: 420px; 
+  } 
+  .form3_display select { 
+      width: 420px; 
+  } 
+  .edit-item-input-320 { 
+      width: 420px; 
+  } 
+  .eco_button6 { 
+      width: 420px; 
+  } 
+  .eco_button7 { 
+    width: 420px; 
+  } 
+}
+
+.gallery-place {
+  position: relative;
+}
+
+.gallery-place .btn-delete {
+  position: absolute;
+    top: 5%;
+    right: 10%;
+    transform: translate(60%, -15%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 25px;
+    width: 25px;
+}
+
+.gallery-place  .btn-delete:hover {
+  background-color: red;
+}
+
+.galleryimg {
+  height: 300px;
+  width: 400px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.btn {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  background: rgb(64, 81, 59);
+  border-color: transparent;
+  color: rgb(237, 241, 214);
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.dialog_delete {
+  width: 400px;
+  height: 150px;
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.dialog_delete p{
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.dialog_delete a{
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 20px;
+  border-color: #224C23;
+  padding: 5px;
+}
+
+.dialog_delete a:hover{
+  color: #A4CA62;
 }

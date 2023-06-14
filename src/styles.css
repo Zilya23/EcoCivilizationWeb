@@ -265,7 +265,7 @@ input[type="text"] {
 }
 /* Баннер */
 .banner {
-    background: url(\img\background\background.svg) no-repeat;
+    background: url(\assets\img\background\background.svg) no-repeat;
     background-size: 100%;
 }
 .banner2 {
@@ -647,6 +647,33 @@ input[type="text"] {
 .form2 ng-select:focus {
     color: #111111;
 }
+.form3 ng-select {
+    background: #FFFFFF;
+    border: 1px solid #A4CA62;
+    border-radius: 100px;
+    padding: 20px 30px;
+    width: 480px;
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 24px;
+    color: #8B8B8B;
+    appearance: none;
+    outline: none;
+    -moz-appearance: none; 
+    -webkit-appearance: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background: url("\img\icons\icon4.svg") no-repeat right center #FFFFFF;
+    .ng-dropdown-panel .ng-dropdown-panel-items{
+        background: whitesmoke;
+      }
+      .ng-dropdown-panel .ng-option.ng-option-marked {
+        background: rgb(157, 192, 139);
+      }
+}
+.form3 ng-select:focus {
+    color: #111111;
+}
 .form2 select {
     background: #FFFFFF;
     border: 1px solid #A4CA62;
@@ -830,12 +857,6 @@ progress::-webkit-progress-value {
   }
 /* Адаптив */
 @media screen and (max-width: 2300px) { 
-    #slide_line { 
-        display: none; 
-    } 
-    #slide_line img { 
-        display: none; 
-    } 
     .banner_img { 
         display: flex; 
         gap: 20px; 
@@ -846,25 +867,10 @@ progress::-webkit-progress-value {
     .banner_img img { 
         width: auto; 
         height: 400px; 
-    } 
-}
-@media screen and (max-width: 1510px) {
-    .banner2 {
-        background: #f1f1f1;
-        height: auto;
-    }
-    .banner3 {
-        background: #f1f1f1;
-        height: auto;
     }
 }
-@media screen and (max-width: 1919px) { 
-    #slide_line { 
-        display: none; 
-    } 
-    #slide_line img { 
-        display: none; 
-    } 
+
+@media screen and (max-width: 1920px) { 
     .banner_img { 
         display: flex; 
         gap: 20px; 
@@ -874,7 +880,7 @@ progress::-webkit-progress-value {
     } 
     .banner_img img { 
         width: auto; 
-        height: 280px; 
+        height: 350px; 
     } 
 }
 @media screen and (max-width: 1510px) {
@@ -1050,6 +1056,35 @@ progress::-webkit-progress-value {
         width: 460px;
     }
 }
+@media screen and (max-width: 1510px) {
+    .banner2 {
+        background: #f1f1f1;
+        height: auto;
+    }
+    .banner3 {
+        background: #f1f1f1;
+        height: auto;
+    }
+}
+@media screen and (max-width: 913px) { 
+    .header_menu3 { 
+        display: grid;  
+        max-width: 1440px; 
+        margin: 0 auto; 
+        align-items: center; 
+        gap: 20px; 
+        justify-content: center; 
+        padding: 20px 0px; 
+    } 
+    .eco_button_active { 
+        margin-top: 0px; 
+        margin-bottom: 0px; 
+    } 
+    .eco_button_none { 
+        margin-top: 0px; 
+        margin-bottom: 0px; 
+    } 
+}
 
 /* Статистика */ 
 .header_menu3 { 
@@ -1164,23 +1199,22 @@ progress::-webkit-progress-value {
     justify-content: space-between; 
     align-items: center; 
 } 
-/* Адаптив для статистики*/ 
-@media screen and (max-width: 913px) { 
-    .header_menu3 { 
-        display: grid;  
-        max-width: 1440px; 
-        margin: 0 auto; 
-        align-items: center; 
-        gap: 20px; 
-        justify-content: center; 
-        padding: 20px 0px; 
-    } 
-    .eco_button_active { 
-        margin-top: 0px; 
-        margin-bottom: 0px; 
-    } 
-    .eco_button_none { 
-        margin-top: 0px; 
-        margin-bottom: 0px; 
-    } 
-}
+
+.form3_display select { 
+    background: #FFFFFF; 
+    border: 1px solid #A4CA62; 
+    border-radius: 100px; 
+    padding: 20px 30px; 
+    width: 466px; 
+    font-family: "Montserrat"; 
+    font-weight: 300; 
+    font-size: 24px; 
+    color: #8B8B8B; 
+    appearance: none; 
+    outline: none; 
+    -moz-appearance: none;  
+    -webkit-appearance: none; 
+    margin-bottom: 20px; 
+    cursor: pointer; 
+    background: url("/img/icons/icon4.svg") no-repeat right center #FFFFFF; 
+  } 

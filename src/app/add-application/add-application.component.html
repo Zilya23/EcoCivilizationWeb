@@ -1,4 +1,4 @@
-<div class="login">
+<!-- <div class="login">
     <h2 class="login-header">Добавление события</h2>
     <form name="createApplication" [formGroup]="addForm" class="login-container" (ngSubmit)="addApplication()">
         <div class="page">
@@ -8,7 +8,7 @@
                     <mat-form-field>
                         <mat-label>Название</mat-label>
                         <input matInput class="floating-label__input" formControlName="name">
-                        </mat-form-field>
+                    </mat-form-field>
                 </div>
 
                 <div class="floating-label">
@@ -78,4 +78,93 @@
             <button type="submit" class="btn">Сохранить</button>
         </p>
     </form>
-</div>
+</div> -->
+
+<!-- Баннер -->
+<div class="banner4">
+    <div class="container">
+      <!-- Добавление события -->
+      <h1 class="subtitle">добавление события</h1>
+      <div class="form3_display_flex">
+        <form class="form3" name="createApplication" [formGroup]="addForm" (ngSubmit)="addApplication()">
+          <div class="form3_img">
+            <h1>В формате JPG или PNG</h1>
+            <div>
+              <label class="input-file">
+                <input type="file" name="file" accept="image/png, image/jpeg, image/jpg"
+                (change)="onFileSelected($event)" multiple #fileUpload>
+                <span>Выберите файлы</span>
+              </label>
+              <div *ngFor="let image of photos" class="gallery-place">
+                <img [src]="image.url" class="galleryimg" alt="Image">
+                <button class="btn-delete" (click)="deleteImg(image)">x</button>
+            </div>
+            </div>
+          </div>
+          <div>
+            <div class="form3_display">
+              <div>
+
+                <h2 class="eco_type_input">Название*</h2>
+                <p [ngClass]="{ 'has-error': isSubmitted && formControls.name.errors }">
+                    <input type="text" class="eco_input2" placeholder="введите название" formControlName="name" required>
+                </p>
+                <div *ngIf="isSubmitted && formControls.name.errors" class="help-block" style="margin-bottom: 10px;">
+                    <div style="color: red;">Введите название!</div>
+                </div>
+
+
+                <h2 class="eco_type_input">Город*</h2>
+                <p [ngClass]="{ 'has-error': isSubmitted && formControls.city.errors }">
+                    <ng-select class="ng-dropdown"  required formControlName="city">
+                        <ng-option value="" disabled selected >выберите город*</ng-option>
+                        <ng-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ng-option>
+                    </ng-select>
+                </p>
+                <div *ngIf="isSubmitted && formControls.city.errors" class="help-block" style="margin-bottom: 10px;">
+                    <div style="color: red;">Укажите город!</div>
+                </div>
+              </div>
+
+              <div>
+                <h2 class="eco_type_input">Дата и время начала*</h2>
+                <p [ngClass]="{ 'has-error': isSubmitted && formControls.date.errors }">
+                    <input class="eco_input2" type="datetime-local" id="dateTime" formControlName="date" required>
+                </p>   
+                <div *ngIf="isSubmitted && formControls.date.errors" class="help-block" style="margin-bottom: 10px;">
+                    <div *ngIf="formControls.date.errors.required" style="color: red;">Выберите дату!</div>
+                </div>
+
+                <h2 class="eco_type_input">Кол-во участников*</h2>
+                <p [ngClass]="{ 'has-error': isSubmitted && formControls.countPart.errors }">
+                    <input type="number" class="eco_input4" min="2" max="30" formControlName="countPart" placeholder="введите кол-во участников" required>
+                </p>
+                <div *ngIf="isSubmitted && formControls.countPart.errors" class="help-block">
+                    <div *ngIf="formControls.countPart.errors.required" style="color: red;">Выберите количество участников!</div>
+                </div>
+              </div>
+            </div>
+
+            <h2 class="eco_type_input">Описание*</h2>
+            <p [ngClass]="{ 'has-error': isSubmitted && formControls.description.errors }">
+                <textarea class="edit-item-input-320" placeholder="введите описание" formControlName="description" required></textarea>
+            </p>
+            <div *ngIf="isSubmitted && formControls.description.errors" class="help-block" style="margin-bottom: 10px;">
+                <div *ngIf="formControls.description.errors.required" style="color: red;">Введите описание!</div>
+            </div>
+            
+
+            <h2 class="eco_type_input">Место проведения*</h2>
+            <p [ngClass]="{ 'has-error': isSubmitted && formControls.place.errors }">
+                <input type="text" class="eco_input3" placeholder="введите место" required formControlName="place">
+            </p>
+            <div *ngIf="isSubmitted && formControls.place.errors" class="help-block" style="margin-bottom: 10px;">
+                <div *ngIf="formControls.place.errors.required" style="color: red;">Введите место!</div>
+            </div>
+
+            <input class="eco_button6" type="submit" value="сохранить">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
