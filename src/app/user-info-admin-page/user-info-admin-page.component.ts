@@ -16,6 +16,12 @@ export class UserInfoAdminPageComponent {
   recipientEmail: any[] = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private configService: ConfigService) { 
+    if(localStorage.getItem('USER_Role') === "1") {
+      var obj = document.getElementById("account");
+      var admin_obj = document.getElementById("admin");
+      obj!.style.display = "none";
+      admin_obj!.style.display = "block";
+    }
     if(localStorage.getItem('USER_Role') !== "1") {
       this.router.navigateByUrl('/applications');
     }
