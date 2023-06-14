@@ -15,10 +15,12 @@ export class AuthorizationPageComponent {
   constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) {
     var obj = document.getElementById("account");
     var auth_obj = document.getElementById("authoriz");
+    var admin_obj = document.getElementById("admin");
 
     if(localStorage.getItem('AUTH_TOKEN') == null) {
       obj!.style.display = "none";
       auth_obj!.style.display = "block";
+      admin_obj!.style.display = "none";
     }
     else {
       obj!.style.display = "block";
