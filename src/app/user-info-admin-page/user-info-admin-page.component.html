@@ -1,7 +1,7 @@
 <button (click)="bannedUser()">{{banned}}</button>
 
 <table>
-    <tr style="text-align: center; font-weight: bold; background-color: rgb(111, 131, 105);">
+    <tr style="text-align: center; background-color: #A4CA62; color: rgb(237, 241, 214);">
         <td>ID</td>
         <td>Имя</td>
         <td>Фамилия</td>
@@ -17,23 +17,23 @@
         <td>{{user.surname}}</td>
         <td>{{user.idCityNavigation.name}}</td>
         <td>{{user["dateRegist"] | date: 'dd.MM.yyyy'}}</td>
-        <td *ngIf="user.countBannedApplication > 0" style="background-color: rgba(255, 0, 0, 0.473);">
+        <td *ngIf="user.countBannedApplication > 0" style="background-color: rgba(233, 38, 38, 0.63);">
             {{user.countBannedApplication}}
         </td>
-        <td *ngIf="user.countBannedApplication == 0" style="background-color: rgba(50, 141, 66, 0.61);">
+        <td *ngIf="user.countBannedApplication == 0" style="background-color: #A4CA62;">
             {{user.countBannedApplication}}
         </td>
-        <td *ngIf="user.isBanned"  style="background-color: rgba(255, 0, 0, 0.473);">
+        <td *ngIf="user.isBanned"  style="background-color: rgba(233, 38, 38, 0.63);">
             {{user.isBanned}}
         </td>
-        <td *ngIf="!user.isBanned" style="background-color: rgba(50, 141, 66, 0.61);">
+        <td *ngIf="!user.isBanned" style="background-color: #A4CA62;">
             {{user.isBanned}}
         </td>
     </tr>
 </table>
 
 <table *ngIf="userApplications.length > 0" id="applications">
-    <tr style="text-align: center; font-weight: bold; background-color: rgb(111, 131, 105);">
+    <tr style="text-align: center; background-color: #A4CA62; color: rgb(237, 241, 214);">
         <td>ID</td>
         <td>Название</td>
         <td>Дата</td>
@@ -54,22 +54,22 @@
         <td [routerLink]="['/application/' + application.id]">{{application.place}}</td>
         <td [routerLink]="['/application/' + application.id]">{{application.description}}</td>
         <td [routerLink]="['/application/' + application.id]">{{application.timeStart}}</td>
-        <td *ngIf="application.appealCount > 0" [routerLink]="['/application/' + application.id]" style="background-color: rgba(255, 0, 0, 0.473);">
+        <td *ngIf="application.appealCount > 0" [routerLink]="['/application/' + application.id]" style="background-color: rgba(233, 38, 38, 0.63);">
             {{application.appealCount}}
         </td>
-        <td *ngIf="application.appealCount == 0" [routerLink]="['/application/' + application.id]" style="background-color: rgba(50, 141, 66, 0.61);">
+        <td *ngIf="application.appealCount == 0" [routerLink]="['/application/' + application.id]" style="background-color: #A4CA62;">
             {{application.appealCount}}
         </td>
-        <td *ngIf="application.isBanned" [routerLink]="['/application/' + application.id]" style="background-color: rgba(255, 0, 0, 0.473);">
+        <td *ngIf="application.isBanned" [routerLink]="['/application/' + application.id]" style="background-color: rgba(233, 38, 38, 0.63);">
             {{application.isBanned}}
         </td>
-        <td *ngIf="!application.isBanned" [routerLink]="['/application/' + application.id]" style="background-color: rgba(50, 141, 66, 0.61);">
+        <td *ngIf="!application.isBanned" [routerLink]="['/application/' + application.id]" style="background-color: #A4CA62;">
             {{application.isBanned}}
         </td>
-        <td *ngIf="application.isDelete" [routerLink]="['/application/' + application.id]" style="background-color: rgba(255, 0, 0, 0.473);">
+        <td *ngIf="application.isDelete" [routerLink]="['/application/' + application.id]" style="background-color: rgba(233, 38, 38, 0.63);">
             {{application.isDelete}}
         </td>
-        <td *ngIf="!application.isDelete" [routerLink]="['/application/' + application.id]" style="background-color: rgba(50, 141, 66, 0.61);">
+        <td *ngIf="!application.isDelete" [routerLink]="['/application/' + application.id]" style="background-color: #A4CA62;">
             {{application.isDelete}}
         </td>
     </tr>

@@ -46,6 +46,7 @@
       <a [routerLink]="['/']"><img src="/assets/img/logo.svg" alt="логотип" [routerLink]="['/']"></a>
       <div class="header_display">
         <a id="authoriz" [routerLink]="['/auth']" style="display: none;" class="header_login">🍃 войти</a>
+        <a id="admin" (click)="exit()" style="display: none;" class="header_login">🍃 выйти</a>
         <a id="account">
           <span class="burger">
             <div class="dropdown">

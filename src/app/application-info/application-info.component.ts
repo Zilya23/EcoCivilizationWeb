@@ -32,7 +32,12 @@ export class ApplicationInfoComponent {
       this.update();
 
       document.addEventListener('DOMContentLoaded', () => {
-        if(localStorage.getItem('AUTH_TOKEN') === null || localStorage.getItem('USER_Role') === '1') {
+        if(localStorage.getItem('AUTH_TOKEN') == null) {
+          var spam_obj = document.getElementById("spam");
+          spam_obj!.style.display = "none";
+        }
+
+        if(localStorage.getItem('USER_Role') === '1') {
           var spam_obj = document.getElementById("spam");
           spam_obj!.style.display = "none";
         }

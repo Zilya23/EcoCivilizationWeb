@@ -266,7 +266,6 @@ input[type="text"] {
 /* Баннер */
 .banner {
     background: url(\assets\img\background\background.svg) no-repeat;
-    background-size: 100%;
 }
 .banner2 {
     background: url(\img\background\background2.svg) no-repeat #F6F6F6;
@@ -292,50 +291,6 @@ input[type="text"] {
     color: #111111;
     padding-top: 80px;
     padding-top: 80px;
-}
-/* Бегущая строка из картинок */
-#slide_line {
-    width: 100%;
-    overflow-x:hidden;
-}
-#slide_line img {
-    width: auto;
-    height: 345px;
-    padding-left: 20px;
-    border-radius: 30px;
-    margin-top: 80px;
-    margin-bottom: 40px;
-    overflow-x: hidden;
-}
-.string:hover {
-    cursor: pointer;
-}
-.banner_img {
-    display: flex;
-    gap: 20px;
-    display: none;
-}
-/* Круг Будущее за нами! */
-.banner_circle {
-    cursor: pointer;
-    overflow-x: hidden;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    background: #215732;
-    margin-left: 1265px;
-    margin-top: 260px;
-    border-radius: 1000px;
-    font-family: 'Montserrat';
-    font-weight: 500;
-    font-size: 16px;
-    color: #FFFFFF;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-}
-.banner_circle p {
-    padding: 20px;
 }
 /* События */
 .events {
@@ -392,7 +347,7 @@ input[type="text"] {
 .event img {
     border-radius: 30px;
     height: 203px;
-    width: 90%;
+    width: 100%;
 }
 .event h2 {
     font-family: 'Montserrat';
@@ -827,15 +782,15 @@ progress::-webkit-progress-value {
     align-items: baseline;
     text-align: center;
     padding-top: 18px;
-  }
-  .mail_button:hover {
+}
+.mail_button:hover {
     background: #215732;
     border: 1px solid #215732;
     transition: all 0.2s ease;
     color: #FFFFFF;
-  }
+}
 
-  .ban_button {
+.ban_button {
     width: 812px;
     height: 64px;
     background:  rgba(255, 0, 0, 0.473);;
@@ -849,45 +804,13 @@ progress::-webkit-progress-value {
     align-items: baseline;
     text-align: center;
     padding-top: 18px;
-  }
-  .ban_button:hover {
+}
+.ban_button:hover {
     background: rgba(255, 0, 0, 0.856);
     transition: all 0.2s ease;
     color: #FFFFFF;
-  }
+}
 /* Адаптив */
-@media screen and (max-width: 2300px) { 
-    .banner_img { 
-        display: flex; 
-        gap: 20px; 
-        overflow-x: hidden; 
-        margin-top: 80px; 
-        margin-bottom: 40px; 
-    } 
-    .banner_img img { 
-        width: auto; 
-        height: 400px; 
-    }
-}
-
-@media screen and (max-width: 1920px) { 
-    .banner_img { 
-        display: flex; 
-        gap: 20px; 
-        overflow-x: hidden; 
-        margin-top: 80px; 
-        margin-bottom: 40px; 
-    } 
-    .banner_img img { 
-        width: auto; 
-        height: 350px; 
-    } 
-}
-@media screen and (max-width: 1510px) {
-    .banner_circle {
-        margin-left: 930px;
-    }
-}
 @media screen and (max-width: 1019px) {
     .eco_button4 {
         width: 480px;
@@ -920,34 +843,8 @@ progress::-webkit-progress-value {
         padding-bottom: 20px;
     }
 }
-@media screen and (max-width: 1130px) {
-    .banner_circle {
-        margin-left: 750px;
-    }
-}
-@media screen and (max-width: 1130px) {
-    .banner_circle {
-        margin-left: 570px;
-    }
-}
+
 @media screen and (max-width: 1050px) {
-    #slide_line {
-        display: none;
-    }
-    #slide_line img {
-        display: none;
-    }
-    .banner_img {
-        display: flex;
-        gap: 20px;
-        overflow-x: hidden;
-        margin-top: 80px;
-        margin-bottom: 40px;
-    }
-    .banner_img img {
-        width: auto;
-        height: 280px;
-    }
     .banner_h1 {
         overflow-x: hidden;
     }
@@ -991,11 +888,6 @@ progress::-webkit-progress-value {
     .banner_h1 h1 {
         font-size: 45px;
         width: 460px;
-    }
-}
-@media screen and (max-width: 735px) {
-    .banner_circle {
-        margin-left: 430px;
     }
 }
 @media screen and (max-width: 545px) {
@@ -1048,9 +940,6 @@ progress::-webkit-progress-value {
     }
 }
 @media screen and (max-width: 590px) {
-    .banner_circle {
-        margin-left: 320px;
-    }
     .banner_h1 h1 {
         font-size: 40px;
         width: 460px;
