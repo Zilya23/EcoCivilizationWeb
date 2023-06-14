@@ -30,6 +30,13 @@ export class ApplicationInfoComponent {
     constructor(private router: Router, private data: ConfigService, private route: ActivatedRoute) { 
       this.id = this.route.snapshot.paramMap.get('id');
       this.update();
+
+      document.addEventListener('DOMContentLoaded', () => {
+        if(localStorage.getItem('AUTH_TOKEN') === null || localStorage.getItem('USER_Role') === '1') {
+          var spam_obj = document.getElementById("spam");
+          spam_obj!.style.display = "none";
+        }
+      });
     }
 
     picPhoto(photo: any) {
@@ -76,6 +83,8 @@ export class ApplicationInfoComponent {
                 mail_obj!.style.display = "block";
                 var mail_obj = document.getElementById("userButton");
                 mail_obj!.style.display = "block";
+                var spam_obj = document.getElementById("spam");
+                spam_obj!.style.display = "none";
               }
               else {
                 this.data.partExists(this.applicationID.id, localStorage.getItem('USER_IDENTIFIER')).subscribe(exists =>

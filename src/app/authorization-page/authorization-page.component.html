@@ -1,36 +1,33 @@
-<div class="login">
-    <h2 class="login-header">Авторизация</h2>
-    <form name="authorize" [formGroup]="authForm" class="email-container" (ngSubmit)="signIn()">
-      <p [ngClass]="{ 'has-error': isSubmitted && formControls.login.errors }">
-          <mat-form-field class="example-container" style="width: 100%;">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="pat@example.com" formControlName="email" required>
-          </mat-form-field>
-      </p>
-      <div *ngIf="authForm.get('email')?.errors?.incorrect">Неверная почта и/или пароль</div>
-      <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
-        <div *ngIf="formControls.email.errors.required">Заполните поле почты</div>
-      </div>
+<!-- Баннер -->
+<div class="banner2">
+  <div class="container">
+    <!-- Авторизация -->
+    <h1 class="subtitle">Авторизация</h1>
+    <div class="eco_form">
+      <form name="authorize" [formGroup]="authForm" class="email-container" (ngSubmit)="signIn()">
 
-      <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }" class="example-container">
-        <mat-form-field style="width: 100%;">
-          <mat-label>Пароль</mat-label>
-          <input name="passwordInput" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-          <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </a>
-        </mat-form-field>
-      </p>
-      <div *ngIf="authForm.get('password')?.errors?.incorrect">Неверный логин и/или пароль</div>
-      <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
-        <div *ngIf="formControls.password.errors.required">Заполните поле пароля</div>
-      </div>
-      <p>
-        <input type="submit" value="Войти">
-      </p>
-      <p>
-        <button class="btn" [routerLink]="['/registration']">Зарегистрироваться</button>
-      </p>
-    </form>
+        <h2 class="eco_type_input">Email*</h2>
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.login.errors}">
+          <input type="email" class="eco_input" required placeholder="укажите email" formControlName="email">
+        </p>
+        <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+          <div *ngIf="formControls.email.errors.required">Заполните поле почты</div>
+        </div>
+
+        <h2 class="eco_type_input">Пароль*</h2>
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors}" class="example-container">
+          <input type="password" class="eco_input" required placeholder="введите свой пароль" formControlName="password">
+        </p>
+        <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+          <div *ngIf="formControls.password.errors.required">Заполните поле пароля</div>
+        </div>
+
+        <p>
+          <input class="eco_button" type="submit" value="войти">
+        </p>
+        
+        <a [routerLink]="['/registration']" class="eco_button2">зарегистрироваться</a>
+      </form>
+    </div>
   </div>
-  
+</div>

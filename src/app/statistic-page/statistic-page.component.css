@@ -1,11 +1,9 @@
 .user-statisic {
-    width: 80%;
-    margin: 16px auto;
-    font-size: 16px;
-    margin-top: 28px;
-    border-color: rgb(64, 81, 59);
-    border-width: 2px;
-    border-style: solid;
+  padding: 20px; 
+  background: #EEEEEE; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
 }
 
 .city-top {
@@ -29,14 +27,17 @@
 }
 
 .user-statisic-header {
-    background: rgb(64, 81, 59);
-    padding: 20px;
-    font-size: 30px;
-    font-weight: normal;
-    text-align: center;
-    text-transform: uppercase;
-    color: rgb(237, 241, 214);
-    margin: 0;
+  padding: 20px; 
+  background: #A4CA62; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  font-family: 'Montserrat'; 
+  font-weight: 500; 
+  font-size: 20px; 
+  color: #FFFFFF; 
+  width: 33.33%; 
+  text-align: center; 
 }
 
 ul li,
@@ -66,7 +67,6 @@ li div:nth-child(2) {
 }
 
 #users {
-  font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -81,9 +81,17 @@ li div:nth-child(2) {
 #users tr:hover {background-color: #ddd;}
 
 #users th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: rgb(64, 81, 59);
-  color: rgb(237, 241, 214);
+  font-family: 'Montserrat'; 
+  font-weight: 500; 
+  font-size: 20px; 
+  color: #FFFFFF;
+  text-align: center;
+  padding: 20px; 
+  background: #A4CA62;
+  align-items: center;
+  font-family: 'Montserrat'; 
+  font-weight: 500; 
+  font-size: 20px; 
+  color: #FFFFFF;
+  text-align: center; 
  }

@@ -65,5 +65,7 @@ export class SendMailDialogComponent {
         }
       });
     }
+    alert("В событии пока никто не участвует");
+    this.router.navigateByUrl('/application/' + this.id);
   }
 }

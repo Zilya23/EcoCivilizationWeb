@@ -47,6 +47,7 @@ export class ListApplicationComponent {
   }
 
   filter() {
+    
     var searchBoxText = (<HTMLInputElement>document.getElementById("searchBox")).value;
     var idCity = this.cityForm.value.city;
 
@@ -68,6 +69,9 @@ export class ListApplicationComponent {
     if(this.applications.length > 0) {
       this.applications.reverse();
     }
+
+    var obj = document.getElementById("head");
+    obj!.style.display = "none";
   }
 }
 

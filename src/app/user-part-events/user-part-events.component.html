@@ -1,22 +1,23 @@
-<h1>Мои участия</h1>
-<div class="main inline" *ngIf="userPartApplications.length > 0">
-    <div class="left-block"></div>
-    <div class="content">
-      <div *ngFor="let application of userPartApplications" class="child">
-        <div class="img">
-          <img class="listimg" src={{application.photoApplications[0].photo}}>
+<!-- События -->
+<div class="events" *ngIf="userPartApplications.length > 0">
+  <!-- Контейнер -->
+  <div class="container">
+    <h1>Мои участия</h1>
+    <div class="events_display">
+      <!-- Событие -->
+      <div class="event" *ngFor="let application of userPartApplications">
+        <div>
+          <img src={{application.photoApplications[0].photo}} alt="картинка1">
+          <h2>{{application["name"]}}</h2>
+          <p>{{(application["description"].length>50)? (application["description"] |slice:0:50) + '...':(application["description"])}}</p>
         </div>
-        <div class="contentimg">
-          <nav>
-            <a class="nava" [routerLink]="['/application/' + application.id]">{{application["name"]}}</a>
-          </nav>
-          <p class="description">{{(application["description"].length>50)? (application["description"] |slice:0:50) + '...':(application["description"])}}</p>
-        </div>
+        <a [routerLink]="['/application/' + application.id]">перейти</a>
       </div>
     </div>
-    <div class="right-block"></div>
   </div>
-  
-  <div class="empty" *ngIf="userPartApplications.length == 0">
-    <label>ПУСТО</label>
-  </div>
+  <div class="padding"></div>
+</div>
+
+<div class="empty" *ngIf="userPartApplications.length == 0">
+  <label>ПУСТО</label>
+</div>

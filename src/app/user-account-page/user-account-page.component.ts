@@ -28,6 +28,7 @@ export class UserAccountPageComponent {
   idCity: any;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) { 
+    
     if(localStorage.getItem('AUTH_TOKEN') == null) {
       this.router.navigateByUrl('/auth');
     }
@@ -82,7 +83,7 @@ export class UserAccountPageComponent {
     var password = this.profilForm.value.password.toString();
     var name = this.profilForm.value.name.toString();
     var surname = this.profilForm.value.surname.toString();
-    var telephone = this.profilForm.value.telephone.number;
+    var telephone = this.profilForm.value.telephone.toString();
     var idGender = this.profilForm.value.gender;
     var newPassword = this.profilForm.value.newPassword.toString();
 

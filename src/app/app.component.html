@@ -1,68 +1,107 @@
-<body>
-  <div class="wrapper">
-    <div class="header">
-      <div class="name">
-        <p [routerLink]="['/']" style="cursor: pointer;">ЭкоЦивилизация</p>
-      </div>
-    
-      <div class="rightspace">
-        <div class="dropdown">
-          <div id="account" style="display: none;">
-            <a>
-              <mat-icon>home</mat-icon>
-            </a>
-            <div class="dropdown-content">
-              <a href="">Главная</a>
-              <a [routerLink]="['/account']">Профиль</a>
-              <a [routerLink]="['/add']">Добавить</a>
-              <a [routerLink]="['/yourEvents']">Мои события</a>
-              <a [routerLink]="['/yourPart']">Мои участия</a>
-              <a [routerLink]="['/statistic']">Статистика</a>
-              <a (click)="exit()">Выйти</a>
-            </div>
-          </div>
-    
-          <div id="authoriz" style="display: none;">
-            <a [routerLink]="['/auth']" class="icon">
-              <mat-icon>account_circle</mat-icon>
-            </a>
-          </div>
+<!DOCTYPE html>
+<html lang="ru">
 
-          <div id="goOut" style="display: none;">
-            <a (click)="exit()" class="icon">
-              <mat-icon>exit_to_app</mat-icon>
-            </a>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="src\app\css\style.css"> -->
+  <link rel="shortcut icon" type="image/svg" href="src\app\img\logo.svg">
+  <title>ЭкоЦивилизация</title>
+</head>
+
+<body>
+  <!-- Бургер меню -->
+  <div id="modal">
+    <div class="modal">
+      <a><img src="/assets/img/icons/icon3.svg" alt="закрыть"></a>
+      <ul class="ul2">
+        <li>
+          <a [routerLink]="['/']">главная</a>
+        </li>
+        <li>
+          <a [routerLink]="['/account']">профиль</a>
+        </li>
+        <li>
+          <a [routerLink]="['/add']">добавить</a>
+        </li>
+        <li>
+          <a [routerLink]="['/yourPart']">мои участия</a>
+        </li>
+        <li>
+          <a [routerLink]="['/yourEvents']">мои события</a>
+        </li>
+        <li>
+          <a [routerLink]="['/statistic']">статистика</a>
+        </li>
+        <li>
+          <a (click)="exit()" style="color: #A4CA62;">выйти</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Шапка страницы -->
+  <header>
+    <div class="header_menu">
+      <a [routerLink]="['/']"><img src="/assets/img/logo.svg" alt="логотип" [routerLink]="['/']"></a>
+      <div class="header_display">
+        <a id="authoriz" [routerLink]="['/auth']" style="display: none;" class="header_login">🍃 войти</a>
+        <a id="account">
+          <span class="burger">
+            <div class="dropdown">
+              <img src="/assets/img/icons/burger.svg" alt="бургер">
+              <div class="dropdown-content">
+                <a href="">Главная</a>
+                <a [routerLink]="['/account']">Профиль</a>
+                <a [routerLink]="['/add']">Добавить</a>
+                <a [routerLink]="['/yourEvents']">Мои события</a>
+                <a [routerLink]="['/yourPart']">Мои участия</a>
+                <a [routerLink]="['/statistic']">Статистика</a>
+                <a (click)="exit()">Выйти</a>
+              </div>
+            </div>
+          </span>
+        </a>
       </div>
     </div>
-    
-    <div class="main">
-        <router-outlet></router-outlet>
-    </div>
+  </header>
+
+  <div>
+    <router-outlet></router-outlet>
   </div>
 </body>
-  
-<footer class="footer-distributed">
-  <div class="footer-left">
-    <h3>Eco<span>Civilization</span></h3>
-    <p class="footer-company-name">ЭкоЦивилизация © 2023</p>
-  </div>
 
-  <div class="footer-center">
-    <div>
-      <p>+7 (937) 778-31-80</p>
+<footer class="footer-distributed" >
+  <div class="container">
+    <div class="footer_display">
+      <div class="footer-left">
+        <h3>Eco<span>Civilization</span></h3>
+        <p class="footer-company-name">© ЭкоЦивилизация 2023</p>
+      </div>
+    
+      <div class="footer-center">
+        <div>
+          <p>+7 (937) 778-31-80</p>
+        </div>
+    
+        <div>
+          <p><a href="EcoCivilizationApp@yandex.com">EcoCivilizationApp@yandex.com</a></p>
+        </div>
+
+        <div>
+          <p><a href="https://docs.google.com/document/d/12byQ5jWEPXq3d-M5Jr_OEFrUB63q64Qe2AJJI-8LYUY/edit?usp=sharing">Политика конфедециальности</a></p>
+        </div>
+      </div>
+    
+      <div class="footer-right">
+        <p class="footer-company-about">
+          <span>О продукте</span>
+          Платформа для организации волонтерской деятельности и субботников.
+        </p>
+        <p>Все права защищены</p>
+      </div>
     </div>
-
-    <div>
-      <p><a href="EcoCivilizationApp@yandex.com">EcoCivilizationApp@yandex.com</a></p>
-    </div>
-  </div>
-
-  <div class="footer-right">
-    <p class="footer-company-about">
-      <span>О продукте</span>
-      Платформа для организации волонтерской деятельности и субботников.
-    </p>
   </div>
 </footer>
+
+</html>

@@ -28,9 +28,9 @@ export class ApplicationAdminPageComponent {
 
     if(localStorage.getItem('USER_Role') === "1") {
       var obj = document.getElementById("account");
-      var admin_obj = document.getElementById("goOut");
+      // var admin_obj = document.getElementById("goOut");
       obj!.style.display = "none";
-      admin_obj!.style.display = "block";
+      // admin_obj!.style.display = "block";
     }
   }
 }

@@ -14,18 +14,29 @@ export class RegistrationPageComponent {
   authForm: FormGroup | any;
   isSubmitted  =  false;
   cities: any[] = [];
-  separateDialCode = false;
-	SearchCountryField = SearchCountryField;
-	CountryISO = CountryISO;
-  PhoneNumberFormat = PhoneNumberFormat;
-	preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
-	phoneForm = new FormGroup({
-		phone: new FormControl(undefined, [Validators.required])
-	});
-  selectedSimpleItem = '';
+  // separateDialCode = false;
+	// SearchCountryField = SearchCountryField;
+	// CountryISO = CountryISO;
+  // PhoneNumberFormat = PhoneNumberFormat;
+	// preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
+	// phoneForm = new FormGroup({
+	// 	phone: new FormControl(undefined, [Validators.required])
+	// });
+  // selectedSimpleItem = '';
   unamePattern = (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/);
 
   constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) {
+    var obj = document.getElementById("account");
+    var auth_obj = document.getElementById("authoriz");
+
+    if(localStorage.getItem('AUTH_TOKEN') == null) {
+      obj!.style.display = "none";
+      auth_obj!.style.display = "block";
+    }
+    else {
+      obj!.style.display = "block";
+      auth_obj!.style.display = "none";
+    }
     this.configService.getCities()
       .subscribe((cities:any[])=>{
         cities.forEach(city =>{
@@ -61,21 +72,21 @@ export class RegistrationPageComponent {
     var password = this.authForm.value.password.toString();
     var name = this.authForm.value.name.toString();
     var surname = this.authForm.value.surname.toString();
-    var telephone = this.authForm.value.telephone.number;
+    var telephone = this.authForm.value.telephone.toString();
     var idCity = this.authForm.value.city;
     var idGender = this.authForm.value.gender;
     var repeatPassword = this.authForm.value.repeatPassword.toString();
 
-    if(password == repeatPassword) {
-      // this.authForm.controls['repeatPassword'].setErrors({'incorrect' : false});
+    if(password === repeatPassword) {
+      this.authForm.controls['repeatPassword'].setErrors({'incorrect' : false});
       this.configService.registration(name, surname, telephone, 
                     idCity, idGender, email, password).subscribe(response => {
         alert("Успешно!");
         this.router.navigateByUrl('/auth');
         }, error => {
           if(error.status === 404)
-          {
-            // this.authForm.controls['repeatPassword'].setErrors({'incorrect' : false});
+          { 
+            this.authForm.controls['repeatPassword'].setErrors({'incorrect' : false});
             this.authForm.controls['email'].setErrors({'incorrect' : true});
             this.authForm.controls['telephone'].setErrors({'incorrect' : true});
           }
@@ -85,6 +96,6 @@ export class RegistrationPageComponent {
         }
       );
     }
-    // this.authForm.controls['repeatPassword'].setErrors({'incorrect' : true});
+    this.authForm.controls['repeatPassword'].setErrors({'incorrect' : true});
   }
 }

@@ -1,55 +1,65 @@
-<div id="spam" class="dropdown">
-  <span style="font-size: 40px;">...</span>
-  <div class="dropdown-content">
-    <p (click)="appealApplication()">Пожаловаться</p>
+<!-- Карточка товара -->
+<div id="spam" style="display: grid; justify-content: end;">
+  <div class="dropdown">
+    <span style="font-size: 40px;">...</span>
+    <div class="dropdown-content">
+      <p (click)="appealApplication()">Пожаловаться</p>
+    </div>
   </div>
 </div>
 
-<div class="page" style="margin-top: 5%;">
-    <div class="gallery">
-      <img class="mainimg" src={{currentPhoto}}>
+
+<div class="back">
+  <div class="container">
+    <div class="card">
       <div>
-          <img class="galleryimg" (click)="picPhoto(photoList.photo)" *ngFor="let photoList of applicationID.photoApplications" src={{photoList.photo}}>
+        <img src={{currentPhoto}} alt="картинка1" class="card_one_img_display">
+        <div class="card_img_display">
+          <img (click)="picPhoto(photoList.photo)" *ngFor="let photoList of applicationID.photoApplications" src={{photoList.photo}}>
+        </div>
+      </div>
+      <div class="card_type_abouts">
+        <h1 class="card_subtitle">{{applicationID.name}}</h1>
+        <div class="card_abouts">
+          <!-- дата: -->
+          <div class="card_about">
+            <h2>дата:</h2>
+            <p>{{applicationID["date"] | date: 'dd.MM.yyyy'}}</p>
+          </div>
+          <!-- время начала: -->
+          <div class="card_about">
+            <h2>время начала:</h2>
+            <p>{{formattedTime}}</p>
+          </div>
+          <!-- город проведения: -->
+          <div class="card_about">
+            <h2>город проведения:</h2>
+            <p>{{applicationID.idCityNavigation.name}}</p>
+          </div>
+          <!-- место проведения: -->
+          <div class="card_about">
+            <h2>место проведения:</h2>
+            <p>{{applicationID["place"]}}</p>
+          </div>
+          <!-- необходимое количество участников: -->
+          <div class="card_about">
+            <h2>необходимое количество участников:</h2>
+            <p>{{applicationID["countUser"]}}</p>
+          </div>
+        </div>
+        <div class="about">
+          <h1>Описание</h1>
+          <p>{{applicationID.description}}</p>
+        </div>
+        <div class="participant">
+          <h1>Участников <span>{{partUser}}</span> из <span>{{applicationID.countUser}}</span>:</h1>
+          <progress max="{{applicationID.countUser}}" value="{{partUser}}"></progress>
+        </div>
+        <input class="eco_button5" id="userButton" (click)="partApplication()" type="submit" value="{{participant}}">
+        <a id="sendMailUsers" class="mail_button" style="display: none;" [routerLink]="['/sendMail/' + applicationID.id]">Отправить сообщение участникам</a>
+        <a id="bunned" class="ban_button" (click)="bunnedApplication()" style="display: none;">{{bunned}}</a>
       </div>
     </div>
-    <div class="description">
-      <h1>{{applicationID.name}}</h1>
-      <p>Описание:</p>
-      <p>{{applicationID.description}}</p>
-        <ol>
-          <li>
-            <div>Дата:</div>
-            <div></div>
-            <div>{{applicationID["date"] | date: 'dd.MM.yyyy'}}</div>
-          </li>
-          <li>
-            <div>Начало:</div>
-            <div></div>
-            <div>{{formattedTime}}</div>
-          </li>
-          <li>
-            <div>Город проведения:</div>
-            <div></div>
-            <div>{{applicationID.idCityNavigation.name}}</div>
-          </li>
-          <li>
-            <div>Место проведения:</div>
-            <div></div>
-            <div>{{applicationID["place"]}}</div>
-          </li>
-          <li>
-            <div>Необходимое количество участников:</div>
-            <div></div>
-            <div>{{applicationID["countUser"]}}</div>
-          </li>
-        </ol>
-        <p>Участников <span>{{partUser}}</span>  из <span>{{applicationID.countUser}}</span>:</p>
-        <progress max="{{applicationID.countUser}}" value="{{partUser}}"></progress>
-        <button id="userButton" formControlName="btn" (click)="partApplication()">{{participant}}</button>
-        <a id="sendMailUsers" style="display: none;" [routerLink]="['/sendMail/' + applicationID.id]">Отправить сообщение участникам</a>
-        <a id="bunned" (click)="bunnedApplication()" style="display: none; background-color: rgba(255, 0, 0, 0.473);">{{bunned}}</a>
-    </div>
   </div>
-  
-  
-  
+  <div class="padding3"></div>
+</div>

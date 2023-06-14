@@ -1,106 +1,98 @@
-<div class="login">
-    <h2 class="login-header">Регистрация</h2>
-    <form name="authorize" [formGroup]="authForm" class="login-container" (ngSubmit)="signIn()">
-      <div class="page">
-        <div class="first-column">
-          <label class="placeholder-label">Имя</label>
+<!-- Баннер -->
+<div class="banner3">
+  <div class="container">
+    <!-- Профиль -->
+    <h1 class="subtitle">Регистрация</h1>
+    <div>
+      <form class="form2" name="profil" [formGroup]="authForm" (ngSubmit)="signIn()">
+        <div>
+
+          <h2 class="eco_type_input">Имя*</h2>
           <p [ngClass]="{ 'has-error': isSubmitted && formControls.name.errors }">
-            <input type="name" placeholder="Имя" formControlName="name">
+            <input type="text" class="eco_input" formControlName="name" required>
           </p>
-          <div *ngIf="isSubmitted && formControls.name.errors" class="help-block">
-            <div *ngIf="formControls.name.errors.required">Заполните поле имени!</div>
+          <div *ngIf="isSubmitted && formControls.name.errors">
+            <div style="color: red;">Заполните поле имени!</div>
           </div>
-    
-          <label class="placeholder-label">Фамилия</label>
+
+          <h2 class="eco_type_input">Фамилия*</h2>
           <p [ngClass]="{ 'has-error': isSubmitted && formControls.surname.errors }">
-            <input type="surname" placeholder="Фамилия" formControlName="surname">
+            <input type="text" class="eco_input"  formControlName="surname" required>
           </p>
           <div *ngIf="isSubmitted && formControls.surname.errors" class="help-block">
-            <div *ngIf="formControls.surname.errors.required">Заполните поле фамилии!</div>
+            <div style="color: red;">Заполните поле фамилии!</div>
           </div>
-    
-          <label class="placeholder-label">Телефон</label>
-          <p [ngClass]="{ 'has-error': isSubmitted && formControls.telephone.errors }">
-            <ngx-intl-tel-input [cssClass]="'custom'" [searchCountryFlag]="true"
-            [searchCountryField]="[
-              SearchCountryField.Iso2,
-              SearchCountryField.Name
-            ]"
-            [selectedCountryISO]="CountryISO.Russia" [maxLength]="13" [phoneValidation]="true"
-            [numberFormat]="PhoneNumberFormat.National" formControlName="telephone">
-          </ngx-intl-tel-input>
-          </p>
-          <div *ngIf="authForm.get('telephone')?.errors?.incorrect">Введите другой телефон!</div>
-          <div *ngIf="isSubmitted && formControls.telephone.errors" class="help-block">
-            <div *ngIf="formControls.telephone.errors.required">Заполните поле телефона!</div>
-          </div>
-    
-          <label class="placeholder-label">Пол</label>
-          <p [ngClass]="{ 'has-error': isSubmitted && formControls.gender.errors }">
+
+          <h2 class="eco_type_input">Пол*</h2>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.gender.errors }" required>
             <select required formControlName="gender">
-              <option value="" disabled selected>Выберите пол</option>
+              <option value="" disabled selected>выберите пол</option>
               <option value="1">Женский</option>
               <option value="2">Мужской</option>
             </select>
           </p>
           <div *ngIf="isSubmitted && formControls.gender.errors" class="help-block">
-            <div *ngIf="formControls.gender.errors.required">Укажите пол!</div>
+            <div style="color: red;">Укажите пол!</div>
           </div>
-        </div>
-        
-        <div class="second-column">
-          <label class="placeholder-label">Город</label>
+
+          <h2 class="eco_type_input">Город*</h2>
           <p [ngClass]="{ 'has-error': isSubmitted && formControls.city.errors }">
             <ng-select required formControlName="city">
-              <ng-option value="" disabled selected>Выберите город</ng-option>
+              <ng-option value="" disabled selected>выберите город</ng-option>
               <ng-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ng-option>
            </ng-select>
           </p>
           <div *ngIf="isSubmitted && formControls.city.errors" class="help-block">
-            <div *ngIf="formControls.city.errors.required">Укажите город!</div>
+            <div style="color: red;">Укажите город!</div>
           </div>
-    
-          <label class="placeholder-label">Email</label>
+        </div>
+        <div>
+
+          <h2 class="eco_type_input">Телефон*</h2>
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.telephone.errors }">
+            <input type="text" class="eco_input" formControlName="telephone" required>
+          </p>
+          <div *ngIf="authForm.get('telephone')?.errors?.incorrect" style="color: red;">Введите другой телефон!</div>
+          <div *ngIf="isSubmitted && formControls.telephone.errors" class="help-block">
+            <div style="color: red;">Заполните поле телефона!</div>
+          </div>
+
+          <h2 class="eco_type_input">Email*</h2>
           <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-            <input type="email" placeholder="Email" formControlName="email" ngModel [email]="true">
+            <input type="email" class="eco_input" ngModel [email]="true" formControlName="email" required>
           </p>
           <div *ngIf="authForm.get('email')?.errors?.incorrect">Введите другую почту!</div>
           <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
-            <span *ngIf="authForm.get('email')?.errors?.email">Почта введена не верно</span>
-            <div *ngIf="formControls.email.errors.required">Заполните поле почты!</div>
+            <span *ngIf="authForm.get('email')?.errors?.email" style="color: red;">Почта введена не верно</span>
+            <div style="color: red;">Заполните поле почты!</div>
           </div>
-    
-          <label class="placeholder-label">Пароль</label>
+
+          <h2 class="eco_type_input">Пароль*</h2>
           <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
-            <input name="passwordInput" type="password" placeholder="Пароль" formControlName="password" ngModel [pattern]="unamePattern">
+            <input name="password" required placeholder="введите ваш новый пароль" class="eco_input" type="password" formControlName="password" ngModel [pattern]="unamePattern">
           </p>
           <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
-            <div *ngIf="formControls.password.errors?.pattern">
-              Пароль должен содержать хотя бы одну цифру, 
-              одну заглавную букву и
-              прописную и состоять минимум из 8ми символов
-              <br/> Пароль не может содержать пробел
-            </div>
-            <div *ngIf="formControls.password.errors.required">Заполните поле пароля!</div>
+            <div *ngIf="formControls.password.errors?.pattern" style="color: red;">
+                Пароль должен содержать хотя бы одну цифру, 
+                одну заглавную<br/> букву и
+                прописную и состоять минимум из 8ми символов
+                <br/> Пароль не может содержать пробел
+              </div>
+            <div style="color: red;">Введите пароль!</div>
           </div>
-    
-          <label class="placeholder-label">Повторите пароль</label>
+
+          <h2 class="eco_type_input">Повторите пароль*</h2>
           <p [ngClass]="{ 'has-error': isSubmitted && formControls.repeatPassword.errors }">
-            <input name="repeatPasswordInput" type="password" placeholder="Повторите пароль" formControlName="repeatPassword">
+            <input type="password" class="eco_input" required placeholder="повторите ваш пароль" formControlName="repeatPassword">
           </p>
-          <!-- <div *ngIf="authForm.get('repeatPassword')?.errors?.incorrect">Пароли не совпадают</div> -->
+           <div *ngIf="authForm.get('repeatPassword')?.errors?.incorrect" style="color: red;">Пароли не совпадают</div>
           <div *ngIf="isSubmitted && formControls.repeatPassword.errors" class="help-block">
-            <div *ngIf="formControls.repeatPassword.errors.required">Введите пароль еще раз!</div>
+            <div style="color: red;">Введите пароль еще раз!</div>
           </div>
+
         </div>
-      </div>
-      
-      <p>
-        <input type="submit" value="Зарегистрироваться">
-      </p>
-      <p>
-        <button class="btn" [routerLink]="['/auth']">Назад</button>
-      </p>
-    </form>
+        <input class="eco_button4" type="submit" value="зарегистрироваться">
+      </form>
+    </div>
   </div>
-  
+</div>

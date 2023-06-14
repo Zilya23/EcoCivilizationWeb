@@ -1,33 +1,71 @@
-
-<div class="filters">
-  <input class="search" id="searchBox" placeholder="Поиск..." (input)="filter()">
-  <form [formGroup]="cityForm">
-    <ng-select class="ng-dropdown"  required formControlName="city" (change)="filter()">
-      <ng-option value="" disabled selected >Выберите город</ng-option>
-      <ng-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ng-option>
-    </ng-select>
-  </form>
+<!-- Вторая шапка страницы -->
+<div class="header_green">
+  <div class="header_menu2">
+    <form [formGroup]="cityForm">
+      <ng-select class="ng-dropdown"  required formControlName="city" (change)="filter()">
+        <ng-option value="" disabled selected >Выберите город</ng-option>
+        <ng-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ng-option>
+      </ng-select>
+    </form>
+    <div class="header_green_search">
+      <input class="search" id="searchBox" placeholder="поиск" type="text" (input)="filter()">
+      <img src="/assets/img/icons/icon2.svg" alt="иконка поиск">
+    </div>
+  </div>
 </div>
 
-<div class="main inline" id="content"  *ngIf="applications.length > 0">
-    <div class="left-block"></div>
-    <div class="content">
-      <div *ngFor="let application of applications" class="child">
-        <div class="img">
-          <img class="listimg" [routerLink]="['/application/' + application.id]" src={{application.photoApplications[0].photo}}>
-        </div>
-        <div class="contentimg">
-          <nav>
-            <a class="nava" [routerLink]="['/application/' + application.id]">{{application["name"]}}</a>
-          </nav>
-          <p class="description" [routerLink]="['/application/' + application.id]">{{(application["description"].length>50)? (application["description"] |slice:0:50) + '...':(application["description"])}}</p>
-        </div>
+<div id="head" style="display: block;">
+  <!-- Баннер -->
+  <div class="banner">
+  <!-- Контейнер -->
+    <div class="container">
+      <div class="banner_h1">
+        <h1>Сохраняем <span style="color: #A4CA62; font-family: 'Angry';">природу</span> для<span style="color: #A4CA62; font-family: 'Angry';"> будущего</span></h1>
       </div>
     </div>
-    <div class="right-block"></div>
+    <div class="banner_circle">
+      <p>Будущее за нами!</p>
+    </div>
+    <!-- строка из картинок -->
+    <div id="slide_line">
+      <img class="img_s" src="/assets/img/backgroud_img/img1.png" alt="картинка1">
+      <img class="img_s" src="/assets/img/backgroud_img/img2.png" alt="картинка2">
+      <img class="img_s" src="/assets/img/backgroud_img/img3.png" alt="картинка3">
+      <img class="img_s" src="/assets/img/backgroud_img/img4.png" alt="картинка4">
+      <img class="img_s" src="/assets/img/backgroud_img/img5.png" alt="картинка5">
+      <img class="img_s" src="/assets/img/backgroud_img/img6.png" alt="картинка6">
+    </div>
+    <div class="banner_img">
+      <img src="/assets/img/backgroud_img/img1_1.png" alt="картинка1">
+      <img src="/assets/img/backgroud_img/img2.png" alt="картинка2">
+      <img src="/assets/img/backgroud_img/img3.png" alt="картинка3">
+      <img src="/assets/img/backgroud_img/img4.png" alt="картинка4">
+      <img src="/assets/img/backgroud_img/img5.png" alt="картинка5">
+      <img src="/assets/img/backgroud_img/img6_6.png" alt="картинка6">
+    </div>
+  </div>
+</div>
+
+<!-- События -->
+<div class="events" *ngIf="applications.length > 0">
+  <!-- Контейнер -->
+  <div class="container">
+    <h1>События</h1>
+    <div class="events_display">
+      <!-- Событие -->
+      <div class="event" *ngFor="let application of applications">
+        <div>
+          <img src={{application.photoApplications[0].photo}} alt="картинка1">
+          <h2>{{application["name"]}}</h2>
+          <p>{{(application["description"].length>50)? (application["description"] |slice:0:50) + '...':(application["description"])}}</p>
+        </div>
+        <a [routerLink]="['/application/' + application.id]">перейти</a>
+      </div>
+    </div>
+  </div>
+  <div class="padding"></div>
 </div>
 
 <div class="empty" *ngIf="applications.length == 0">
   <label>ПУСТО</label>
 </div>
-  

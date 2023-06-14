@@ -2,25 +2,25 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {AppRoutingModule } from './app-routing.module';
+import {AppComponent } from './app.component';
+import {ReactiveFormsModule } from '@angular/forms';
 import {NgxMatIntlTelInputComponent} from 'ngx-mat-intl-tel-input';
-import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgSelectModule } from '@ng-select/ng-select';
+import {NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgSelectModule } from '@ng-select/ng-select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {DropdownModule, SharedModule} from '@coreui/angular';
-import { AlertModule } from '@coreui/angular';
-import { MatIconModule } from '@angular/material/icon'
+import {AlertModule } from '@coreui/angular';
+import {MatIconModule } from '@angular/material/icon'
 import {MatButtonModule} from '@angular/material/button';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import {ModalModule } from 'ngx-bootstrap/modal';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 

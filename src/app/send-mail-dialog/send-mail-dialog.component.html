@@ -1,4 +1,4 @@
-<div class="mail">
+<!-- <div class="mail">
     <h2 class="mail-header">Письмо</h2>
     <form name="theme" [formGroup]="mailForm" class="theme-container" (ngSubmit)="sendMail()"><br/>
         <label style="margin-left: 10px;">Тема</label><br/>
@@ -27,4 +27,41 @@
         <button class="btn" [routerLink]="['/application/' + id]">Назад</button>
       </p>
     </form>
+  </div> -->
+
+  <!-- Баннер -->
+<div class="banner2">
+  <div class="container">
+    <!-- Авторизация -->
+    <h1 class="subtitle">письмо</h1>
+    <div class="eco_form">
+      <form name="authorize" [formGroup]="mailForm" class="email-container" (ngSubmit)="sendMail()">
+
+        <h2 class="eco_type_input">Тема*</h2>
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.theme.errors }">
+          <input type="text" class="eco_input" required formControlName="theme">
+        </p>
+        <div *ngIf="isSubmitted && formControls.theme.errors" class="help-block">
+            <div *ngIf="formControls.theme.errors.required" style="margin-left: 10px; margin-bottom: 10px; color: red;">Заполните тему письма</div>
+        </div>
+
+        <h2 class="eco_type_input">Письмо*</h2>
+        <div class="floating-label">
+          <p [ngClass]="{ 'has-error': isSubmitted && formControls.mail_text.errors }"></p>
+          <mat-form-field class="eco_input" style="margin-top: 10px;">
+              <textarea matInput formControlName="mail_text"></textarea>
+          </mat-form-field>
+      </div>
+      <div *ngIf="isSubmitted && formControls.mail_text.errors" class="help-block">
+          <div *ngIf="formControls.mail_text.errors.required" style="margin-left: 10px;  margin-bottom: 20px; color: red;">Напишите собщение</div>
+      </div>
+
+        <p>
+          <input class="eco_button" type="submit" value="отправить">
+        </p>
+
+        <a [routerLink]="['/application/' + id]" class="eco_button2">назад</a>
+      </form>
+    </div>
   </div>
+</div>

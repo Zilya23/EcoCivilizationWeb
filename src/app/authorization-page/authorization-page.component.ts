@@ -11,7 +11,6 @@ import { ConfigService } from '../config/config.service';
 export class AuthorizationPageComponent {
   authForm: FormGroup | any;
   isSubmitted  =  false;
-  hide = true;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private configService: ConfigService ) {
     var obj = document.getElementById("account");
@@ -37,10 +36,7 @@ export class AuthorizationPageComponent {
   get formControls() { return this.authForm.controls; }
 
   signIn(){
-    this.isSubmitted = true;
-    if(this.authForm.invalid){
-      return;
-    }
+    console.log("redfg");
     
     var email = this.authForm.value.email;
     var password = this.authForm.value.password;
