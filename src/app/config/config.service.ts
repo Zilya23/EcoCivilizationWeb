@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class ConfigService {
-    baseUrl: string = "http://localhost:5189/api/";
+    baseUrl: string = "http://194.67.111.16:3000/api/";
   constructor(public client: HttpClient, private router: Router) { }
 
   public getApplicationList() : Observable<any[]> {
