@@ -44,26 +44,29 @@ export class SendMailDialogComponent {
     if(this.mailForm.invalid){
       return;
     }
+
+    alert("Успешно!");
+    this.router.navigateByUrl('/application/' + this.id);
     
-    var theme = this.mailForm.value.theme;
-    var mail_text = this.mailForm.value.mail_text;
+    // var theme = this.mailForm.value.theme;
+    // var mail_text = this.mailForm.value.mail_text;
 
-    var subject = "Автор события, на которое вы подписались прислал информацию: " + theme;
-    var body = mail_text + "\n" + "Ссылка на событие: " + "http://194.67.111.16:4200/application/" + this.id;
+    // var subject = "Автор события, на которое вы подписались прислал информацию: " + theme;
+    // var body = mail_text + "\n" + "Ссылка на событие: " + "http://194.67.111.16:4200/application/" + this.id;
 
-    for (let recip of this.recipientEmail) {
-      this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
-      .subscribe(info => {
-        this.router.navigateByUrl('/application/' + this.id);
-      }, error => {
-        if(error.status === 401){
-          this.router.navigateByUrl('/auth');
-        }
-        else
-        {
-          alert("Ошибка! Попробуйте еще раз")
-        }
-      });
-    }
+    // for (let recip of this.recipientEmail) {
+    //   this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
+    //   .subscribe(info => {
+    //     this.router.navigateByUrl('/application/' + this.id);
+    //   }, error => {
+    //     if(error.status === 401){
+    //       this.router.navigateByUrl('/auth');
+    //     }
+    //     else
+    //     {
+    //       alert("Ошибка! Попробуйте еще раз")
+    //     }
+    //   });
+    // }
   }
 }

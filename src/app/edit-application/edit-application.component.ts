@@ -119,7 +119,7 @@ export class EditApplicationComponent {
 
   deleteEvent() {
     this.configService.deleteEvent(localStorage.getItem('AUTH_TOKEN'), this.id,).subscribe(resp =>{
-      this.sendDeleteMail();
+      // this.sendDeleteMail();
       console.log(resp);
     });
     alert("Событие удалено!");
@@ -163,7 +163,7 @@ export class EditApplicationComponent {
             console.log(resp);
           });
         }
-        this.sendAuthoMail();              
+        // this.sendAuthoMail();              
         alert("Успешно!");
         this.router.navigateByUrl('/applications');
       }, error =>
@@ -181,46 +181,46 @@ export class EditApplicationComponent {
     }
   }
 
-  sendAuthoMail() {
-    var subject = "Событие, на которое вы подписались было изменено";
-    var body = "Возможно автор внес важные изменения в событие! Просмотрите их, что бы быть в курсе." + 
-    "\n" + "Ссылка на событие: " + "http://194.67.111.16:4200/application/" + this.id;
+  // sendAuthoMail() {
+  //   var subject = "Событие, на которое вы подписались было изменено";
+  //   var body = "Возможно автор внес важные изменения в событие! Просмотрите их, что бы быть в курсе." + 
+  //   "\n" + "Ссылка на событие: " + "http://194.67.111.16:4200/application/" + this.id;
 
-    for (let recip of this.recipientEmail) {
-      console.log(recip.idUserNavigation);
-      this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
-      .subscribe(info => {
-        console.log(info);
-      }, error => {
-        if(error.status === 401){
-          this.router.navigateByUrl('/auth');
-        }
-        else
-        {
-          alert("Ошибка! Попробуйте еще раз")
-        }
-      });
-    }
-  }
+  //   for (let recip of this.recipientEmail) {
+  //     console.log(recip.idUserNavigation);
+  //     this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
+  //     .subscribe(info => {
+  //       console.log(info);
+  //     }, error => {
+  //       if(error.status === 401){
+  //         this.router.navigateByUrl('/auth');
+  //       }
+  //       else
+  //       {
+  //         alert("Ошибка! Попробуйте еще раз")
+  //       }
+  //     });
+  //   }
+  // }
 
-  sendDeleteMail() {
-    var subject = "Событие, на которое вы подписались было удалено";
-    var body = "Событие из ваших подписок было отменено его автором! Просмотрите что это за событие, что бы быть в курсе."
+  // sendDeleteMail() {
+  //   var subject = "Событие, на которое вы подписались было удалено";
+  //   var body = "Событие из ваших подписок было отменено его автором! Просмотрите что это за событие, что бы быть в курсе."
 
-    for (let recip of this.recipientEmail) {
-      console.log(recip.idUserNavigation);
-      this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
-      .subscribe(info => {
-        console.log(info);
-      }, error => {
-        if(error.status === 401){
-          this.router.navigateByUrl('/auth');
-        }
-        else
-        {
-          alert("Ошибка! Попробуйте еще раз")
-        }
-      });
-    }
-  }
+  //   for (let recip of this.recipientEmail) {
+  //     console.log(recip.idUserNavigation);
+  //     this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
+  //     .subscribe(info => {
+  //       console.log(info);
+  //     }, error => {
+  //       if(error.status === 401){
+  //         this.router.navigateByUrl('/auth');
+  //       }
+  //       else
+  //       {
+  //         alert("Ошибка! Попробуйте еще раз")
+  //       }
+  //     });
+  //   }
+  // }
 }
