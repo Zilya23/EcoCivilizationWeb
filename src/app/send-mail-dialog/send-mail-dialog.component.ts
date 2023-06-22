@@ -49,7 +49,7 @@ export class SendMailDialogComponent {
     var mail_text = this.mailForm.value.mail_text;
 
     var subject = "Автор события, на которое вы подписались прислал информацию: " + theme;
-    var body = mail_text + "\n" + "Ссылка на событие: " + "http:/194.67.111.16:4200/application/" + this.id;
+    var body = mail_text + "\n" + "Ссылка на событие: " + "http://194.67.111.16:4200/application/" + this.id;
 
     for (let recip of this.recipientEmail) {
       this.configService.sendMail(localStorage.getItem('AUTH_TOKEN'), recip.idUserNavigation.email, subject, body)
