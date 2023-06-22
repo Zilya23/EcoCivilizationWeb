@@ -184,7 +184,7 @@ export class EditApplicationComponent {
   sendAuthoMail() {
     var subject = "Событие, на которое вы подписались было изменено";
     var body = "Возможно автор внес важные изменения в событие! Просмотрите их, что бы быть в курсе." + 
-    "\n" + "Ссылка на событие: " + "http://localhost:4200/application/" + this.id;
+    "\n" + "Ссылка на событие: " + "http:/194.67.111.16:4200/application/" + this.id;
 
     for (let recip of this.recipientEmail) {
       console.log(recip.idUserNavigation);
